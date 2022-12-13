@@ -275,7 +275,7 @@ function cloudSaveClick()
 }
 
 function shareClick() {
-	var oauthAccessToken = "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";//storage_get("oauth_access_token");
+	var oauthAccessToken = storage_get("oauth_access_token");
 	if (typeof oauthAccessToken !== "string") {
 		// Generates 32 letters of random data, like "liVsr/e+luK9tC02fUob75zEKaL4VpQn".
 		printUnauthorized();
