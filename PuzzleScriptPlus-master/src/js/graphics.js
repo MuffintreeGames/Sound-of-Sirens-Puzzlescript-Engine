@@ -69,17 +69,641 @@ function regenText(spritecanvas,spritectx) {
 
     var textsheetContext = textsheetCanvas.getContext('2d');
 
+    //var yellowText = false; //turn all text for the rest of the line yellow
     for (var n = 0; n < fontKeys.length; n++) {
         var key = fontKeys[n];
-        if (font.hasOwnProperty(key)) {
+        /*if (key == '^') {
+            console.log("setting text color to yellow");
+            yellowText = true;
+        } else*/ if (key == '†') {
+            console.log("making custom red character");
+            fontstr = `11111
+                       11111
+                       11111
+                       11111
+                       11111
+                       11111
+                       11111
+                       11111
+                       11111
+                       11111
+                       11111
+                       11111`
+            fontstr = fontstr.split('\n').map(a=>a.trim().split('').map(t=>parseInt(t)));
+            fontstr.shift();
+            var textX = (n % textsheetSize)|0;
+            var textY = (n / textsheetSize)|0;
+            renderSprite(textsheetContext, fontstr, ['#FF0000', '#FF0000'], 1, textX, textY);
+            renderSprite(textsheetContext, fontstr, ['#FF0000', '#FF0000'], 1, textX, textY + textsheetSize);
+        }  else if (key == 'ŋ') {
+            console.log("making blue siren character");
+            fontstr = `00000
+            00000
+            00000
+            00000
+            00000
+            00000
+            11111
+            11111
+            11111
+            11111
+            11111
+            11111`
+            fontstr = fontstr.split('\n').map(a=>a.trim().split('').map(t=>parseInt(t)));
+            fontstr.shift();
+            var textX = (n % textsheetSize)|0;
+            var textY = (n / textsheetSize)|0;
+            renderSprite(textsheetContext, fontstr, ['#000000', '#0000FF'], 1, textX, textY);
+            renderSprite(textsheetContext, fontstr, ['#000000', '#0000FF'], 1, textX, textY + textsheetSize);
+        } else if (key == 'ŉ') {
+            console.log("making red siren character");
+            fontstr = `00000
+            00000
+            00000
+            00000
+            00000
+            00000
+            11111
+            11111
+            11111
+            11111
+            11111
+            11111`
+            fontstr = fontstr.split('\n').map(a=>a.trim().split('').map(t=>parseInt(t)));
+            fontstr.shift();
+            var textX = (n % textsheetSize)|0;
+            var textY = (n / textsheetSize)|0;
+            renderSprite(textsheetContext, fontstr, ['#000000', '#FF0000'], 1, textX, textY);
+            renderSprite(textsheetContext, fontstr, ['#000000', '#FF0000'], 1, textX, textY + textsheetSize);
+        } else if (key == 'Æ') {
+            console.log("making custom white character");
+            fontstr = `11111
+            11111
+            11111
+            11111
+            11111
+            11111
+            11111
+            11111
+            11111
+            11111
+            11111
+            11111`
+            fontstr = fontstr.split('\n').map(a=>a.trim().split('').map(t=>parseInt(t)));
+            fontstr.shift();
+            var textX = (n % textsheetSize)|0;
+            var textY = (n / textsheetSize)|0;
+            renderSprite(textsheetContext, fontstr, ['#FFFFFF', '#FFFFFF'], 1, textX, textY);
+            renderSprite(textsheetContext, fontstr, ['#FFFFFF', '#FFFFFF'], 1, textX, textY + textsheetSize);
+        } else if (key == 'Ĳ') {
+            console.log("making custom half-white character");
+            fontstr = `00000
+            00000
+            00000
+            00000
+            00000
+            00000
+            11111
+            11111
+            11111
+            11111
+            11111
+            11111`
+            fontstr = fontstr.split('\n').map(a=>a.trim().split('').map(t=>parseInt(t)));
+            fontstr.shift();
+            var textX = (n % textsheetSize)|0;
+            var textY = (n / textsheetSize)|0;
+            renderSprite(textsheetContext, fontstr, ['#000000', '#FFFFFF'], 1, textX, textY);
+            renderSprite(textsheetContext, fontstr, ['#000000', '#FFFFFF'], 1, textX, textY + textsheetSize);
+        } else if (key == 'ĳ') {
+            console.log("making custom blue character");
+            fontstr = `11111
+            11111
+            11111
+            11111
+            11111
+            11111
+            11111
+            11111
+            11111
+            11111
+            11111
+            11111`
+            fontstr = fontstr.split('\n').map(a=>a.trim().split('').map(t=>parseInt(t)));
+            fontstr.shift();
+            var textX = (n % textsheetSize)|0;
+            var textY = (n / textsheetSize)|0;
+            renderSprite(textsheetContext, fontstr, ['#0000FF', '#0000FF'], 1, textX, textY);
+            renderSprite(textsheetContext, fontstr, ['#0000FF', '#0000FF'], 1, textX, textY + textsheetSize);
+        } else if (key == 'æ') {
+            console.log("making custom left wheel character");
+            fontstr = `11111
+            11111
+            11111
+            11100
+            11100
+            11100
+            11100
+            11100
+            11100
+            11100
+            11111
+            11111`
+            fontstr = fontstr.split('\n').map(a=>a.trim().split('').map(t=>parseInt(t)));
+            fontstr.shift();
+            var textX = (n % textsheetSize)|0;
+            var textY = (n / textsheetSize)|0;
+            renderSprite(textsheetContext, fontstr, ['#FFFFFF', '#3A3B3C'], 1, textX, textY);
+            renderSprite(textsheetContext, fontstr, ['#FFFFFF', '#3A3B3C'], 1, textX, textY + textsheetSize); 
+        } else if (key == 'ł') {
+            console.log("making custom right wheel character");
+            fontstr = `11111
+            11111
+            11111
+            00111
+            00111
+            00111
+            00111
+            00111
+            00111
+            00111
+            11111
+            11111`
+            fontstr = fontstr.split('\n').map(a=>a.trim().split('').map(t=>parseInt(t)));
+            fontstr.shift();
+            var textX = (n % textsheetSize)|0;
+            var textY = (n / textsheetSize)|0;
+            renderSprite(textsheetContext, fontstr, ['#FFFFFF', '#3A3B3C'], 1, textX, textY);
+            renderSprite(textsheetContext, fontstr, ['#FFFFFF', '#3A3B3C'], 1, textX, textY + textsheetSize); 
+        } else if (key == '®') {
+            console.log("making custom light gray character");
+            fontstr = `11111
+            11111
+            11111
+            11111
+            11111
+            11111
+            11111
+            11111
+            11111
+            11111
+            11111
+            11111`
+            fontstr = fontstr.split('\n').map(a=>a.trim().split('').map(t=>parseInt(t)));
+            fontstr.shift();
+            var textX = (n % textsheetSize)|0;
+            var textY = (n / textsheetSize)|0;
+            renderSprite(textsheetContext, fontstr, ['#D3D3D3', '#D3D3D3'], 1, textX, textY);
+            renderSprite(textsheetContext, fontstr, ['#D3D3D3', '#D3D3D3'], 1, textX, textY + textsheetSize);
+        } else if (key == '€') {
+            console.log("making custom light blue character");
+            fontstr = `11111
+            11111
+            11111
+            11111
+            11111
+            11111
+            11111
+            11111
+            11111
+            11111
+            11111
+            11111`
+            fontstr = fontstr.split('\n').map(a=>a.trim().split('').map(t=>parseInt(t)));
+            fontstr.shift();
+            var textX = (n % textsheetSize)|0;
+            var textY = (n / textsheetSize)|0;
+            renderSprite(textsheetContext, fontstr, ['#ADD8E6', '#ADD8E6'], 1, textX, textY);
+            renderSprite(textsheetContext, fontstr, ['#ADD8E6', '#ADD8E6'], 1, textX, textY + textsheetSize);
+        } else if (key == 'ĸ') {
+            console.log("making custom black character");
+            fontstr = `11111
+            11111
+            11111
+            11111
+            11111
+            11111
+            11111
+            11111
+            11111
+            11111
+            11111
+            11111`
+            fontstr = fontstr.split('\n').map(a=>a.trim().split('').map(t=>parseInt(t)));
+            fontstr.shift();
+            var textX = (n % textsheetSize)|0;
+            var textY = (n / textsheetSize)|0;
+            renderSprite(textsheetContext, fontstr, ['#000000', '#000000'], 1, textX, textY);
+            renderSprite(textsheetContext, fontstr, ['#000000', '#000000'], 1, textX, textY + textsheetSize);
+        } else if (key == 'Ł') {
+            console.log("making custom noise line character");
+            fontstr = `11111
+            11111
+            11111
+            11111
+            01111
+            10111
+            11011
+            00001
+            01111
+            10111
+            11011
+            11101`
+            fontstr = fontstr.split('\n').map(a=>a.trim().split('').map(t=>parseInt(t)));
+            fontstr.shift();
+            var textX = (n % textsheetSize)|0;
+            var textY = (n / textsheetSize)|0;
+            renderSprite(textsheetContext, fontstr, ['#FFFFFF', '#000000'], 1, textX, textY);
+            renderSprite(textsheetContext, fontstr, ['#FFFFFF', '#000000'], 1, textX, textY + textsheetSize);
+        } 
+        else if (key == 'ŀ') {
+            console.log("making custom noise line 2 character");
+            fontstr = `11111
+            11111
+            11101
+            11101
+            11101
+            11101
+            10101
+            10001
+            10101
+            10111
+            10111
+            10111`
+            fontstr = fontstr.split('\n').map(a=>a.trim().split('').map(t=>parseInt(t)));
+            fontstr.shift();
+            var textX = (n % textsheetSize)|0;
+            var textY = (n / textsheetSize)|0;
+            renderSprite(textsheetContext, fontstr, ['#FFFFFF', '#000000'], 1, textX, textY);
+            renderSprite(textsheetContext, fontstr, ['#FFFFFF', '#000000'], 1, textX, textY + textsheetSize);
+        } 
+        else if (key == 'Ŀ') {
+            console.log("making custom noise line 3 character");
+            fontstr = `11111
+            11111
+            11111
+            11111
+            00111
+            01111
+            11111
+            00000
+            11111
+            11111
+            11111
+            11111`
+            fontstr = fontstr.split('\n').map(a=>a.trim().split('').map(t=>parseInt(t)));
+            fontstr.shift();
+            var textX = (n % textsheetSize)|0;
+            var textY = (n / textsheetSize)|0;
+            renderSprite(textsheetContext, fontstr, ['#FFFFFF', '#000000'], 1, textX, textY);
+            renderSprite(textsheetContext, fontstr, ['#FFFFFF', '#000000'], 1, textX, textY + textsheetSize);
+        } else if (key == 'ļ') {
+            console.log("making custom noise line 4 character");
+            fontstr = `11111
+            11111
+            11111
+            11111
+            10000
+            11111
+            11110
+            11100
+            11111
+            11111
+            11111
+            11111`
+            fontstr = fontstr.split('\n').map(a=>a.trim().split('').map(t=>parseInt(t)));
+            fontstr.shift();
+            var textX = (n % textsheetSize)|0;
+            var textY = (n / textsheetSize)|0;
+            renderSprite(textsheetContext, fontstr, ['#FFFFFF', '#000000'], 1, textX, textY);
+            renderSprite(textsheetContext, fontstr, ['#FFFFFF', '#000000'], 1, textX, textY + textsheetSize);
+        } else if (key == '¥') {
+            console.log("making custom title 1 character");
+            fontstr = `11111
+            11111
+            11111
+            11100
+            11110
+            11110
+            11110
+            11110
+            11110
+            11110
+            11111
+            11111`
+            fontstr = fontstr.split('\n').map(a=>a.trim().split('').map(t=>parseInt(t)));
+            fontstr.shift();
+            var textX = (n % textsheetSize)|0;
+            var textY = (n / textsheetSize)|0;
+            renderSprite(textsheetContext, fontstr, ['#000000', '#FFFFFF'], 1, textX, textY);
+            renderSprite(textsheetContext, fontstr, ['#000000', '#FFFFFF'], 1, textX, textY + textsheetSize);
+        } else if (key == '§') {
+            console.log("making custom title 2 character");
+            fontstr = `11111
+            11111
+            11111
+            01010
+            11010
+            11010
+            11000
+            11010
+            11010
+            11010
+            11111
+            11111`
+            fontstr = fontstr.split('\n').map(a=>a.trim().split('').map(t=>parseInt(t)));
+            fontstr.shift();
+            var textX = (n % textsheetSize)|0;
+            var textY = (n / textsheetSize)|0;
+            renderSprite(textsheetContext, fontstr, ['#000000', '#FFFFFF'], 1, textX, textY);
+            renderSprite(textsheetContext, fontstr, ['#000000', '#FFFFFF'], 1, textX, textY + textsheetSize);
+        } else if (key == '¤') {
+            console.log("making custom title 3 character");
+            fontstr = `11111
+            11111
+            11111
+            10001
+            10111
+            10111
+            10001
+            10111
+            10111
+            10001
+            11111
+            11111`
+            fontstr = fontstr.split('\n').map(a=>a.trim().split('').map(t=>parseInt(t)));
+            fontstr.shift();
+            var textX = (n % textsheetSize)|0;
+            var textY = (n / textsheetSize)|0;
+            renderSprite(textsheetContext, fontstr, ['#000000', '#FFFFFF'], 1, textX, textY);
+            renderSprite(textsheetContext, fontstr, ['#000000', '#FFFFFF'], 1, textX, textY + textsheetSize);
+        } else if (key == '¢') {
+            console.log("making custom title 4 character");
+            fontstr = `11111
+            11111
+            11111
+            10001
+            10111
+            10111
+            10001
+            11101
+            11101
+            10001
+            11111
+            11111`
+            fontstr = fontstr.split('\n').map(a=>a.trim().split('').map(t=>parseInt(t)));
+            fontstr.shift();
+            var textX = (n % textsheetSize)|0;
+            var textY = (n / textsheetSize)|0;
+            renderSprite(textsheetContext, fontstr, ['#000000', '#FFFFFF'], 1, textX, textY);
+            renderSprite(textsheetContext, fontstr, ['#000000', '#FFFFFF'], 1, textX, textY + textsheetSize);
+        } else if (key == 'Ÿ') {
+            console.log("making custom title 5 character");
+            fontstr = `11111
+            11111
+            11111
+            00010
+            01010
+            01010
+            01010
+            01010
+            01010
+            00010
+            11111
+            11111`
+            fontstr = fontstr.split('\n').map(a=>a.trim().split('').map(t=>parseInt(t)));
+            fontstr.shift();
+            var textX = (n % textsheetSize)|0;
+            var textY = (n / textsheetSize)|0;
+            renderSprite(textsheetContext, fontstr, ['#000000', '#FFFFFF'], 1, textX, textY);
+            renderSprite(textsheetContext, fontstr, ['#000000', '#FFFFFF'], 1, textX, textY + textsheetSize);
+        } else if (key == 'ŷ') {
+            console.log("making custom title 6 character");
+            fontstr = `11111
+            11111
+            11111
+            10101
+            10100
+            10100
+            10100
+            10101
+            10101
+            00101
+            11111
+            11111`
+            fontstr = fontstr.split('\n').map(a=>a.trim().split('').map(t=>parseInt(t)));
+            fontstr.shift();
+            var textX = (n % textsheetSize)|0;
+            var textY = (n / textsheetSize)|0;
+            renderSprite(textsheetContext, fontstr, ['#000000', '#FFFFFF'], 1, textX, textY);
+            renderSprite(textsheetContext, fontstr, ['#000000', '#FFFFFF'], 1, textX, textY + textsheetSize);
+        } else if (key == 'ų') {
+            console.log("making custom title 7 character");
+            fontstr = `11111
+            11111
+            11111
+            10100
+            10101
+            10101
+            00101
+            00101
+            00101
+            10100
+            11111
+            11111`
+            fontstr = fontstr.split('\n').map(a=>a.trim().split('').map(t=>parseInt(t)));
+            fontstr.shift();
+            var textX = (n % textsheetSize)|0;
+            var textY = (n / textsheetSize)|0;
+            renderSprite(textsheetContext, fontstr, ['#000000', '#FFFFFF'], 1, textX, textY);
+            renderSprite(textsheetContext, fontstr, ['#000000', '#FFFFFF'], 1, textX, textY + textsheetSize);
+        } else if (key == 'ø') {
+            console.log("making custom title 7.1 character");
+            fontstr = `11111
+            11111
+            11111
+            11111
+            01111
+            01111
+            01111
+            01111
+            01111
+            11111
+            11111
+            11111`
+            fontstr = fontstr.split('\n').map(a=>a.trim().split('').map(t=>parseInt(t)));
+            fontstr.shift();
+            var textX = (n % textsheetSize)|0;
+            var textY = (n / textsheetSize)|0;
+            renderSprite(textsheetContext, fontstr, ['#000000', '#FFFFFF'], 1, textX, textY);
+            renderSprite(textsheetContext, fontstr, ['#000000', '#FFFFFF'], 1, textX, textY + textsheetSize);
+        }else if (key == 'Ų') {
+            console.log("making custom title 8 character");
+            fontstr = `11111
+            11111
+            11111
+            11000
+            11010
+            11010
+            11010
+            11010
+            11010
+            11000
+            11111
+            11111`
+            fontstr = fontstr.split('\n').map(a=>a.trim().split('').map(t=>parseInt(t)));
+            fontstr.shift();
+            var textX = (n % textsheetSize)|0;
+            var textY = (n / textsheetSize)|0;
+            renderSprite(textsheetContext, fontstr, ['#000000', '#FFFFFF'], 1, textX, textY);
+            renderSprite(textsheetContext, fontstr, ['#000000', '#FFFFFF'], 1, textX, textY + textsheetSize);
+        } else if (key == 'ű') {
+            console.log("making custom title 9 character");
+            fontstr = `11111
+            11111
+            11111
+            10001
+            10111
+            10001
+            10111
+            10111
+            10111
+            10111
+            11111
+            11111`
+            fontstr = fontstr.split('\n').map(a=>a.trim().split('').map(t=>parseInt(t)));
+            fontstr.shift();
+            var textX = (n % textsheetSize)|0;
+            var textY = (n / textsheetSize)|0;
+            renderSprite(textsheetContext, fontstr, ['#000000', '#FFFFFF'], 1, textX, textY);
+            renderSprite(textsheetContext, fontstr, ['#000000', '#FFFFFF'], 1, textX, textY + textsheetSize);
+        } else if (key == 'ŧ') {
+            console.log("making custom title 10 character");
+            fontstr = `11111
+            11111
+            11111
+            10001
+            10111
+            10111
+            10001
+            11101
+            11101
+            10001
+            11111
+            11111`
+            fontstr = fontstr.split('\n').map(a=>a.trim().split('').map(t=>parseInt(t)));
+            fontstr.shift();
+            var textX = (n % textsheetSize)|0;
+            var textY = (n / textsheetSize)|0;
+            renderSprite(textsheetContext, fontstr, ['#000000', '#FFFFFF'], 1, textX, textY);
+            renderSprite(textsheetContext, fontstr, ['#000000', '#FFFFFF'], 1, textX, textY + textsheetSize);
+        } else if (key == 'Ŧ') {
+            console.log("making custom title 11 character");
+            fontstr = `11111
+            11111
+            11111
+            00010
+            10110
+            10110
+            10110
+            10110
+            10110
+            00010
+            11111
+            11111`
+            fontstr = fontstr.split('\n').map(a=>a.trim().split('').map(t=>parseInt(t)));
+            fontstr.shift();
+            var textX = (n % textsheetSize)|0;
+            var textY = (n / textsheetSize)|0;
+            renderSprite(textsheetContext, fontstr, ['#000000', '#FFFFFF'], 1, textX, textY);
+            renderSprite(textsheetContext, fontstr, ['#000000', '#FFFFFF'], 1, textX, textY + textsheetSize); 
+        } else if (key == 'Ţ') {
+            console.log("making custom title 12 character");
+            fontstr = `11111
+            11111
+            11111
+            00100
+            10101
+            10101
+            01100
+            10101
+            10101
+            10100
+            11111
+            11111`
+            fontstr = fontstr.split('\n').map(a=>a.trim().split('').map(t=>parseInt(t)));
+            fontstr.shift();
+            var textX = (n % textsheetSize)|0;
+            var textY = (n / textsheetSize)|0;
+            renderSprite(textsheetContext, fontstr, ['#000000', '#FFFFFF'], 1, textX, textY);
+            renderSprite(textsheetContext, fontstr, ['#000000', '#FFFFFF'], 1, textX, textY + textsheetSize);
+        } else if (key == 'Œ') {
+            console.log("making custom title 13 character");
+            fontstr = `11111
+            11111
+            11111
+            01011
+            11001
+            11001
+            01000
+            11010
+            11010
+            01011
+            11111
+            11111`
+            fontstr = fontstr.split('\n').map(a=>a.trim().split('').map(t=>parseInt(t)));
+            fontstr.shift();
+            var textX = (n % textsheetSize)|0;
+            var textY = (n / textsheetSize)|0;
+            renderSprite(textsheetContext, fontstr, ['#000000', '#FFFFFF'], 1, textX, textY);
+            renderSprite(textsheetContext, fontstr, ['#000000', '#FFFFFF'], 1, textX, textY + textsheetSize);
+        } else if (key == 'œ') {
+            console.log("making custom title 14 character");
+            fontstr = `11111
+            11111
+            11111
+            01000
+            01011
+            01011
+            01000
+            01110
+            01110
+            01000
+            11111
+            11111`
+            fontstr = fontstr.split('\n').map(a=>a.trim().split('').map(t=>parseInt(t)));
+            fontstr.shift();
+            var textX = (n % textsheetSize)|0;
+            var textY = (n / textsheetSize)|0;
+            renderSprite(textsheetContext, fontstr, ['#000000', '#FFFFFF'], 1, textX, textY);
+            renderSprite(textsheetContext, fontstr, ['#000000', '#FFFFFF'], 1, textX, textY + textsheetSize);
+        } else if (font.hasOwnProperty(key)) {
             fontstr = font[key].split('\n').map(a=>a.trim().split('').map(t=>parseInt(t)));
             fontstr.shift();
 
             var textX = (n % textsheetSize)|0;
             var textY = (n / textsheetSize)|0;
+            if (key == '✓') {
+                renderSprite(textsheetContext, fontstr, ['#000000', '#00FF00'], 1, textX, textY);
+                renderSprite(textsheetContext, fontstr, ['#000000', '#00FF00'], 0, textX, textY + textsheetSize);
+            } /*else if (key == '>' || key == '<' || key == '#') {
+                renderSprite(textsheetContext, fontstr, ['#000000', '#0000FF'], 1, textX, textY);
+                renderSprite(textsheetContext, fontstr, ['#000000', '#0000FF'], 0, textX, textY + textsheetSize);
+            }*/ else if (/*yellowText ||*/ key == '>' || key == '<' || key == '#' || key == '[' || key == ']' || key == 'Ć' || key == 'ć' || key == 'ľ' || key == 'į' || key == 'ķ' || key == 'ť' || key == 'ŏ' || key == 'ń' || key == 'ū' || key == 'ě' || key == 'Ĺ' || key == 'Ġ' || key == 'Ń' || key == 'Ý' || key == 'Ś' || key == 'ś' || key == 'ā' || key == 'ď' || key == 'ř' || key == 'ñ' || key == 'ŵ') {
+                renderSprite(textsheetContext, fontstr, ['#000000', '#FFFF00'], 1, textX, textY);
+                renderSprite(textsheetContext, fontstr, ['#000000', '#FFFF00'], 0, textX, textY + textsheetSize);
+            } else if (key == '*' || key == '+') {
+                renderSprite(textsheetContext, fontstr, ['#000000', '#FF0000'], 1, textX, textY);
+                renderSprite(textsheetContext, fontstr, ['#000000', '#FF0000'], 0, textX, textY + textsheetSize);
+            } else {
+                renderSprite(textsheetContext, fontstr, undefined, 1, textX, textY);
+                renderSprite(textsheetContext, fontstr, ['#00000000', '#000000'], 0, textX, textY + textsheetSize);
+            }
 
-            renderSprite(textsheetContext, fontstr, undefined, 1, textX, textY);
-            renderSprite(textsheetContext, fontstr, ['#00000000', '#000000'], 1, textX, textY + textsheetSize);
+            /*if (key == '\n') {
+                console.warn("DEACTIVATING YELLOW TEXT!!!");
+                yellowText = false;
+            }*/
         }
     }
 }
@@ -89,6 +713,7 @@ var editor_s_grille=[[0,1,1,1,0],[1,0,0,0,0],[0,1,1,1,0],[0,0,0,0,1],[0,1,1,1,0]
 var spriteimages;
 var spritesheetCanvas = null;
 function regenSpriteImages() {
+    console.log("sprites length: " + sprites.length);
 	if (textMode) {
         spriteimages = [];
 		regenText();
@@ -355,6 +980,17 @@ function redraw() {
                         var textX = (index % textsheetSize)|0;
                         var textY = (index / textsheetSize)|0;
                         ctx.imageSmoothingEnabled = false;
+                        if (ch == '†' || ch == 'Æ' || ch == 'æ' || ch == '®' || ch == '€' || ch == '¥' || ch == '§' || ch == '¤' || ch == '¢' || ch == 'Ÿ' || ch == 'ŷ' || ch == 'ų' ||ch == 'Ų' || ch == 'ű' || ch == 'ŧ' || ch == 'Ŧ' || ch == 'Ţ' || ch == 'Œ' || ch == 'œ' || ch == 'ŋ' || ch == 'ŉ' || ch == 'ł' || ch == 'Ł' || ch == 'ŀ' || ch == 'Ŀ' || ch == 'ļ' || ch == 'ĸ' || ch == 'ĳ' || ch == 'Ĳ' || ch == 'ø') {
+                            ctx.drawImage(
+                                textsheetCanvas,
+                                textX * textcellwidth,
+                                textY * textcellheight,
+                                textcellwidth, textcellheight,
+                                xoffset + i * (cellwidth),
+                                yoffset + j * (cellheight),
+                                cellwidth * 1.25, cellheight * 1.2
+                            );
+                        } else {
                         ctx.drawImage(
                             textsheetCanvas,
                             textX * textcellwidth,
@@ -364,7 +1000,8 @@ function redraw() {
                             yoffset + j * cellheight,
                             cellwidth, cellheight
                         );
-                        ctx.imageSmoothingEnabled = true;
+                        }
+                        //ctx.imageSmoothingEnabled = true;
                     }
                 }
             }

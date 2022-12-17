@@ -485,7 +485,7 @@ function mouseAction(event,click,id) {
 		if (!click) {
 			if (quittingTitleScreen) {return;}
 
-			if (!mouseInCanvas || mouseCoordY < 0 || mouseCoordY > 12) {
+			if (!mouseInCanvas || mouseCoordY < 0 || mouseCoordY > 15) {
 				hoverSelection = -1;
 			} else {
 				hoverSelection = mouseCoordY;
@@ -500,14 +500,14 @@ function mouseAction(event,click,id) {
 			if (titleMode===0) {
 				titleButtonSelected();
 			} else if (titleMode===1) {
-				if (mouseCoordY===5 && titleSelectOptions >= 1) {
+				if (mouseCoordY===8 && titleSelectOptions >= 1) {
 					titleSelection=0;
 					titleButtonSelected();
-				} else if (mouseCoordY===6 && titleSelectOptions >= 3) {
+				} else if (mouseCoordY===9 && titleSelectOptions >= 3) {
 					titleSelection=1;
 					titleButtonSelected();
 				}
-				else if (mouseCoordY===7 && titleSelectOptions >= 2) {
+				else if (mouseCoordY===10 && titleSelectOptions >= 2) {
 					if (titleSelectOptions === 2) {
 						titleSelection = 1;
 					} else {
@@ -515,7 +515,7 @@ function mouseAction(event,click,id) {
 					}
 					titleButtonSelected();
 				} 
-				else if (mouseCoordY===8 && titleSelectOptions >= 4) {
+				else if (mouseCoordY===11 && titleSelectOptions >= 4) {
 					titleSelection=3;
 					titleButtonSelected();
 				}
@@ -567,7 +567,21 @@ function mouseAction(event,click,id) {
 						}
 					}
 				}
-			}
+			} else if (titleMode === 3 ) {
+				if (quittingTitleScreen || titleSelected) {
+					return;
+				}
+				if (mouseCoordY===0) {
+					titleSelection = 0;
+				
+					goToTitleScreen();
+
+					tryPlayTitleSound();
+					canvasResize();
+				}
+			} else if (titleMode === 4 ) {
+				generateTitleScreen();
+			} 
 		} else if (messageselected===false && state.levels[curlevel].message) {
 			messageselected=true;
 			timer=0;
@@ -914,6 +928,9 @@ function mouseMove(event) {
 			} else if (titleMode == 2) {
 				generateLevelSelectScreen();
 				redraw();
+			} else if (titleMode == 3) {
+				generateCreditsScreen();
+				redraw();
 			}
 		}
 	} else if (dragging && "mouse_drag" in state.metadata) {
@@ -1230,7 +1247,6 @@ function checkKey(e,justPressed) {
         	}
         	if (titleScreen===false || titleMode > 1) {
 				if ((timer/1000>0.5 || titleMode > 1) && !quittingTitleScreen) {
-
 					titleSelection = 0;
 					
 					timer = 0;
@@ -1328,7 +1344,7 @@ function checkKey(e,justPressed) {
     		input_throttle_timer=0;
     	}
     }
-    if (textMode) {
+    if (textMode) {/*
 		if(!throttle_movement) {
 			if (lastinput==inputdir && input_throttle_timer < repeatinterval) {
 				return;
@@ -1403,7 +1419,7 @@ function checkKey(e,justPressed) {
     				drawMessageScreen();
     			}
     		}
-    	}
+    	}*/
     } else {
 	    if (!againing && inputdir>=0) {
             if (inputdir===4 && ('noaction' in state.metadata)) {
@@ -1428,13 +1444,14 @@ function update() {
 	input_throttle_timer+=deltatime;
 
     if (quittingTitleScreen) {
-        if (timer/1000>0.3) {
+		if (titleMode == 2) {
+			quittingTitleScreen = false;
+			gotoLevel(titleSelection);
+		} else if (timer/1000>0.3) {
 			quittingTitleScreen=false;
 			
 			if(titleMode <= 1) {
 				nextLevel();
-			} else if(titleMode == 2) {
-				gotoLevel(titleSelection);
 			}
         }
     }
