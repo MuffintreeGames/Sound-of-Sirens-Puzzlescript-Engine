@@ -1444,8 +1444,10 @@ var textcellwidth = 0;
 var textcellheight = 0;
 
 function canvasResize() {
-    canvas.width = canvas.parentNode.clientWidth;
-    canvas.height = canvas.parentNode.clientHeight;
+    //canvas.width = canvas.parentNode.clientWidth;
+    //canvas.height = canvas.parentNode.clientHeight;
+    parentWidth = canvas.parentNode.clientWidth;
+    parentHeight = canvas.parentNode.clientHeight;
 
     screenwidth=level.width;
     screenheight=level.height;
@@ -1475,8 +1477,8 @@ function canvasResize() {
         screenheight=titleHeight;
     }
     
-    cellwidth = canvas.width / screenwidth;
-    cellheight = canvas.height / screenheight;
+    cellwidth = parentWidth / screenwidth;
+    cellheight = parentHeight / screenheight;
 
     var w = 5;
     var h = 5;
@@ -1490,7 +1492,6 @@ function canvasResize() {
         w=5 + 1;
         h=font['X'].length/(w) + 1;
     }
-
 
     cellwidth =w * Math.max( ~~(cellwidth / w),1);
     cellheight = h * Math.max(~~(cellheight / h),1);
@@ -1506,13 +1507,13 @@ function canvasResize() {
 
     if (cellwidth / w > cellheight / h  || (textMode && state.metadata.custom_font !== undefined && loadedCustomFont)) {
         cellwidth = cellheight * w / h;
-        xoffset = (canvas.width - cellwidth * screenwidth) / 2;
-        yoffset = (canvas.height - cellheight * screenheight) / 2;
+        xoffset = (parentWidth - cellwidth * screenwidth) / 2;
+        yoffset = (parentHeight - cellheight * screenheight) / 2;
     }
     else { //if (cellheight > cellwidth) {
         cellheight = cellwidth * h / w;
-        yoffset = (canvas.height - cellheight * screenheight) / 2;
-        xoffset = (canvas.width - cellwidth * screenwidth) / 2;
+        yoffset = (parentHeight - cellheight * screenheight) / 2;
+        xoffset = (parentWidth - cellwidth * screenwidth) / 2;
     }
 
     if (levelEditorOpened && !textMode) {
@@ -1540,6 +1541,8 @@ function canvasResize() {
     oldtextmode=textMode;
     oldfgcolor=state.fgcolor;
 
+    canvas.width = xoffset + (cellwidth * screenwidth);
+    canvas.height = yoffset + (cellheight * screenheight);
     redraw();
 }
 
