@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" type="image/x-icon" href="ico/favicon.ico" />
+
+    <title>Prelude - PuzzleScript Documentation</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/bootstrap-theme.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="../../assets/js/html5shiv.js"></script>
+      <script src="../../assets/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html"><img src="../images/mascot_colorful.png"> PuzzleScript</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+              <li><a href="../editor.html">Make A Game</a></li>
+              
+              <li class="active"><a href="documentation.html">Documentation</a></li>
+          </ul>          
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="https://groups.google.com/g/puzzlescript">Forum</a></li>
+            <li><a href="https://github.com/increpare/puzzlescript">GitHub</a></li>
+            <li><a href="https://github.com/sponsors/increpare">Sponsor</a></li>
+            <li><a href="about.html">About</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+
+
+<p>
+<ol class="breadcrumb">
+  <li><a href="documentation.html">Documentation</a></li>
+  <li>Bird's-eye View</li>
+  <li class="active">Prelude</li>
+</ol>
+<p>
+
+
+<h1>Bird's-eye view of a PuzzleScript file</h1>
+<p>
+A puzzlescript file is divided into 8 sections:
+<p>
+
+  <ul class="nav nav-pills">
+    <li class="active"><a href="prelude.html">Prelude</a></li>
+    <li><a href="objects.html">Objects</a></li>
+    <li><a href="legend.html">Legend</a></li>
+    <li><a href="sounds.html">Sounds</a></li>
+    <li><a href="collisionlayers.html">CollisionLayers</a></li>
+    <li><a href="rules.html">Rules</a></li>
+    <li><a href="winconditions.html">WinConditions</a></li>
+    <li><a href="levels.html">Levels</a></li>
+  </ul>
+
+
+
+    <h2>Prelude</h2>
+      <p>
+      Before any of the "official" sections are declared, you can give details about your project in this section, and also set some editor options.
+      <p>
+      <pre><code>title 2D Whale World
+author increpare
+homepage www.increpare.com
+
+require_player_movement
+key_repeat_interval 0.12
+</code></pre>
+
+Here are the possible options:
+		<p>
+		<dl>
+			<dt>author increpare</dt>
+			<dd>Your name goes here.  This will appear in the title screen of the game.</dd>
+			<dt>color_palette mastersystem</dt>
+			<dd>By default, when you use colour names, they are pulled from a variation of <a href="http://androidarts.com/palette/16pal.htm">Arne</a>'s 16-Colour palette.  However, there are other palettes to choose from:
+			<p>
+<ul>
+<li>1 - mastersystem </li>
+<li>2 - gameboycolour </li>
+<li>3 - amiga </li>
+<li>4 - arnecolors </li>
+<li>5 - famicom  </li>
+<li>6 - atari </li>
+<li>7 - pastel  </li>
+<li>8 - ega </li>
+<li>9 - amstrad </li>
+<li>10 - proteus_mellow </li>
+<li>11 - proteus_rich </li>
+<li>12 - proteus_night </li>
+<li>13 - c64 </li>
+<li>14 - whitingjp </li>
+</ul>
+<p>
+(you can also refer to them by their numerical index)
+			</dd>
+      <dt>again_interval 0.1</dt>      
+      <dd>The amount of time it takes an 'again' event to trigger.</dd>
+      <dt>background_color blue</dt>
+      <dd>Can accept a color name or hex code (in the form #412bbc). Controls the background color of title/message screens, as well as the background color of the website.  Text_color is its sibling.</dd>
+			<dt>debug</dt>
+			<dd>This outputs the compiled instructions whenever you build your file.  For instance, the line
+			<p>
+			<pre><code>[ > Player | Crate ] -> [ > Player | > Crate ]</code></pre>
+			<p>
+			is compiled into four instructions, as the output from debug shows:
+			<pre>Rule Assembly : (4 rules )
+===========
+(52) UP [ up player | crate ] -> [ up player | up crate ] 
+(52) DOWN [ down player | crate ] -> [ down player | down crate ] 
+(52) LEFT [ left player | crate ] -> [ left player | left crate ] 
+(52) RIGHT [ right player | crate ] -> [ right player | right crate ] 
+===========</pre>
+			the number on the far left is the group number of the disassembled - based on the line-number of the rules.  The compilation step removes all relative directions ( <b>^</b>, <b>v</b>, <b>&lt;</b>, and <b>></b>), and replaces them with <b>UP</b>, <b>DOWN</b>, <b>LEFT</b>, and <b>RIGHT</b>.
+			</dd>
+
+			<dt>flickscreen WxH</dt>
+			<dd>
+				Setting flickscreen divides each level into WxH grids, and zooms the camera in so that the player can only see one at a time - the camera does not follow the player around on a move-to-move basis, but if the player moves from one part of this grid to another, the camera <em>flicks</em> to the new position.
+			</dd>
+			<dt>homepage www.mypage.com</dt>
+			<dd>
+			The homepage of the author.  This doesn't appear directly in the game itself, but is included in the exported HTML build.
+			</dd>
+			<dt>key_repeat_interval 0.1</dt> 
+			<dd>
+			When you hold down a key, how long is the delay between repeated presses getting sent to the game (in seconds)?
+			</dd>
+      <dt>noaction</dt>
+      <dd>Hides the action key (X) instruction from the title screen, and does not respond when the player pressed it (outside of menus and cutscenes and the like).</dd>
+      <dt>norepeat_action</dt>
+      <dd>For many games, you don't want holding action down to retrigger it - games where you're toggling a switch, say.  For these games, set norepeat_action, and the action button will only respond to individual presses.</dd>
+			<dt>noundo</dt>
+			<dd>Disables the undo key (Z)</dd>
+			<dt>norestart</dt>
+			<dd>Disables the restart key (R)</dd>
+      <dt>realtime_interval</dt> 
+      <dd>The number indicates how long each realtime frame should be.  In the above case, twice a second the game engine will tick, but with no input.  Player input is processed as regular. See <a href="realtime.html">this documentation</a> for more info on making realtime games.</dd>     
+			<dt>require_player_movement</dt>
+			<dd>
+			This is a common requirement in games - if the player doesn't move, cancel the whole move.  This is equivalent, where there's only one player character, to the following:
+			<pre><code>[Player]->[Player Temp]
+late [ Player Temp ] -> CANCEL
+late [ Temp ] -> [ ]</code></pre>
+			</dd>
+			<dt>run_rules_on_level_start</dt>
+			<dd>
+			For some games, you will want, before the player sees the level, for the rules to be applied once.
+			</dd>
+      <dt>scanline</dt>
+      <dd>Applies a scanline visual effect - only draws every other line</dd>      
+      <dt>text_color blue</dt>
+      <dd>Can accept a color name or hex code (in the form #412bbc). Controls the font color of title/message screens, as well as the font color in the website. Background_color is its sibling.</dd>
+			<dt>title My Amazing Puzzle Game</dt>
+			<dd>The name of your game.  Appears on the title screen.</dd>
+      <dt>throttle_movement</dt>
+      <dd>For use in conjunction with realtime_interval - this stops you from moving crazy fast - repeated keypresses of the same movement direction will not increase your speed. This doesn't apply to the action button.  If you can think of an example that requires action be throttled, just let me know and I'll try accommodate you.</dd>
+      <dt>verbose_logging</dt>
+      <dd>As you play the game, spits out information about all rules applied as you play, and also allows visual inspection of what exactly the rules do with the <a href="visual_debugger.html">visual debugger</a>.</dd>
+      <dt>youtube 5MJLi5_dyn0</dt>
+      <dd>If you write the youtube tag followed by the ID of a youtube video, it will play in the background.  Exported builds using this, obviously enough, will no longer be fully self-contained, but some might like it :)  You'll only hear the music in the exported or shared versions, not in the editor.</dd>
+			<dt>zoomscreen WxH</dt>
+      <dd>Zooms the camera in to a WxH section of the map around the player, centered on the player.</dd>
+      <h1 id="psplus">New in PS+ <img src="../images/psplus_mascot_32.png"></h1>
+      <dt> There are many new prelude flags in PuzzleScript Plus, allowing you to enable mouse controls, level select, text settings, camera/tweening options, and much more.</dt>
+      <dd></dd>
+      <h2>Mouse controls (ThatScar)</h2>
+      <dt>mouse_left <i>object</i></dt>
+      <dd>If the player clicks on a specific tile of the screen, then this object will be created there before any other rules are done. If you don't specify an object name, it will look for an object called "lmb". Once you add this flag, various things (like the title screen) will change to reflect that the game is mainly mouse-controlled.</dd>
+      <dt>mouse_drag <i>object</i></dt>
+      <dd>If the player has clicked and is moving their mouse, it will place this object & start a turn when the cursor moves into a different cell. If you don't specify an object name, it will look for an object called "drag"</dd>
+      <dt>mouse_up <i>object</i></dt>
+      <dd>If the player has clicked and is releasing their mouse button, it will place this object then do a turn.</dd>
+      <dt>mouse_right, mouse_rdrag, mouse_rup <i>object</i></dt>
+      <dd>Similar to the above three, but for the right mouse button. Note that you can also Ctrl + Left Click to get the right mouse button behaviour in-game.</dd>
+      <h2 id="level_select">Level Select (Dario)</h2>
+      <dt>level_select</dt>
+      <dd>Adding this will add a level select to your game. By default, this will allow the player to play all levels in any order. In order to add entries to the level select, add a <b>section</b> in-between your levels.</dd>
+      <dt>continue_is_level_select</dt>
+      <dd>Don't show an extra option for the Level Select on the main menu. Instead, the "continue" button will open it, instead of continuing the game.</dd>
+      <dt>level_select_lock</dt>
+      <dd>Will lock any levels that haven't been solved yet or are next to be solved.</dd>
+      <dt>level_select_unlocked_ahead</dt>
+      <dd>How many levels to unlock ahead after the last solved level when <b>level_select_lock</b> is on, 1 by default.<br>
+      If you set it to 3, then section 1, 2, and 3 will be available. If you solve section 2, then you'll unlock 4 and 5. (So there will always be three levels unlocked AFTER the last solved level at max.)</dd>
+      <dt>level_select_unlocked_rollover</dt>
+      <dd>Alternative to LEVEL_SELECT_UNLOCKED_AHEAD that more strictly limits the number of unsolved levels at any time.<br>
+      If you set this to 3, then section 1, 2, and 3 will be available at the start. If you solve section 2, then only section 4 will unlock. (So there will only ever be three "unsolved" levels at most.) </dd>
+      <dt>level_select_solve_symbol</dt>
+      <dd>Which symbol to display for levels that have been solved in the level select. It's a checkmark by default, but you can change it in case you're using a <b>custom_font</b> that doesn't have a checkmark glyph.</dd>
+      <h2>Text settings (Dario & PS+)</h2>
+      <dt>custom_font <i>data:font/otf;base64,</i></dt>
+      <dd>Allows you to load in a custom font file via a data stream. This works best with monospace fonts & font files with very small sizes (under 20KB). If you have a font file and you want to convert it into base64, use a tool like <a href="https://base64.guru/converter/encode/file">File to Base64</a> with the "Data URI" output format, then paste it into the editor.</dd>
+      <dt>font_size <i>size</i></dt>
+      <dd>Font size is in em, meaning 1 is the default and is treated as a percentage (e.g. 0.5 is half font size & 2 is double the normal font size). Can only be used with custom_font.</dd>
+      <dt>message_text_align <i>left/center/right</i></dt>
+      <dd>How to align text for messages: 'left', 'center' (default), or 'right'. If you need more control over the text layout, you can also use \n to manually add a newline.</dd>
+      <h2>Smoothscreen (sftrabbit)</h2>
+      <dt>smoothscreen <i>flick</i> WxH <i>IxJ S</i></dt>
+      <dd>Zooms the camera in to a WxH section of the map around the playerand smoothly scrolls to follow the player. The optional argument IxJ (default: 1x1) specifies a boundary in which the player can move without moving the camera. The optional S argument (default: 0.125) specifies how far the camera will move towards the player each frame as a fraction of the distance to the player. Additionally, the optional <i>flick</i> keyword makes the camera move like flickscreen, where the camera always moves the full boundary width/height. To get a smooth version of flick screen, provide the <i>flick</i> keyword and make WxH and IxJ the same dimensions.</dd>
+      <dt>smoothscreen_debug</dt>
+      <dd>Render debug information about the smoothscreen camera. The red circle and box represent the camera's position and the boundary around it. The blue circle and box are at the position the camera is moving towards. The green circle marks the location of the player that is being followed by the camera.</dd>
+      <h2>Runtime Metadata Twiddling (PS+)</h2>
+      <dt>runtime_metadata_twiddling</dt>
+      <dd>Allows you to change some prelude properties while the game is running using commands. <a href="plus_runtime_metadata_twiddling.html">More info here.</a></dd>
+      <dt>runtime_metadata_twiddling_debug</dt>
+      <dd>Will log into the console whenever a prelude property is changed.</dd>
+      <h2 id="local_radius">Local Radius (Jack Lance)</h2>
+      <dt>local_radius <i>radius</i></dt>
+      <dd>If you set the local_radius flag to a whole number, then the game will only check rules that are in that amount of tiles (a square radius) around the player (or one of the players if you have multiple players in the level). If you still want to have rules to be checked anywhere on the level, preface them with the <b>global</b> keyword like this: 
+<pre><code>(Rows of global crates can push each other, even outside of the player radius)
+global [> GCrate | GCrate] -> [> GCrate | > GCrate ]</code></pre>
+        You generally don't need to use this unless you have a really big level, a ton of rules, and your game would otherwise run slowly.</dd>
+      <h2 id="tweening">Tweening (PS+)</h2>
+      <p>Although you can animate your game using again, PS+ offers a more generalized method of inbetweening movement you can use instead!<br>
+        Note that it has a number of limitations. It should work for simple games, but might not be powerful enough for complex games.</p>
+      <dt>tween_length <i>0.05</i></dt>
+      <dd>Enables tweens for LEFT, RIGHT, UP, and DOWN object movement, and for ACTION (will fade in that object). Tweens will take the duration you specify in seconds An object must execute its movement for this animation to play, currently there is no way to play an animation without moving.<br>
+        Note that if the next turn starts before this tween is completed, the previous tween instantly completes. For this reason, we recommend setting the tween_length very low, somewhere between 0.05 and 0.075 seconds, but at least lower than the AGAIN_INTERVAL and KEY_REPEAT_INTERVAL, and to avoid using it in games that use REALTIME_INTERVAL.
+      Additionally, late rules can tamped with this system, so it's not recommended to use these rules in games that use LATE rules.</dd>
+        <dt>tween_easing <i>easeInQuad</i></dt>
+        <dd>When using TWEEN_LENGTH, you can use these to indicate how the movement should lerp. Just like with COLOR_PALETTE you can use either the name or the number.
+
+          The following options are valid. (To view these in action, see <a href="https://easings.net/" target="_blank">easings.net</a>).
+          <ul>
+          <li>1: linear (default)</li>
+          <li>2: easeInQuad</li>
+          <li>3: easeOutQuad</li>
+          <li>4: easeInOutQuad</li>
+          <li>5: easeInCubic</li>
+          <li>6: easeOutCubic</li>
+          <li>7: easeInOutCubic</li>
+          <li>8: easeInQuart</li>
+          <li>9: easeOutQuart</li>
+          <li>10: easeInOutQuart</li>
+          <li>11: easeInQuint</li>
+          <li>12: easeOutQuint</li>
+          <li>13: easeInOutQuint</li>
+        </ul></dd>
+        <dt>tween_snap <i>5</i></dt>
+        <dd>By default, the tween will snap to the SPRITE_SIZE to conform to the pixel grid. However, with this prelude you can overwrite this if you want the transition to happen more granually when the canvas is drawn on a large scale. You can even put it to a very high number (like 1000) to make the snapping essentially smoothless.</dd>
+      <h2>Misc. (Dario)</h2>
+      <dt>case_sensitive</dt>
+      <dd>Will force the engine to be case sensitive, to see "a" and "A" or "moved" and "moveD" as different objects.</dd>
+      <dt>sprite_size <i>size</i></dt>
+      <dd>Instead of 5x5, this option allows you to pick other square resolutions for your sprites. Do note that all sprites MUST be of this size for the game to display correctly. If you need help with upscaling your sprites, <a href="plus_sprite_upscaler_tool.html">there's a helpful tool available here.</a></dd>
+      <h2>Misc. (PS+)</h2>
+      <dt>skip_title_screen</dt>
+      <dd>Will skip the title screen when the game initializes. Instead, it will act like the "continue" button has been pressed, opening either the level, message, or level select based on game progress and other prelude flags.</dd>
+      <dt>text_controls</dt>
+      <dd>Will overwrite the default keyboard/mouse control text in the title screen with the text you specify here! It can display up to three lines of text at once, and supports using \n to add a newline.</dd>
+      <dt>text_message_continue</dt>
+      <dd>Override the text below MESSAGEs that normally says 'X to continue' or 'Click to continue'.</dd>
+      <dt>sitelock_origin_whitelist</dt>
+      <dd>Causes your game to only be able to run on websites with the listed origins, separated by whitespaces. An origin is for example <b>https://auroriax.github.io:1234</b>.</dd>
+      <dt>sitelock_hostname_whitelist</dt>
+      <dd>Causes your game to only be able to run on websites with the listed hostnames, separated by whitespaces. A hostname is for example <b>auroriax.github.io</b>.</dd>
+    </dl>
+
+
+
+
+    </div><!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>
