@@ -1516,6 +1516,14 @@ function canvasResize() {
         xoffset = (parentWidth - cellwidth * screenwidth) / 2;
     }
 
+    if (yoffset < 0) {
+        yoffset = 0;
+    }
+
+    if (xoffset < 0) {
+        xoffset = 0;
+    }
+
     if (levelEditorOpened && !textMode) {
     	xoffset+=cellwidth;
     	yoffset+=cellheight*(1+editorRowCount);
@@ -1543,6 +1551,7 @@ function canvasResize() {
 
     canvas.width = xoffset + (cellwidth * screenwidth);
     canvas.height = yoffset + (cellheight * screenheight);
+    console.warn("yoffset is currently " + yoffset);
     redraw();
 }
 
