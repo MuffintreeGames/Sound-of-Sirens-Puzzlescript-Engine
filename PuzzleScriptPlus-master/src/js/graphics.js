@@ -1541,8 +1541,8 @@ function canvasResize() {
     oldtextmode=textMode;
     oldfgcolor=state.fgcolor;
 
-    canvas.width = xoffset + (cellwidth * screenwidth);
-    canvas.height = yoffset + (cellheight * screenheight);
+    //canvas.width = xoffset + (cellwidth * screenwidth);
+    //canvas.height = yoffset + (cellheight * screenheight);
     redraw();
 }
 
