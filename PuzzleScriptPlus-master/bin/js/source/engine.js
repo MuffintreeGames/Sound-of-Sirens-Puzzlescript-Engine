@@ -836,7 +836,7 @@ function generateLevelSelectScreen() {
 		var selected = (i == titleSelection);
 		var locked = (unlockedUntil >= 0 && i > unlockedUntil);
 
-		var name = section.name.substring(0, 24);
+		var name = section.name.substring(0, 31);
 		
 		if(locked) {
 			if(selected && titleSelected) {
@@ -863,7 +863,7 @@ function generateLevelSelectScreen() {
 		if (selected && titleSelected) {hover_symbol = " "}
 		
 		line += hover_symbol + " " + name;
-		for(var j = name.length; j < 25; j++) {
+		for(var j = name.length; j < 32; j++) {
 			/*if(selected && titleSelected && j != name.length) {
 				line += "#";
 			} else {*/

@@ -1551,7 +1551,6 @@ function canvasResize() {
 
     canvas.width = xoffset + (cellwidth * screenwidth);
     canvas.height = yoffset + (cellheight * screenheight);
-    console.warn("yoffset is currently " + yoffset);
     redraw();
 }
 
