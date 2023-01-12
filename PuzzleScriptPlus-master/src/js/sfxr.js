@@ -1,4 +1,5 @@
 var SOUND_VOL = 0.25;
+var QUIET_SOUND_VOL = 0.1;
 var SAMPLE_RATE = 5512;
 var BIT_DEPTH = 8;
 
@@ -1011,6 +1012,29 @@ function cacheSeed(seed){
   return sound;
 }
 
+function cacheQuietSeed(seed){
+  if (seed in sfxCache) {
+    return sfxCache[seed];
+  }
+
+  var params = generateFromSeed(seed);
+  params.sound_vol = QUIET_SOUND_VOL;
+  params.sample_rate = SAMPLE_RATE;
+  params.bit_depth = BIT_DEPTH;
+
+  var sound = SoundEffect.generate(params);
+  sfxCache[seed] = sound;
+  cachedSeeds.push(seed);
+
+  while (cachedSeeds.length>CACHE_MAX) {
+    var toRemove=cachedSeeds[0];
+    cachedSeeds = cachedSeeds.slice(1);
+    delete sfxCache[toRemove];
+  }
+
+  return sound;
+}
+
 
 function playSound(seed) {
   if (muted){
@@ -1019,6 +1043,17 @@ function playSound(seed) {
   checkAudioContextExists();
   if (unitTesting) return;
   var sound = cacheSeed(seed);
+  sound.play();
+}
+
+function playQuietSound(seed) {
+  if (muted){
+    return;
+  }
+
+  checkAudioContextExists();
+  if (unitTesting) return;
+  var sound = cacheQuietSeed(seed);
   sound.play();
 }
 

@@ -1,3 +1,5 @@
+//import { Howl, Howler } from "howler";
+
 var onLevelRestarted = new Event("levelRestarted");
 
 var RandomGen = new RNG();
@@ -487,6 +489,8 @@ function playIntro1() {
 
 function generateTitleScreen()
 {
+	var testMusic = new Howl({		src: ['resources/sampleMusic.mp3']	  });
+	testMusic.play();
   tryLoadCustomFont();
 
 	titleMode=showContinueOptionOnTitleScreen()?1:0;
@@ -674,6 +678,7 @@ function gotoLevelSelectScreen() {
 		goToTitleScreen();
 		return;
 	}
+	
 	levelSelectScrollPos = 0;
 	titleSelected = false;
 	timer = 0;
@@ -1263,7 +1268,11 @@ canvasResize();
 function tryPlaySimpleSound(soundname) {
   if (state.sfx_Events[soundname]!==undefined) {
     var seed = state.sfx_Events[soundname];
+	if (soundname == "sfx10" || soundname == "sfx11" || soundname == "sfx12" || soundname == "sfx13") {
+		playQuietSound(seed);
+	} else {
     playSound(seed);
+	}
   }
 }
 function tryPlayTitleSound() {
@@ -1288,6 +1297,10 @@ function tryPlayStartLevelSound() {
 
 function tryPlayEndLevelSound() {
   tryPlaySimpleSound("endlevel");
+}
+
+function tryPlayEnterLevelSelectSound() {
+	tryPlaySimpleSound("enterlevelselect");
 }
 
 function tryPlayUndoSound(){

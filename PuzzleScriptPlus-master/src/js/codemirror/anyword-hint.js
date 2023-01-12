@@ -75,7 +75,7 @@
             "black", "white", "darkgray", "lightgray", "gray", "red", "darkred", "lightred", "brown", "darkbrown", "lightbrown", "orange", "yellow", "green", "darkgreen", "lightgreen", "blue", "lightblue", "darkblue", "purple", "pink", "transparent"];
         var RULE_COMMAND_WORDS = [
             "COMMAND",
-            "sfx0", "sfx1", "sfx2", "sfx3", "sfx4", "sfx5", "sfx6", "sfx7", "sfx8", "sfx9", "sfx10", "cancel", "checkpoint", "restart", "win", "message", "again", "nosave", "quit",
+            "sfx0", "sfx1", "sfx2", "sfx3", "sfx4", "sfx5", "sfx6", "sfx7", "sfx8", "sfx9", "sfx10", "sfx11", "sfx12", "sfx13", "cancel", "checkpoint", "restart", "win", "message", "again", "nosave", "quit",
             "global", "zoomscreen", "flickscreen", "smoothscreen", "key_repeat_interval", "again_interval", "realtime_interval", "background_color", "text_color", "noundo", "norestart", "goto", "undo", "message_text_align"];
 
         var CARDINAL_DIRECTION_WORDS = [
@@ -96,7 +96,7 @@
 
         var SOUND_WORDS = [
             "SOUNDVERB",
-            "titlescreen", "startgame", "cancel", "endgame", "startlevel", "undo", "restart", "endlevel", "showmessage", "closemessage", "sfx0", "sfx1", "sfx2", "sfx3", "sfx4", "sfx5", "sfx6", "sfx7", "sfx8", "sfx9", "sfx10", "create", "destroy", "move", "cantmove", "action"];
+            "titlescreen", "startgame", "cancel", "endgame", "startlevel", "undo", "restart", "endlevel", "enterlevelselect", "showmessage", "closemessage", "sfx0", "sfx1", "sfx2", "sfx3", "sfx4", "sfx5", "sfx6", "sfx7", "sfx8", "sfx9", "sfx10", "sfx11", "sfx12", "sfx13", "create", "destroy", "move", "cantmove", "action"];
 
         var WINCONDITION_WORDS = [
             "LOGICWORD",
