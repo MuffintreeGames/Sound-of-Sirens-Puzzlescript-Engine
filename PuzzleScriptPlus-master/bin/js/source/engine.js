@@ -1,5 +1,3 @@
-//import { Howl, Howler } from "howler";
-
 var onLevelRestarted = new Event("levelRestarted");
 
 var RandomGen = new RNG();
@@ -489,8 +487,6 @@ function playIntro1() {
 
 function generateTitleScreen()
 {
-	var testMusic = new Howl({		src: ['resources/sampleMusic.mp3']	  });
-	testMusic.play();
   tryLoadCustomFont();
 
 	titleMode=showContinueOptionOnTitleScreen()?1:0;
