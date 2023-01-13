@@ -156,7 +156,7 @@ function regenText(spritecanvas,spritectx) {
             renderSprite(textsheetContext, fontstr, ['#FFFFFF', '#FFFFFF'], 1, textX, textY);
             renderSprite(textsheetContext, fontstr, ['#FFFFFF', '#FFFFFF'], 1, textX, textY + textsheetSize);
         } else if (key == 'Ĳ') {
-            console.log("making custom half-white character");
+            console.log("making custom half-black character");
             fontstr = `00000
             00000
             00000
@@ -173,10 +173,10 @@ function regenText(spritecanvas,spritectx) {
             fontstr.shift();
             var textX = (n % textsheetSize)|0;
             var textY = (n / textsheetSize)|0;
-            renderSprite(textsheetContext, fontstr, ['#000000', '#FFFFFF'], 1, textX, textY);
-            renderSprite(textsheetContext, fontstr, ['#000000', '#FFFFFF'], 1, textX, textY + textsheetSize);
+            renderSprite(textsheetContext, fontstr, ['#016b16', '#000000'], 1, textX, textY);
+            renderSprite(textsheetContext, fontstr, ['#016b16', '#000000'], 1, textX, textY + textsheetSize);
         } else if (key == 'ĳ') {
-            console.log("making custom blue character");
+            console.log("making custom green character");
             fontstr = `11111
             11111
             11111
@@ -193,8 +193,8 @@ function regenText(spritecanvas,spritectx) {
             fontstr.shift();
             var textX = (n % textsheetSize)|0;
             var textY = (n / textsheetSize)|0;
-            renderSprite(textsheetContext, fontstr, ['#0000FF', '#0000FF'], 1, textX, textY);
-            renderSprite(textsheetContext, fontstr, ['#0000FF', '#0000FF'], 1, textX, textY + textsheetSize);
+            renderSprite(textsheetContext, fontstr, ['#016b16', '#016b16'], 1, textX, textY);
+            renderSprite(textsheetContext, fontstr, ['#016b16', '#016b16'], 1, textX, textY + textsheetSize);
         } else if (key == 'æ') {
             console.log("making custom left wheel character");
             fontstr = `11111
