@@ -562,7 +562,7 @@ function mouseAction(event,click,id) {
 							messageselected=false;
 							timer=0;
 							quittingTitleScreen=true;
-							
+							tryPlayStartGameSound();
 							generateLevelSelectScreen();
 						}
 					}
