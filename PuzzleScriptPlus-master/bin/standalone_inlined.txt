@@ -6626,6 +6626,10 @@ function generateCreditsScreen() {
   "                Joey Meffen       ",
   "                Nick Birtch       ",
   "                                  ",
+  "Special Thanks to our Playtesters:",
+  "       Kiran   Ken   Curtis       ",
+  "           Tracy   Gary           ",
+  "                                  ",
   "     A PuzzleScript Plus Game     "
  ];
 
