@@ -497,9 +497,9 @@ function mouseAction(event,click,id) {
 				return;
 			}
 
-			if (titleMode===0) {
+			/*if (titleMode===0) {
 				titleButtonSelected();
-			} else if (titleMode===1) {
+			} else*/ if (titleMode===1 || titleMode===0) {
 				if (mouseCoordY===8 && titleSelectOptions >= 1) {
 					titleSelection=0;
 					titleButtonSelected();
@@ -971,7 +971,7 @@ function mouseMove(event) {
 		setMouseCoord(event);
 		mouseAction(event,false,null);
 		if (prevHoverSelection != hoverSelection) {
-			if (titleMode == 1) {
+			if (titleMode == 1 || titleMode == 0) {
 				generateTitleScreen();
 				redraw();
 			} else if (titleMode == 2) {

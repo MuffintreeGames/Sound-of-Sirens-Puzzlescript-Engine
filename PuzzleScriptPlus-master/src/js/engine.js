@@ -258,6 +258,21 @@ var titletemplate_empty = [
 														"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
 														"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
 														"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ"];
+
+														var titletemplate_intro0 = [
+															"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+															"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸÆÆÆÆÆÆÆÆÆÆÆÆĸĸĸĸĸĸĸ",
+															"ĸĸĸĸĸĸĸĸĸĸĸĸŁŀĸÆÆ¥§¤†¢ŸŷųøÆĸĸĸĸĸĸĸ",
+															"ĸĸĸĸĸĸĸĸĸĸļĿĸŉŋÆÆÆÆ†††ÆÆÆÆÆĸĸĸĸĸĸĸ",
+															"ĸĸĸĸĸĸĸĸĸĸĸĸ€®®ÆÆÆŲű†ŧŦŢŒœÆĸĸĸĸĸĸĸ",
+															"ĸĸĸĸĸĸĸĸĸĸĸĸ®®®ÆÆÆÆÆÆÆÆÆÆÆÆĸĸĸĸĸĸĸ",
+															"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸæłĸĸĸĸĸĸæłĸĸĸĸĸĸĸĸ",
+															"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+															"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+															"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+															"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+															"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+															"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ"];
 var title_options = [[
 	".............Continue.............",
 	".............Continue.............",
@@ -462,12 +477,18 @@ function isContinueOptionSelected() {
 	if(state.metadata["continue_is_level_select"] !== undefined) {
 		return false;
 	}
-
-	return titleSelection == 0; // continue option is always 1st
+	if (titleMode === 1) {
+		return titleSelection == 0; // continue option is always 1st
+	}
+	return false;
 }
 
 function isNewGameOptionSelected() {
-	return titleSelection == titleSelectOptions-2; // new game option is always second to last
+	if (titleMode === 1) {
+		return titleSelection == titleSelectOptions-2; // new game option is always second to last
+	} else {
+		return titleSelection == 0;
+	}
 }
 
 function isLevelSelectOptionSelected() {
@@ -479,7 +500,10 @@ function isLevelSelectOptionSelected() {
 		return titleSelection == 0; // continue option is always 1st
 	}
 
+	if (titleMode === 1) {
 	return titleSelection == 1; // level select option is always 2nd if it exists
+	}
+	return false;
 }
 
 function delay(time) {
@@ -498,7 +522,11 @@ function isManualOptionSelected() {
 	if (state.metadata["manual"] === undefined) {
 		return false;
 	}
-	return titleSelection == titleSelectOptions-3; // manual option is third from bottom
+	if (titleMode === 1) {
+	return titleSelection == 2; // manual option is third from top
+	} else {
+		return titleSelection == 1; // no level select option, this is secondd
+	}
 }
 
 function playIntro10() {
@@ -571,7 +599,14 @@ function playIntro2() {
 function playIntro1() {
 	if ( titleMode === 4) {
 	titleImage = deepClone(titletemplate_intro1);
-	delay(250).then(() => generateTitleScreen());
+	delay(250).then(() => playIntro0());
+	}
+}
+
+function playIntro0() {
+	if ( titleMode === 4) {
+	titleImage = deepClone(titletemplate_intro0);
+	delay(750).then(() => generateTitleScreen());
 	}
 }
 
@@ -603,29 +638,34 @@ function generateTitleScreen()
     ļĿĸŉŋÆÆÆÆ†††ÆÆÆÆÆ
 	ĸĸĸĸĸ€®®ÆÆÆŲű†ŧŦŢŒœÆ
 	ĸĸĸĸĸ®®®ÆÆÆÆÆÆÆÆÆÆÆÆ
-	ĸĸĸĸĸĸĸĸĸæłĸĸĸĸĸæłĸ`;
+	ĸĸĸĸĸĸĸĸæłĸĸĸĸĸĸæłĸ`;
 	if (state.metadata.title!==undefined) {
 		title=state.metadata.title;
 	}
 
-	if (titleMode===0) {
+	/*if (titleMode===0) {
         titleSelectOptions = 2;
 		if (titleSelected) {
 			titleImage = deepClone(titletemplate_firstgo_selected);		
 		} else {
 			titleImage = deepClone(titletemplate_firstgo);					
 		}
-	} else {
+	} else {*/
+	titleSelectOptions = 1;
 
-		var availableOptions = [0];
-		
-		titleSelectOptions = 2;
-
-		if(state.metadata["level_select"] !== undefined && state.metadata["continue_is_level_select"] === undefined) {
-			titleSelectOptions++;
-			
-			availableOptions.push(1);
+		var availableOptions = [];
+		if (titleMode === 0) {
+			availableOptions.push(3);
+		} else {
+			availableOptions.push(0);
+			if(state.metadata["level_select"] !== undefined && state.metadata["continue_is_level_select"] === undefined) {
+				titleSelectOptions++;
+				
+				availableOptions.push(1);
+			}
 		}
+
+
 
 		if(state.metadata["settings"] !== undefined) {
 			titleSelectOptions++;
@@ -639,7 +679,10 @@ function generateTitleScreen()
 			availableOptions.push(5);
 		}
 
-		availableOptions.push(3);
+		if (titleMode === 1) {
+			availableOptions.push(3);
+			titleSelectOptions++;
+		}
 
 		if(state.metadata["credits"] !== undefined) {
 			titleSelectOptions++;
@@ -653,9 +696,9 @@ function generateTitleScreen()
 			var version = 0;
 			
 			var j = 0;
-			if(titleSelectOptions == 3 && i == 1) {
+			/*if(titleSelectOptions == 3 && i == 1) {
 				j = 1;
-			}
+			}*/
 			var lineInTitle = 8 + i + j;
 
 			if(titleSelection == i) {
@@ -672,7 +715,7 @@ function generateTitleScreen()
 
 			titleImage[lineInTitle] = deepClone(title_options[availableOptions[i]][version]);
 		}
-	}
+	//}
 
 	if (state.metadata.text_controls) {
 		for (var i=0;i<titleImage.length;i++)
@@ -1508,19 +1551,17 @@ function tryLoadCustomFont() {
 tryLoadCustomFont();
 
 generateTitleScreen();
-if (titleMode>0){
+//if (titleMode>0){
 	titleSelection=0;
-}
+//}
 
 canvasResize();
 
 function tryPlaySimpleSound(soundname) {
   if (state.sfx_Events[soundname]!==undefined) {
     var seed = state.sfx_Events[soundname];
-	if (soundname == "sfx10" || soundname == "sfx11" || soundname == "sfx12" || soundname == "sfx13") {
+	if (soundname == "sfx10" || soundname == "sfx11" || soundname == "sfx12" || soundname == "sfx13" || soundname == "endlevel" || soundname == "startgame" || soundname == "sfx2" || soundname == "sfx4" || soundname == "sfx5") {
 		playQuietSound(seed);
-	} else if (soundname == "endlevel" || soundname == "startgame" || soundname == "sfx4" || soundname == "sfx5") {
-		play80Sound(seed);
 	} else {
     playSound(seed);
 	}

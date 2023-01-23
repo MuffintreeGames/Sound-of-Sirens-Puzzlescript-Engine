@@ -1035,30 +1035,6 @@ function cacheQuietSeed(seed){
   return sound;
 }
 
-function cache80Seed(seed){
-  if (seed in sfxCache) {
-    return sfxCache[seed];
-  }
-
-  var params = generateFromSeed(seed);
-  params.sound_vol = 0.2;
-  params.sample_rate = SAMPLE_RATE;
-  params.bit_depth = BIT_DEPTH;
-
-  var sound = SoundEffect.generate(params);
-  sfxCache[seed] = sound;
-  cachedSeeds.push(seed);
-
-  while (cachedSeeds.length>CACHE_MAX) {
-    var toRemove=cachedSeeds[0];
-    cachedSeeds = cachedSeeds.slice(1);
-    delete sfxCache[toRemove];
-  }
-
-  return sound;
-}
-
-
 function playSound(seed) {
   if (muted){
     return;
@@ -1077,17 +1053,6 @@ function playQuietSound(seed) {
   checkAudioContextExists();
   if (unitTesting) return;
   var sound = cacheQuietSeed(seed);
-  sound.play();
-}
-
-function play80Sound(seed) {
-  if (muted){
-    return;
-  }
-
-  checkAudioContextExists();
-  if (unitTesting) return;
-  var sound = cache80Seed(seed);
   sound.play();
 }
 
