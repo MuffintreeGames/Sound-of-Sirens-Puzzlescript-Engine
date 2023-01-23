@@ -1519,6 +1519,8 @@ function tryPlaySimpleSound(soundname) {
     var seed = state.sfx_Events[soundname];
 	if (soundname == "sfx10" || soundname == "sfx11" || soundname == "sfx12" || soundname == "sfx13") {
 		playQuietSound(seed);
+	} else if (soundname == "endlevel" || soundname == "startgame" || soundname == "sfx4" || soundname == "sfx5") {
+		play80Sound(seed);
 	} else {
     playSound(seed);
 	}
