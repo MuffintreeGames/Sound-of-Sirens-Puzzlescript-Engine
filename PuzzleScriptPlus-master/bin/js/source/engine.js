@@ -111,96 +111,6 @@ var titletemplate_empty = [
 	"..................................",
 	".................................."];
 
-/*var titletemplate_intro1 = [
-		"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
-		"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸÆÆÆÆÆÆÆÆÆÆĸĸĸĸĸ",
-		"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸŁŀĸÆ¥§¤Æ¢ŸŷųÆĸĸĸĸĸ",
-		"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸļĿĸŉŋÆŲűÆŧŦŢŒœÆĸĸĸĸĸ",
-		"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ€®®ÆÆÆÆÆ†ÆÆÆÆĸĸĸĸĸ",
-		"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ®®®ÆÆÆÆÆÆÆÆÆÆĸĸĸĸĸ",
-		"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸæłĸĸĸĸĸæłĸĸĸĸĸ",
-		"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
-		"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
-		"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
-		"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
-		"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
-		"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ"];
-
-		var titletemplate_intro2 = [
-			"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
-			"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸÆÆÆÆÆÆÆÆÆÆĸ",
-			"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸŁŀĸÆ¥§¤Æ¢ŸŷųÆĸ",
-			"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸļĿĸŉŋÆŲűÆŧŦŢŒœÆĸ",
-			"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ€®®ÆÆÆÆÆ†ÆÆÆÆĸ",
-			"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ®®®ÆÆÆÆÆÆÆÆÆÆĸ",
-			"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸæłĸĸĸĸĸæłĸ",
-			"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
-			"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
-			"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
-			"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
-			"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
-			"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ"];
-
-		var titletemplate_intro3 = [
-				"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
-				"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸÆÆÆÆÆÆÆ",
-				"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸŁŀĸÆ¥§¤Æ¢Ÿ",
-				"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸļĿĸŉŋÆŲűÆŧŦŢ",
-				"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ€®®ÆÆÆÆÆ†Æ",
-				"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ®®®ÆÆÆÆÆÆÆ",
-				"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸæłĸĸĸĸ",
-				"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
-				"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
-				"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
-				"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
-				"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
-				"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ"];
-
-		var titletemplate_intro4 = [
-					"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
-					"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸÆÆÆ",
-					"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸŁŀĸÆ¥§",
-					"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸļĿĸŉŋÆŲű",
-					"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ€®®ÆÆÆ",
-					"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ®®®ÆÆÆ",
-					"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸæł",
-					"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
-					"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
-					"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
-					"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
-					"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
-					"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ"];
-
-		var titletemplate_intro5 = [
-						"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
-						"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
-						"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸŁŀĸ",
-						"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸļĿĸŉŋ",
-						"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ€®®",
-						"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ®®®",
-						"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
-						"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
-						"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
-						"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
-						"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
-						"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
-						"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ"];
-
-						var titletemplate_intro10 = [
-							"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
-							"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
-							"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸŁŀ",
-							"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸļĿĸĸ",
-							"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
-							"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
-							"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
-							"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
-							"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
-							"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
-							"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
-							"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
-							"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ"];*/
-
 							var titletemplate_intro10 = [
 								"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĳĳĳĳĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
 								"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĳĳĳĳĳĳĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
@@ -373,19 +283,166 @@ var title_options = [[
 	".............Credits..............",
 	".............Ćřěďįťś..............",
 	"...........>.Credits.<............",
-]
+],
+   [
+	"..............Manual..............",
+	"..............Manual..............",
+	"..............Ěāńūāľ..............",
+	"............>.Manual.<............",
+   ]
 ];
+
+var instruction_pages = [[
+	" [ BACK ]                    ",
+	"        Basics 1: Controls        ",
+	"                                  ",
+	"Left-click:  place/rotate arrows, ",
+	"              use menu buttons    ",
+	"                                  ",
+	"Right-click: delete arrows        ",
+	"                                  ",
+	"R key:       reset ambulances     ",
+	"                                  ",
+	"ESC key:     exit level           "
+],
+[
+	" [ BACK ]                    ",
+	"       Basics 2: Ambulances       ",
+	"                                  ",
+	" Ambulances appear from hospitals ",
+	"  when you press the PLAY button. ",
+	"  They will automatically move in ",
+	"   a straight line, crashing if   ",
+	"     they hit anything solid.     ",
+	"                                  ",
+	" Any people next to an ambulance  ",
+	" will be healed. Once everyone is ",
+	" healed, you win! However, if any ",
+	" ambulances crash, you will lose. "
+],
+[
+	" [ BACK ]                    ",
+	"          Basics 3: Arrows        ",
+	"                                  ",
+	"  Clicking on an empty tile will  ",
+	"  place an arrow there. Click the ",
+	"   arrow again to rotate it, or   ",
+	"   right-click it to remove it.   ",
+	"  Each level has a max number of  ",
+	"    arrows that can be placed.    ",
+	"                                  ",
+	" Ambulances that move over arrows ",
+	"     will start moving in the     ",
+	" direction the arrow is pointing. "
+],
+[
+	" [ BACK ]                    ",
+	"      Basics 4: Miscellaneous     ",
+	"                                  ",
+	" Red-outlined arrows are fixed in ",
+	" place; you can't remove or rotate",
+	"               them.              ",
+	"                                  ",
+	" If you get stuck, the HINT button",
+	"  can highlight a tile where an   ",
+	" arrow should be placed. Note that",
+	"you may have to remove some arrows",
+	" you've already placed to reach a ",
+	"  correct solution with the hint. "
+],
+[
+	" [ BACK ]                    ",
+	"               Rafts              ",
+	"                                  ",
+	"  Rafts act like normal tiles at  ",
+	" first. If an ambulance moves over",
+	" one though, the raft will break, ",
+	"   leaving water in its place.    ",
+	"                                  ",
+	" Water is an impassible obstacle. ",
+	"  Make sure you don't break too   ",
+	"   many rafts and get trapped!    "
+],
+[
+	" [ BACK ]                    ",
+	"          Buttons & Gates         ",
+	"                                  ",
+	"   Coloured gates will act like   ",
+	"  walls for ambulances, blocking  ",
+	"  important pathways. To get rid  ",
+	"  of them, have an ambulance run  ",
+	"over the matching coloured button.",
+	"                                  ",
+	"    Be careful on levels with     ",
+	"  multiple colours of gates and   ",
+	"  buttons; each button will only  ",
+	"      clear one type of gate!     "
+],
+[
+	" [ BACK ]                    ",
+	"            Red Tiles             ",
+	"                                  ",
+	"   Red tiles work exactly like    ",
+	" regular tiles, with one important",
+	"    difference; you can't place   ",
+	"         arrows on them.          ",
+	"                                  ",
+	"      Other than that though,     ",
+	" feel free to drive right through!"
+],
+[
+	" [ BACK ]                    ",
+	"               Cars               ",
+	"                                  ",
+	" Just like ambulances appear from ",
+	"  hospitals, cars appear from...  ",
+	"   car hospitals. They work just  ",
+	"   like ambulances do, but they   ",
+	"  can't heal people. You'll still ",
+	"  fail if a car crashes, though.  ",
+	"                                  ",
+	"  They're mostly just nuisances,  ",
+	"       but do your best to        ",
+	"          protect them!           "
+],
+[
+	" [ BACK ]                    ",
+	"            Temp Arrows           ",
+	"                                  ",
+	" Yellow arrows are temporary. If  ",
+	"  a vehicle moves over one, the   ",
+	"  arrow will disappear after the  ",
+	"    vehicle changes direction.    ",
+	"                                  ",
+	"   They work the same as normal   ",
+	"        arrows otherwise.         "
+],
+[
+	" [ BACK ]                    ",
+	"        Placing Temp Arrows       ",
+	"                                  ",
+	"  In later levels, you can place  ",
+	" both normal and temp arrows. Use ",
+	" the SWAP button to swap between  ",
+	"         the two options.         ",
+	"                                  ",
+	" Try to keep in mind the benefits ",
+	"    of both arrow types, and use  ",
+	" whichever seems best at the time! "
+],
+]
 
 var titleImage=[];
 var titleWidth=titletemplate_empty[0].length;
 var titleHeight=titletemplate_empty.length;
 var textMode=true;
 var titleScreen=true;
-var titleMode=0;//1 means title screen with options, 2 means level select, 3 means credits, 4 means intro
+var titleMode=0;//1 means title screen with options, 2 means level select, 3 means credits, 4 means intro, 5 means manual
 var titleSelection=0;
 var titleSelectOptions=3;
 var titleSelected=false;
 var hoverSelection=-1; //When mouse controls are enabled, over which row the mouse is hovering. -1 when disabled.
+var instructions_index = -1; //page of manual to use
 
 function showContinueOptionOnTitleScreen(){
 	return (curlevel>0||curlevelTarget!==null)&&(curlevel in state.levels);
@@ -435,6 +492,13 @@ function isCreditsOptionSelected() {
 	}
 
 	return titleSelection == titleSelectOptions-1; // credits option is on bottom
+}
+
+function isManualOptionSelected() {
+	if (state.metadata["manual"] === undefined) {
+		return false;
+	}
+	return titleSelection == titleSelectOptions-3; // manual option is third from bottom
 }
 
 function playIntro10() {
@@ -567,6 +631,12 @@ function generateTitleScreen()
 			titleSelectOptions++;
 			
 			availableOptions.push(2);
+		}
+		
+		if(state.metadata["manual"] !== undefined) {
+			titleSelectOptions++;
+			
+			availableOptions.push(5);
 		}
 
 		availableOptions.push(3);
@@ -733,7 +803,6 @@ function gotoCreditsScreen() {
 		goToTitleScreen();
 		return;
 	}
-	levelSelectScrollPos = 0;
 	titleSelected = false;
 	timer = 0;
 	quittingTitleScreen = false;
@@ -750,9 +819,46 @@ function gotoCreditsScreen() {
 	redraw();
 }
 
+function gotoManualScreen() {
+	if(state.metadata["manual"] === undefined){
+		goToTitleScreen();
+		return;
+	}
+	instructions_index = -1;
+	titleSelected = false;
+	timer = 0;
+	quittingTitleScreen = false;
+	quittingMessageScreen = false;
+	messageselected = false;
+	titleMode = 5;
+	titleScreen = true;
+	textMode = true;
+    againing = false;
+	messagetext = "";
+	twiddleMetadataExtras();
+
+	generateManualScreen();
+	redraw();
+}
+
+function gotoManualPageScreen() {
+	quittingTitleScreen = false;
+	titleSelected = false;
+	quittingMessageScreen = false;
+	messageselected = false;
+	titleMode = 6;
+	titleScreen = true;
+	textMode = true;
+    againing = false;
+	messagetext = "";
+	twiddleMetadataExtras();
+	generateManualPageScreen();
+	redraw();
+}
+
 function generateCreditsScreen() {
 	titleImage = [
-		" [ ESC: Back ]                    ",
+		" [ BACK ]                    ",
 		"              Credits             ",
 		"                                  ",
 		"           Developed by:          ",
@@ -767,12 +873,125 @@ function generateCreditsScreen() {
 	];
 
 	if (hoverSelection == 0) {
-		titleImage[0] =	"[  ESC: Back  ]                   ";
+		titleImage[0] =	"[  BACK  ]                   ";
 	}
 
 	for(var i = titleImage.length; i < 13; i++) {
 		titleImage.push("                                  ");
 	}
+	redraw();
+}
+
+function generateManualPageScreen() {
+	if (instructions_index == -1) {
+		return;
+	}
+	titleImage = instruction_pages[instructions_index];
+	if (hoverSelection == 0) {
+		titleImage[0] =	"[  BACK  ]                   ";
+	} else {
+		titleImage[0] = " [ BACK ]                    ";
+	}
+
+	for(var i = titleImage.length; i < 13; i++) {
+		titleImage.push("                                  ");
+	}
+	redraw();
+}
+
+function generateManualScreen() {
+	titleImage = [
+		" [ BACK ]                    ",
+		"              Manual              ",
+		"                                  ",
+		" 1. Basics 1: Controls            ",
+		" 2. Basics 2: Ambulances          ",
+		" 3. Basics 3: Arrows              ",
+		" 4. Basics 4: Miscellaneous       ",
+		" 5. Rafts                         ",
+		" 6. Buttons and Gates             ",
+		" 7. Red Tiles                     ",
+		" 8. Cars                          ",
+		" 9. Temp Arrows                   ",
+		" 10. Placing Temp Arrows          "
+	];
+
+	if (hoverSelection == 0) {
+		titleImage[0] =	"[  BACK  ]                   ";
+	}
+
+	amountOfOptionsOnScreen = 10;
+
+	var unlockedUntil = -1;
+	if(state.metadata["level_select_lock"] !== undefined) {
+		// find last solved section:
+		var unsolvedSections = 0;
+		for(var i = 0; i < state.sections.length; i++) {
+			if(solvedSections.indexOf(state.sections[i].name) >= 0) {
+				unlockedUntil = i;
+			} else {
+				unsolvedSections++;
+			}
+		}
+		lastInstruction = 0;
+		if (unlockedUntil < 15) {
+			lastInstruction = 3;
+		} else if (unlockedUntil < 20) {
+			lastInstruction = 4;
+		} else if (unlockedUntil < 37) {
+			lastInstruction = 5;
+		} else if (unlockedUntil < 45) {
+			lastInstruction = 6;
+		} else if (unlockedUntil < 54) {
+			lastInstruction = 7;
+		} else if (unlockedUntil < 60) {
+			lastInstruction = 8;
+		} else {
+			lastInstruction = 10;
+		}
+	}
+
+	for(var i = 0; i < amountOfOptionsOnScreen; i++) {
+		var selected = (i == titleSelection);
+		var locked = (lastInstruction >= 0 && i > lastInstruction);
+		var name = titleImage[i + 3];
+		
+		if(locked) {
+			if(selected && titleSelected) {
+				titleSelected = false;
+				quittingTitleScreen = false;
+			}
+			var l = name.length;
+			name = "";
+			for(var j = 0; j < l; j++) {
+				name += "*";
+			}
+		} else {
+			if (selected && titleSelected) {
+				tryPlayStartGameSound();
+				gotoManualPageScreen();
+				return;
+			}
+		}
+		var hover_symbol = " ";
+		
+		if (hoverSelection - 3 + levelSelectScrollPos == i) {hover_symbol = ">"}
+		if (selected && titleSelected) {hover_symbol = " "}
+		
+		var line = hover_symbol + " " + name;
+		for(var j = name.length; j < 32; j++) {
+				line += " ";
+		}
+
+		titleImage[i+3] = line;
+		redraw();
+
+	}
+
+	for(var i = titleImage.length; i < 13; i++) {
+		titleImage.push("                                  ");
+	}
+
 	redraw();
 }
 
@@ -793,12 +1012,12 @@ function generateLevelSelectScreen() {
 	"[ ]...Another section............|"
   */
 	titleImage = [
-		" [ ESC: Back ]                    ",
+		" [ BACK ]                    ",
 		"           Level Select           "
 	];
 
 	if (hoverSelection == 0) {
-		titleImage[0] =	"[  ESC: Back  ]                   ";
+		titleImage[0] =	"[  BACK  ]                   ";
 	}
 
 	amountOfLevelsOnScreen = 9;
@@ -879,6 +1098,10 @@ function generateLevelSelectScreen() {
 			name = "";
 			for(var j = 0; j < l; j++) {
 				name += "*";
+			}
+		} else {
+			if (selected && titleSelected) {
+				tryPlayStartGameSound();
 			}
 		}
 		
@@ -3922,6 +4145,7 @@ function anyMovements() {
 }*/
 
 function nextLevel() {
+	console.error("calling next level function");
     againing=false;
 	messagetext="";
 	if (state && state.levels && (curlevel>state.levels.length) ){
@@ -3950,6 +4174,8 @@ function nextLevel() {
 		} else if (isCreditsOptionSelected()){
 			// credits
 			gotoCreditsScreen();
+		} else if (isManualOptionSelected()) {
+			gotoManualScreen();
 		}
 	} else {
 		if (hasUsedCheckpoint){

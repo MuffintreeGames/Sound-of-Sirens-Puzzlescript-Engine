@@ -686,10 +686,7 @@ function regenText(spritecanvas,spritectx) {
             if (key == '✓') {
                 renderSprite(textsheetContext, fontstr, ['#000000', '#00FF00'], 1, textX, textY);
                 renderSprite(textsheetContext, fontstr, ['#000000', '#00FF00'], 0, textX, textY + textsheetSize);
-            } /*else if (key == '>' || key == '<' || key == '#') {
-                renderSprite(textsheetContext, fontstr, ['#000000', '#0000FF'], 1, textX, textY);
-                renderSprite(textsheetContext, fontstr, ['#000000', '#0000FF'], 0, textX, textY + textsheetSize);
-            }*/ else if (/*yellowText ||*/ key == '>' || key == '<' || key == '#' || key == '[' || key == ']' || key == 'Ć' || key == 'ć' || key == 'ľ' || key == 'į' || key == 'ķ' || key == 'ť' || key == 'ŏ' || key == 'ń' || key == 'ū' || key == 'ě' || key == 'Ĺ' || key == 'Ġ' || key == 'Ń' || key == 'Ý' || key == 'Ś' || key == 'ś' || key == 'ā' || key == 'ď' || key == 'ř' || key == 'ñ' || key == 'ŵ') {
+            }  else if (/*yellowText ||*/ key == '>' || key == '<' || key == '#' || key == '[' || key == ']' || key == 'Ć' || key == 'ć' || key == 'ľ' || key == 'į' || key == 'ķ' || key == 'ť' || key == 'ŏ' || key == 'ń' || key == 'ū' || key == 'ě' || key == 'Ĺ' || key == 'Ġ' || key == 'Ń' || key == 'Ý' || key == 'Ś' || key == 'ś' || key == 'ā' || key == 'ď' || key == 'ř' || key == 'ñ' || key == 'ŵ' || key == 'Ě') {
                 renderSprite(textsheetContext, fontstr, ['#000000', '#FFFF00'], 1, textX, textY);
                 renderSprite(textsheetContext, fontstr, ['#000000', '#FFFF00'], 0, textX, textY + textsheetSize);
             } else if (key == '*' || key == '+') {
@@ -699,11 +696,6 @@ function regenText(spritecanvas,spritectx) {
                 renderSprite(textsheetContext, fontstr, undefined, 1, textX, textY);
                 renderSprite(textsheetContext, fontstr, ['#00000000', '#000000'], 0, textX, textY + textsheetSize);
             }
-
-            /*if (key == '\n') {
-                console.warn("DEACTIVATING YELLOW TEXT!!!");
-                yellowText = false;
-            }*/
         }
     }
 }

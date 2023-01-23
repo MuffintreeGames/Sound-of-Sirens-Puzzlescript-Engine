@@ -480,7 +480,6 @@ var x2 = 5;
 var y2 = 5;
 
 function mouseAction(event,click,id) {
-	
 	if (textMode) {
 		if (!click) {
 			if (quittingTitleScreen) {return;}
@@ -494,6 +493,7 @@ function mouseAction(event,click,id) {
 		}
 		if (titleScreen) {
 			if (quittingTitleScreen || titleSelected) {
+				console.error("skipping function");
 				return;
 			}
 
@@ -518,6 +518,9 @@ function mouseAction(event,click,id) {
 				else if (mouseCoordY===11 && titleSelectOptions >= 4) {
 					titleSelection=3;
 					titleButtonSelected();
+				} else if (mouseCoordY===12 && titleSelectOptions >= 5) {
+					titleSelection=4;
+					titleButtonSelected();
 				}
 			} else if (titleMode===2) {
 				if (quittingTitleScreen || titleSelected) {
@@ -526,7 +529,7 @@ function mouseAction(event,click,id) {
 				//console.log(mouseCoordY);
 				if (mouseCoordY===0) {
 					titleSelection = 0;
-				
+					tryPlayEndGameSound();
 					goToTitleScreen();
 
 					tryPlayTitleSound();
@@ -562,7 +565,7 @@ function mouseAction(event,click,id) {
 							messageselected=false;
 							timer=0;
 							quittingTitleScreen=true;
-							tryPlayStartGameSound();
+							//tryPlayStartGameSound();
 							generateLevelSelectScreen();
 						}
 					}
@@ -573,7 +576,7 @@ function mouseAction(event,click,id) {
 				}
 				if (mouseCoordY===0) {
 					titleSelection = 0;
-				
+					tryPlayEndGameSound();
 					goToTitleScreen();
 
 					tryPlayTitleSound();
@@ -581,7 +584,53 @@ function mouseAction(event,click,id) {
 				}
 			} else if (titleMode === 4 ) {
 				generateTitleScreen();
-			} 
+			} else if (titleMode === 5 ) {
+				if (quittingTitleScreen || titleSelected) {
+					return;
+				}
+				if (mouseCoordY===0) {
+					titleSelection = 0;
+					tryPlayEndGameSound();
+					goToTitleScreen();
+
+					tryPlayTitleSound();
+					canvasResize();
+				} else {
+					var clickedLine = -1;
+					switch (mouseCoordY) {
+						case 3: clickedLine = 0; break;
+						case 4: clickedLine = 1; break;
+						case 5: clickedLine = 2; break;
+						case 6: clickedLine = 3; break;
+						case 7: clickedLine = 4; break;
+						case 8: clickedLine = 5; break;
+						case 9: clickedLine = 6; break;
+						case 10: clickedLine = 7; break;
+						case 11: clickedLine = 8; break;
+						case 12: clickedLine = 9; break;
+					}
+					if (clickedLine != -1) {
+						titleSelection = clickedLine;
+						titleSelected=true;
+						messageselected=false;
+						timer=0;
+						instructions_index = clickedLine;
+						generateManualScreen();
+					}
+				}
+			} else if (titleMode === 6) {
+				if (quittingTitleScreen || titleSelected) {
+					return;
+				}
+				if (mouseCoordY===0) {
+					titleSelection = 0;
+					tryPlayEndGameSound();
+					gotoManualScreen();
+
+					tryPlayTitleSound();
+					canvasResize();
+				}
+			}
 		} else if (messageselected===false && state.levels[curlevel].message) {
 			messageselected=true;
 			timer=0;
@@ -931,6 +980,12 @@ function mouseMove(event) {
 			} else if (titleMode == 3) {
 				generateCreditsScreen();
 				redraw();
+			} else if (titleMode == 5) {
+				generateManualScreen();
+				redraw();
+			} else if (titleMode == 6) {
+				generateManualPageScreen();
+				redraw();
 			}
 		}
 	} else if (dragging && "mouse_drag" in state.metadata) {
@@ -1007,7 +1062,6 @@ function onMouseWheel(event) {
 function levelSelectScroll(direction) {
 	levelSelectScrollPos = clamp(levelSelectScrollPos + direction, 0, Math.max(state.sections.length - amountOfLevelsOnScreen, 0));
 	titleSelection = clamp(titleSelection + direction, 0, state.sections.length - 1);
-	//console.log(levelSelectScrollPos + " " + titleSelection);
 	generateLevelSelectScreen();
 }
 
@@ -1250,8 +1304,11 @@ function checkKey(e,justPressed) {
 					titleSelection = 0;
 					
 					timer = 0;
+					tryPlayEndGameSound();
 					if(titleScreen === false && state.metadata["level_select"] !== undefined) {
 						gotoLevelSelectScreen();
+					} else if (titleMode === 6) {
+						gotoManualScreen();
 					} else {
 						goToTitleScreen();
 					}
