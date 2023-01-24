@@ -111,6 +111,22 @@ var titletemplate_empty = [
 	"..................................",
 	".................................."];
 
+	var titletemplate_pre_intro = [
+								"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+								"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+								"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+								"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+								"ĸĸĸĸĸĸĸĸĸĸClickĸtoĸStartĸĸĸĸĸĸĸĸĸĸ",
+								"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+								"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+								"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+								"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+								"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+								"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+								"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+								"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ"
+	]
+
 							var titletemplate_intro10 = [
 								"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĳĳĳĳĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
 								"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĳĳĳĳĳĳĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
@@ -452,7 +468,7 @@ var titleWidth=titletemplate_empty[0].length;
 var titleHeight=titletemplate_empty.length;
 var textMode=true;
 var titleScreen=true;
-var titleMode=0;//1 means title screen with options, 2 means level select, 3 means credits, 4 means intro, 5 means manual
+var titleMode=0;//1 means title screen with options, 2 means level select, 3 means credits, 4 means intro, 5 means manual, 6 means pre-intro
 var titleSelection=0;
 var titleSelectOptions=3;
 var titleSelected=false;
@@ -526,6 +542,12 @@ function isManualOptionSelected() {
 	return titleSelection == 2; // manual option is third from top
 	} else {
 		return titleSelection == 1; // no level select option, this is secondd
+	}
+}
+
+function playPreIntro() {
+	if ( titleMode === 7) {
+	titleImage = deepClone(titletemplate_pre_intro);
 	}
 }
 
@@ -638,7 +660,7 @@ function generateTitleScreen()
     ļĿĸŉŋÆÆÆÆ†††ÆÆÆÆÆ
 	ĸĸĸĸĸ€®®ÆÆÆŲű†ŧŦŢŒœÆ
 	ĸĸĸĸĸ®®®ÆÆÆÆÆÆÆÆÆÆÆÆ
-	ĸĸĸĸĸĸĸĸæłĸDEMOĸæłĸĸ`;
+	ĸĸĸĸĸĸĸĸæłĸDEMOĸæłĸ`;
 		if (state.metadata.title!==undefined) {
 		title=state.metadata.title;
 	}
@@ -1772,8 +1794,8 @@ function setGameState(_state, command, randomseed) {
 					gotoLevel(titleSelection);
 				}
 			} else {
-				titleMode = 4;
-				playIntro10();
+				titleMode = 7;
+				playPreIntro();
 				//generateTitleScreen();
 			}
 

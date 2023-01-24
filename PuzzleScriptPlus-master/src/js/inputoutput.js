@@ -630,6 +630,9 @@ function mouseAction(event,click,id) {
 					tryPlayTitleSound();
 					canvasResize();
 				}
+			} else if (titleMode === 7) {
+				titleMode = 4;
+				playIntro10();
 			}
 		} else if (messageselected===false && state.levels[curlevel].message) {
 			messageselected=true;
