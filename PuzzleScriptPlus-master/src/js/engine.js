@@ -638,19 +638,11 @@ function generateTitleScreen()
     ļĿĸŉŋÆÆÆÆ†††ÆÆÆÆÆ
 	ĸĸĸĸĸ€®®ÆÆÆŲű†ŧŦŢŒœÆ
 	ĸĸĸĸĸ®®®ÆÆÆÆÆÆÆÆÆÆÆÆ
-	ĸĸĸĸĸĸĸĸæłĸĸĸĸĸĸæłĸ`;
-	if (state.metadata.title!==undefined) {
+	ĸĸĸĸĸĸĸĸæłĸDEMOĸæłĸĸ`;
+		if (state.metadata.title!==undefined) {
 		title=state.metadata.title;
 	}
 
-	/*if (titleMode===0) {
-        titleSelectOptions = 2;
-		if (titleSelected) {
-			titleImage = deepClone(titletemplate_firstgo_selected);		
-		} else {
-			titleImage = deepClone(titletemplate_firstgo);					
-		}
-	} else {*/
 	titleSelectOptions = 1;
 
 		var availableOptions = [];
@@ -1560,8 +1552,10 @@ canvasResize();
 function tryPlaySimpleSound(soundname) {
   if (state.sfx_Events[soundname]!==undefined) {
     var seed = state.sfx_Events[soundname];
-	if (soundname == "sfx10" || soundname == "sfx11" || soundname == "sfx12" || soundname == "sfx13" || soundname == "endlevel" || soundname == "startgame" || soundname == "sfx2" || soundname == "sfx4" || soundname == "sfx5") {
+	if (soundname == "sfx10" || soundname == "sfx11" || soundname == "sfx12" || soundname == "sfx13" || soundname == "endlevel" || soundname == "startgame" || soundname == "sfx2" || soundname == "sfx4" || soundname == "sfx5" || soundname == "sfx1" || soundname == "sfx6") {
 		playQuietSound(seed);
+	} else if (soundname == "closemessage") {
+		playLoudSound(seed);
 	} else {
     playSound(seed);
 	}
@@ -4205,9 +4199,7 @@ function nextLevel() {
 			curlevel=0;
 			curlevelTarget=null;
 
-			if (state.metadata.level_select === undefined) {
-				clearLocalStorage();
-			}
+			clearLocalStorage();
 
 			loadLevelFromStateOrTarget();
 		} else if(isLevelSelectOptionSelected()) {

@@ -1035,6 +1035,29 @@ function cacheQuietSeed(seed){
   return sound;
 }
 
+function cacheLoudSeed(seed){
+  if (seed in sfxCache) {
+    return sfxCache[seed];
+  }
+
+  var params = generateFromSeed(seed);
+  params.sound_vol = 0.4;
+  params.sample_rate = SAMPLE_RATE;
+  params.bit_depth = BIT_DEPTH;
+
+  var sound = SoundEffect.generate(params);
+  sfxCache[seed] = sound;
+  cachedSeeds.push(seed);
+
+  while (cachedSeeds.length>CACHE_MAX) {
+    var toRemove=cachedSeeds[0];
+    cachedSeeds = cachedSeeds.slice(1);
+    delete sfxCache[toRemove];
+  }
+
+  return sound;
+}
+
 function playSound(seed) {
   if (muted){
     return;
@@ -1056,7 +1079,16 @@ function playQuietSound(seed) {
   sound.play();
 }
 
+function playLoudSound(seed) {
+  if (muted){
+    return;
+  }
 
+  checkAudioContextExists();
+  if (unitTesting) return;
+  var sound = cacheLoudSeed(seed);
+  sound.play();
+}
 
 function killAudioButton(){
   var mb = document.getElementById("muteButton");
