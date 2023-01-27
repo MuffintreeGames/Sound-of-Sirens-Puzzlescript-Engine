@@ -653,16 +653,13 @@ function playIntro0() {
 }
 
 function startMusic() {
-	new Audio('https://drive.google.com/file/d/1jk3Jqmh0IJeY0RPMDglxLkFvBicWHmIU/view?usp=sharing').play();
+	new Audio('musicFile.mp3').play();
 }
 
 var musicPlaying = false;
 function generateTitleScreen()
 {
-	if (!musicPlaying) {
-		musicPlaying = true;
-		startMusic();
-	}
+
   tryLoadCustomFont();
 
 	titleMode=showContinueOptionOnTitleScreen()?1:0;

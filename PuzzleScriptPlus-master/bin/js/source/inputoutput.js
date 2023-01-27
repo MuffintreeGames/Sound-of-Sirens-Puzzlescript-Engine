@@ -621,6 +621,10 @@ function mouseAction(event,click,id) {
 					canvasResize();
 				}
 			} else if (titleMode === 4 ) {
+				if (!musicPlaying) {
+					musicPlaying = true;
+					startMusic();
+				}
 				generateTitleScreen();
 			} else if (titleMode === 5 ) {
 				if (quittingTitleScreen || titleSelected) {

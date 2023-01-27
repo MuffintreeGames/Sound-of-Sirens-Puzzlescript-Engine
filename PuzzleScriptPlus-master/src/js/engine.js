@@ -659,10 +659,7 @@ function startMusic() {
 var musicPlaying = false;
 function generateTitleScreen()
 {
-	if (!musicPlaying) {
-		musicPlaying = true;
-		startMusic();
-	}
+
   tryLoadCustomFont();
 
 	titleMode=showContinueOptionOnTitleScreen()?1:0;
