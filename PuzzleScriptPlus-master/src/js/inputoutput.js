@@ -479,6 +479,20 @@ var y1 = 5;
 var x2 = 5;
 var y2 = 5;
 
+function ValidatePassword() {
+	if (passwordEntry.length <= 0) {
+		return;
+	}
+	if (checkPassword()) {
+		tryPlayEndLevelSound();
+		autocompleteDemo();
+		gotoLevel(32);
+	} else {
+		tryPlaySimpleSound("sfx5");
+		passwordEntry = "";
+	}
+}
+
 function mouseAction(event,click,id) {
 	if (textMode) {
 		if (!click) {
@@ -500,6 +514,29 @@ function mouseAction(event,click,id) {
 			/*if (titleMode===0) {
 				titleButtonSelected();
 			} else*/ if (titleMode===1 || titleMode===0) {
+				if (titleSelectOptions == 6) {
+					if (mouseCoordY===7) {
+						titleSelection=0;
+						titleButtonSelected();
+					} else if (mouseCoordY===8) {
+						titleSelection=1;
+						titleButtonSelected();
+					}
+					else if (mouseCoordY===9) {
+						titleSelection = 2;
+						titleButtonSelected();
+					} 
+					else if (mouseCoordY===10) {
+						titleSelection=3;
+						titleButtonSelected();
+					} else if (mouseCoordY===11) {
+						titleSelection=4;
+						titleButtonSelected();
+					} else if (mouseCoordY===12) {
+						titleSelection=5;
+						titleButtonSelected();
+					}
+				} else {
 				if (mouseCoordY===8 && titleSelectOptions >= 1) {
 					titleSelection=0;
 					titleButtonSelected();
@@ -522,6 +559,7 @@ function mouseAction(event,click,id) {
 					titleSelection=4;
 					titleButtonSelected();
 				}
+			}
 			} else if (titleMode===2) {
 				if (quittingTitleScreen || titleSelected) {
 					return;
@@ -633,6 +671,20 @@ function mouseAction(event,click,id) {
 			} else if (titleMode === 7) {
 				titleMode = 4;
 				playIntro10();
+			} else if (titleMode === 8) {
+				if (quittingTitleScreen || titleSelected) {
+					return;
+				}
+				if (mouseCoordY===0) {
+					titleSelection = 0;
+					tryPlayEndGameSound();
+					goToTitleScreen();
+
+					tryPlayTitleSound();
+					canvasResize();
+				} else if (mouseCoordY===12) {
+					ValidatePassword();
+				}
 			}
 		} else if (messageselected===false && state.levels[curlevel].message) {
 			messageselected=true;
@@ -886,6 +938,21 @@ function onKeyDown(event) {
 				rebuildClick();
 			}
 			prevent(event);
+		}
+	}
+	if (titleMode === 8 ) {
+		if (event.keyCode >= 65 && event.keyCode <= 90) {
+			if (passwordEntry.length <= 14) {
+			passwordEntry += event.key.toUpperCase();
+			tryPlaySimpleSound("sfx9");
+			}
+		} else if (event.keyCode === 8 || event.keyCode === 46) {
+			if (passwordEntry.length > 0) {
+			passwordEntry = passwordEntry.slice(0, -1);
+			tryPlaySimpleSound("sfx8")
+			}
+		} else if (event.keyCode === 13) {
+			ValidatePassword();
 		}
 	}
 }

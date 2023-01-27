@@ -320,6 +320,12 @@ var title_options = [[
 	"..............Manual..............",
 	"..............Ěāńūāľ..............",
 	"............>.Manual.<............",
+   ],
+   [
+	".............Password.............",
+	".............Password.............",
+	".............Đāśśŵŏřď.............",
+	"...........>.Password.<...........",
    ]
 ];
 
@@ -468,7 +474,7 @@ var titleWidth=titletemplate_empty[0].length;
 var titleHeight=titletemplate_empty.length;
 var textMode=true;
 var titleScreen=true;
-var titleMode=0;//1 means title screen with options, 2 means level select, 3 means credits, 4 means intro, 5 means manual, 6 means pre-intro
+var titleMode=0;//1 means title screen with options, 2 means level select, 3 means credits, 4 means intro, 5 means manual, 6 means manual sub-page, 7 means pre-intro, 8 means demo code page
 var titleSelection=0;
 var titleSelectOptions=3;
 var titleSelected=false;
@@ -501,6 +507,9 @@ function isContinueOptionSelected() {
 
 function isNewGameOptionSelected() {
 	if (titleMode === 1) {
+		if (isPasswordAvailable()) {
+			return titleSelection == titleSelectOptions-3;
+		}
 		return titleSelection == titleSelectOptions-2; // new game option is always second to last
 	} else {
 		return titleSelection == 0;
@@ -531,6 +540,9 @@ function isCreditsOptionSelected() {
 		return false;
 	}
 
+	if (isPasswordAvailable()) {
+		return titleSelection == titleSelectOptions-2;
+	}
 	return titleSelection == titleSelectOptions-1; // credits option is on bottom
 }
 
@@ -543,6 +555,13 @@ function isManualOptionSelected() {
 	} else {
 		return titleSelection == 1; // no level select option, this is secondd
 	}
+}
+
+function isPasswordOptionSelected() {
+	if (isPasswordAvailable()) {
+		return titleSelection == titleSelectOptions-1;
+	}
+	return false;
 }
 
 function playPreIntro() {
@@ -629,11 +648,21 @@ function playIntro0() {
 	if ( titleMode === 4) {
 	titleImage = deepClone(titletemplate_intro0);
 	delay(750).then(() => generateTitleScreen());
+	delay(750).then(() => startMusic());
 	}
 }
 
+function startMusic() {
+	new Audio('https://drive.google.com/file/d/1jk3Jqmh0IJeY0RPMDglxLkFvBicWHmIU/view?usp=sharing').play();
+}
+
+var musicPlaying = false;
 function generateTitleScreen()
 {
+	if (!musicPlaying) {
+		musicPlaying = true;
+		startMusic();
+	}
   tryLoadCustomFont();
 
 	titleMode=showContinueOptionOnTitleScreen()?1:0;
@@ -704,6 +733,11 @@ function generateTitleScreen()
 			availableOptions.push(4);
 		}
 
+		if (isPasswordAvailable()) {
+			availableOptions.push(6);
+			titleSelectOptions++;
+		}
+
 		titleImage = deepClone(titletemplate_empty);
 
 		for(var i = 0; i < titleSelectOptions; i++) {
@@ -713,7 +747,12 @@ function generateTitleScreen()
 			/*if(titleSelectOptions == 3 && i == 1) {
 				j = 1;
 			}*/
-			var lineInTitle = 8 + i + j;
+			var lineInTitle = 0;
+			if (titleSelectOptions == 6) {
+				lineInTitle = 7 + i + j;
+			} else {
+				lineInTitle = 8 + i + j;
+			}
 
 			if(titleSelection == i) {
 				if(titleSelected) {
@@ -911,6 +950,118 @@ function gotoManualPageScreen() {
 	twiddleMetadataExtras();
 	generateManualPageScreen();
 	redraw();
+}
+
+function gotoSkipDemoScreen() {
+	titleSelected = false;
+	timer = 0;
+	quittingTitleScreen = false;
+	quittingMessageScreen = false;
+	messageselected = false;
+	titleMode = 8;
+	titleScreen = true;
+	textMode = true;
+    againing = false;
+	messagetext = "";
+	passwordEntry = "";
+	twiddleMetadataExtras();
+
+	generateSkipDemoScreen();
+	redraw();
+}
+
+var underlineVisible = true;
+var flashTimer = 350;
+var passwordEntry = "";
+var correctPassword = "GARFUNKL"
+
+function checkPassword() {
+	if (passwordEntry == correctPassword) {
+		return true;
+	}
+	return false;
+}
+
+function generateSkipDemoScreen() {
+	titleImage = [
+		" [ BACK ]                    ",
+		"             Password             ",
+		"                                  ",
+		"                                  ",
+		" If you have a password from the  ",
+		"  demo, type it in here to skip   ",
+		"  all the levels from the demo!   ",
+		"                                  ",
+		" They'll still be unlocked in     ",
+		" the level select, so don't worry ",
+		"about losing out on playing them. ",
+		"                                  "
+	];
+
+	if (hoverSelection == 0) {
+		titleImage[0] =	"[  BACK  ]                   ";
+	}
+
+	for(var i = titleImage.length; i < 13; i++) {
+		titleImage.push("                                  ");
+	}
+	var finalLine = passwordEntry;
+	flashTimer -= 10;
+	
+if (underlineVisible && passwordEntry.length <= 14) {
+	finalLine += "_";
+	if (flashTimer <= 0) {
+		flashTimer = 350;
+		underlineVisible = false;
+	}
+} else {
+	finalLine += " ";
+	if (flashTimer <= 0) {
+		flashTimer = 350;
+		underlineVisible = true;
+	}
+}
+for (var i = finalLine.length; i < 20; i++) {
+	finalLine += " ";
+}
+if (hoverSelection == 12) {
+	finalLine += "[  SUBMIT  ]"
+} else {
+finalLine += " [ SUBMIT ] "
+}
+titleImage[12] = finalLine;
+redraw();
+delay(10).then(() => redrawSkipDemoScreen());
+}
+
+function redrawSkipDemoScreen() {
+	if (titleMode === 8) {
+		generateSkipDemoScreen();
+		redraw();
+	}
+}
+
+function isPasswordAvailable() {
+	if(state.metadata["level_select_lock"] !== undefined) {
+		// find last solved section:
+		var unlockedUntil = 0;
+		for(var i = 0; i < state.sections.length; i++) {
+			if(solvedSections.indexOf(state.sections[i].name) >= 0) {
+				unlockedUntil = i;
+			}
+		}
+		
+		if (unlockedUntil < 31) {
+			return true;
+		}
+	}
+	return false;
+}
+
+function autocompleteDemo() {
+	for(var i = 0; i < 32; i++) {
+		setSectionSolved(state.sections[i].name);
+	}
 }
 
 function generateCreditsScreen() {
@@ -4028,11 +4179,7 @@ playerPositionsAtTurnStart = getPlayerPositions();
 				var backupStr = JSON.stringify(restartTarget);
 				storage_set(document.URL+'_checkpoint',backupStr);
 				storage_set(document.URL,curlevel);				
-			}	 
-
-			/*if (againing) {
-				modified = true;
-			}*/
+			}
 
 		    if (level.commandQueue.indexOf('again')>=0 /*&& modified*/) {	//Muffin edit: allow section to be run without modification to allow infinite loops
 
@@ -4233,6 +4380,8 @@ function nextLevel() {
 			gotoCreditsScreen();
 		} else if (isManualOptionSelected()) {
 			gotoManualScreen();
+		} else if (isPasswordOptionSelected()) {
+			gotoSkipDemoScreen();
 		}
 	} else {
 		if (hasUsedCheckpoint){
