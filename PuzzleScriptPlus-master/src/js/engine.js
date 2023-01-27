@@ -648,15 +648,82 @@ function playIntro0() {
 	if ( titleMode === 4) {
 	titleImage = deepClone(titletemplate_intro0);
 	delay(750).then(() => generateTitleScreen());
-	delay(750).then(() => startMusic());
+	delay(750).then(() => startMenuMusic());
 	}
 }
 
-function startMusic() {
-	new Audio('musicFile.mp3').play();
+function startMenuMusic() {
+	if (currentMusic != null) {
+	currentMusic.stop();
+	}
+	currentMusic = new Audio('menuMusic.mp3');
+	if (currentMusic != null) {
+	currentMusic.play();
+	}
+}
+
+function startLevelMusic1() {
+	if (currentMusic != null) {
+	currentMusic.stop();
+	}
+	currentMusic = new Audio('levelMusic1.mp3').play();
+	if (currentMusic != null) {
+	currentMusic.play();
+	}
+}
+
+function startLevelMusic2() {
+	if (currentMusic != null) {
+	currentMusic.stop();
+	}
+	currentMusic = new Audio('levelMusic2.mp3').play();
+	if (currentMusic != null) {
+	currentMusic.play();
+	}
+}
+
+function startLevelMusic3() {
+	if (currentMusic != null) {
+	currentMusic.stop();
+	}
+	currentMusic = new Audio('levelMusic3.mp3').play();
+	if (currentMusic != null) {
+	currentMusic.play();
+	}
+}
+
+function startLevelMusic4() {
+	if (currentMusic != null) {
+	currentMusic.stop();
+	}
+	currentMusic = new Audio('levelMusic4.mp3').play();
+	if (currentMusic != null) {
+	currentMusic.play();
+	}
+}
+
+function startLevelMusic5() {
+	if (currentMusic != null) {
+	currentMusic.stop();
+	}
+	currentMusic = new Audio('levelMusic5.mp3').play();
+	if (currentMusic != null) {
+	currentMusic.play();
+	}
+}
+
+function startLevelMusic6() {
+	if (currentMusic != null) {
+	currentMusic.stop();
+	}
+	currentMusic = new Audio('levelMusic6.mp3').play();
+	if (currentMusic != null) {
+	currentMusic.play();
+	}
 }
 
 var musicPlaying = false;
+var currentMusic = null;
 function generateTitleScreen()
 {
 
@@ -4449,6 +4516,22 @@ function loadLevelFromStateOrTarget() {
 		loadLevelFromStateTarget(state,curlevel,curlevelTarget);
 	} else {
 		loadLevelFromState(state,curlevel);
+	}
+	var realLevel = Math.ceil((curlevel + 1) / 2);
+	if (realLevel <= 15) {
+		startLevelMusic1();
+	} else if (realLevel <= 32) {
+		startLevelMusic2();
+	} else if (realLevel <= 46) {
+		startLevelMusic3();
+	} else if (realLevel <= 58) {
+		startLevelMusic4();
+	} else if (realLevel <= 73) {
+		startLevelMusic5();
+	} else if (realLevel <= 85) {
+		startLevelMusic6();
+	} else {
+		startMenuMusic();
 	}
 }
 

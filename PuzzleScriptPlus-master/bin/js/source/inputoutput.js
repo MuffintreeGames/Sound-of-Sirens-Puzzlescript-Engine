@@ -623,7 +623,7 @@ function mouseAction(event,click,id) {
 			} else if (titleMode === 4 ) {
 				if (!musicPlaying) {
 					musicPlaying = true;
-					startMusic();
+					startMenuMusic();
 				}
 				generateTitleScreen();
 			} else if (titleMode === 5 ) {

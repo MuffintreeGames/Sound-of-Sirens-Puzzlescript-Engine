@@ -6507,15 +6507,32 @@ function playIntro0() {
  if ( titleMode === 4) {
  titleImage = deepClone(titletemplate_intro0);
  delay(750).then(() => generateTitleScreen());
- delay(750).then(() => startMusic());
+ delay(750).then(() => startMenuMusic());
  }
 }
 
-function startMusic() {
- new Audio('musicFile.mp3').play();
+function startMenuMusic() {
+ if (currentMusic != null) {
+ currentMusic.stop();
+ }
+ currentMusic = new Audio('menuMusic.mp3');
+ if (currentMusic != null) {
+ currentMusic.play();
+ }
+}
+
+function startLevelMusic1() {
+ if (currentMusic != null) {
+ currentMusic.stop();
+ }
+ currentMusic = new Audio('levelMusic1.mp3').play();
+ if (currentMusic != null) {
+ currentMusic.play();
+ }
 }
 
 var musicPlaying = false;
+var currentMusic = null;
 function generateTitleScreen()
 {
 
@@ -10309,6 +10326,8 @@ function loadLevelFromStateOrTarget() {
  } else {
   loadLevelFromState(state,curlevel);
  }
+ var realLevel = Math.ceil((curlevel + 1) / 2);
+ console.error('cur level is ' + curlevel + ', real level is ' + realLevel);
 }
 
 function goToTitleScreen(){
@@ -14223,7 +14242,7 @@ function mouseAction(event,click,id) {
    } else if (titleMode === 4 ) {
     if (!musicPlaying) {
      musicPlaying = true;
-     startMusic();
+     startMenuMusic();
     }
     generateTitleScreen();
    } else if (titleMode === 5 ) {
