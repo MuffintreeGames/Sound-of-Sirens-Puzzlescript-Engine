@@ -6512,80 +6512,122 @@ function playIntro0() {
 }
 
 function startMenuMusic() {
+ if (currentMusicName == "menu") {
+  return;
+ }
  if (currentMusic != null) {
  currentMusic.pause();
  }
+ currentMusicName = "menu";
  currentMusic = new Audio('menuMusic.mp3');
+ currentMusic.volume = 0.5;
  if (currentMusic != null) {
- currentMusic.pause();
+  currentMusic.loop = true;
+  currentMusic.play();
  }
 }
 
 function startLevelMusic1() {
+ if (currentMusicName == "level1") {
+  return;
+ }
  if (currentMusic != null) {
   currentMusic.pause();
  }
- currentMusic = new Audio('levelMusic1.mp3').play();
+ currentMusicName = "level1";
+ currentMusic = new Audio('levelMusic1.mp3');
+ currentMusic.volume = 0.5;
  if (currentMusic != null) {
-  currentMusic.pause();
+  currentMusic.loop = true;
+  currentMusic.play();
  }
 }
 
 function startLevelMusic2() {
+ if (currentMusicName == "level2") {
+  return;
+ }
  if (currentMusic != null) {
   currentMusic.pause();
  }
- currentMusic = new Audio('levelMusic2.mp3').play();
+ currentMusicName = "level2";
+ currentMusic = new Audio('levelMusic2.mp3');
+ currentMusic.volume = 0.5;
  if (currentMusic != null) {
-  currentMusic.pause();
+  currentMusic.loop = true;
+  currentMusic.play();
  }
 }
 
 function startLevelMusic3() {
+ if (currentMusicName == "level3") {
+  return;
+ }
  if (currentMusic != null) {
   currentMusic.pause();
  }
- currentMusic = new Audio('levelMusic3.mp3').play();
+ currentMusicName = "level3";
+ currentMusic = new Audio('levelMusic3.mp3');
+ currentMusic.volume = 0.5;
  if (currentMusic != null) {
-  currentMusic.pause();
+  currentMusic.loop = true;
+  currentMusic.play();
  }
 }
 
 function startLevelMusic4() {
+ if (currentMusicName == "level4") {
+  return;
+ }
  if (currentMusic != null) {
   currentMusic.pause();
  }
- currentMusic = new Audio('levelMusic4.mp3').play();
+ currentMusicName = "level4";
+ currentMusic = new Audio('levelMusic4.mp3');
+ currentMusic.volume = 0.5;
  if (currentMusic != null) {
-  currentMusic.pause();
+  currentMusic.loop = true;
+  currentMusic.play();
  }
 }
 
 function startLevelMusic5() {
+ if (currentMusicName == "level5") {
+  return;
+ }
  if (currentMusic != null) {
   currentMusic.pause();
  }
- currentMusic = new Audio('levelMusic5.mp3').play();
+ currentMusicName = "level5";
+ currentMusic = new Audio('levelMusic5.mp3');
+ currentMusic.volume = 0.5;
  if (currentMusic != null) {
-  currentMusic.pause();
+  currentMusic.loop = true;
+  currentMusic.play();
  }
 }
 
 function startLevelMusic6() {
+ if (currentMusicName == "level6") {
+  return;
+ }
  if (currentMusic != null) {
   currentMusic.pause();
  }
- currentMusic = new Audio('levelMusic6.mp3').play();
+ currentMusicName = "level6";
+ currentMusic = new Audio('levelMusic6.mp3');
+ currentMusic.volume = 0.5;
  if (currentMusic != null) {
-  currentMusic.pause();
+  currentMusic.loop = true;
+  currentMusic.play();
  }
 }
 
 var musicPlaying = false;
 var currentMusic = null;
+var currentMusicName = "";
 function generateTitleScreen()
 {
-
   tryLoadCustomFont();
 
  titleMode=showContinueOptionOnTitleScreen()?1:0;
@@ -6599,6 +6641,9 @@ function generateTitleScreen()
   titleImage = sitelock_template;
   return;
  }
+
+ startMenuMusic();
+
  /*var title = `
  ĸĸĸĸĸĸĸĸÆÆÆÆÆÆÆÆÆÆ
  ĸĸĸĸĸŁŀĸÆ¥§¤Æ¢ŸŷųÆ
@@ -6789,7 +6834,9 @@ function gotoLevelSelectScreen() {
   goToTitleScreen();
   return;
  }
- 
+
+ startMenuMusic();
+
  levelSelectScrollPos = 0;
  titleSelected = false;
  timer = 0;
@@ -10371,17 +10418,17 @@ function nextLevel() {
 }
 
 function loadLevelFromStateOrTarget() {
- if (curlevelTarget!==null){   
+ if (curlevelTarget!==null){  
   loadLevelFromStateTarget(state,curlevel,curlevelTarget);
  } else {
   loadLevelFromState(state,curlevel);
  }
- var realLevel = Math.ceil((curlevel + 1) / 2);
+ var realLevel = Math.ceil((parseInt(curlevel) + 1) / 2);
  if (realLevel <= 15) {
   startLevelMusic1();
  } else if (realLevel <= 32) {
   startLevelMusic2();
- } else if (realLevel <= 46) {
+ } else if (realLevel <= 45) {
   startLevelMusic3();
  } else if (realLevel <= 58) {
   startLevelMusic4();
