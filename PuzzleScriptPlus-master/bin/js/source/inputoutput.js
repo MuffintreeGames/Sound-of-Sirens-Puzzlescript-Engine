@@ -574,10 +574,12 @@ function mouseAction(event,click,id) {
 					canvasResize();
 				} else if (mouseCoordY===2) {
 					if (levelSelectScrollPos != 0) {
+						tryPlaySimpleSound("sfx9");
 						levelSelectScroll(-3)
 					}
 				} else if (mouseCoordY===12) {
 					if (titleSelectOptions - amountOfLevelsOnScreen > levelSelectScrollPos) {
+						tryPlaySimpleSound("sfx9");
 						levelSelectScroll(3)
 					}
 				} else {
@@ -689,6 +691,43 @@ function mouseAction(event,click,id) {
 				} else if (mouseCoordY===12) {
 					ValidatePassword();
 				}
+			} else if (titleMode === 9) {
+				if (quittingTitleScreen || titleSelected) {
+					return;
+				}
+				if (mouseCoordY==10) {
+					if (!verifying) {
+						verifying = true;
+						tryPlaySimpleSound("sfx7");
+						generateSettingsScreen();
+					} else {
+						tryPlaySimpleSound("sfx5");
+						clearLocalStorage();
+						goToTitleScreen();
+					}
+				} else {
+				if (mouseCoordY===0) {
+					titleSelection = 0;
+					tryPlayEndGameSound();
+					goToTitleScreen();
+
+					tryPlayTitleSound();
+					canvasResize();
+				} else if (mouseCoordY===5) {
+					if (mouseCoordX >= 11 && mouseCoordX <= 15) {
+						decreaseSFXVolume();
+					} else if (mouseCoordX >= 28 && mouseCoordX <= 32) {
+						increaseSFXVolume();
+					}
+				} else if (mouseCoordY===6) {
+					if (mouseCoordX >= 11 && mouseCoordX <= 15) {
+						decreaseMusicVolume();
+						
+					} else if (mouseCoordX >= 28 && mouseCoordX <= 32) {
+						increaseMusicVolume();
+					}
+				}
+			}
 			}
 		} else if (messageselected===false && state.levels[curlevel].message) {
 			messageselected=true;
@@ -1042,8 +1081,16 @@ function mouseMove(event) {
 	    redraw();
 	} else if (titleScreen && IsMouseGameInputEnabled()) {
 		var prevHoverSelection = hoverSelection;
+		var prevX = mouseCoordX;
 		setMouseCoord(event);
 		mouseAction(event,false,null);
+		if (titleMode == 9) {
+			if (prevHoverSelection != hoverSelection || prevX != mouseCoordX) {
+			generateSettingsScreen();
+			redraw();
+			}
+		}
+
 		if (prevHoverSelection != hoverSelection) {
 			if (titleMode == 1 || titleMode == 0) {
 				generateTitleScreen();

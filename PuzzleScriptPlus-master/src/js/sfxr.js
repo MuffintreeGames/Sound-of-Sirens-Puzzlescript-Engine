@@ -989,13 +989,18 @@ var sfxCache = {};
 var cachedSeeds = [];
 var CACHE_MAX = 50;
 
+function clearSFXCache() {
+  sfxCache = {};
+  cachedSeeds = [];
+}
+
 function cacheSeed(seed){
   if (seed in sfxCache) {
     return sfxCache[seed];
   }
 
   var params = generateFromSeed(seed);
-  params.sound_vol = SOUND_VOL;
+  params.sound_vol = SOUND_VOL * (sfxSetting / 10);
   params.sample_rate = SAMPLE_RATE;
   params.bit_depth = BIT_DEPTH;
 
@@ -1018,7 +1023,7 @@ function cacheQuietSeed(seed){
   }
 
   var params = generateFromSeed(seed);
-  params.sound_vol = QUIET_SOUND_VOL;
+  params.sound_vol = QUIET_SOUND_VOL * (sfxSetting / 10);
   params.sample_rate = SAMPLE_RATE;
   params.bit_depth = BIT_DEPTH;
 
@@ -1041,7 +1046,7 @@ function cacheLoudSeed(seed){
   }
 
   var params = generateFromSeed(seed);
-  params.sound_vol = 0.4;
+  params.sound_vol = 0.4 * (sfxSetting / 10);
   params.sample_rate = SAMPLE_RATE;
   params.bit_depth = BIT_DEPTH;
 

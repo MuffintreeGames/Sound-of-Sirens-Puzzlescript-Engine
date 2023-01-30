@@ -302,7 +302,7 @@ var title_options = [[
 ], [
 	".............Settings.............",
 	".............Settings.............",
-	".............Settings.............",
+	".............Śěťťįńğś.............",
 	"...........>.Settings.<...........",
 ], [
 	".............New Game.............",
@@ -474,7 +474,7 @@ var titleWidth=titletemplate_empty[0].length;
 var titleHeight=titletemplate_empty.length;
 var textMode=true;
 var titleScreen=true;
-var titleMode=0;//1 means title screen with options, 2 means level select, 3 means credits, 4 means intro, 5 means manual, 6 means manual sub-page, 7 means pre-intro, 8 means demo code page
+var titleMode=0;//1 means title screen with options, 2 means level select, 3 means credits, 4 means intro, 5 means manual, 6 means manual sub-page, 7 means pre-intro, 8 means demo code page, 9 means settings
 var titleSelection=0;
 var titleSelectOptions=3;
 var titleSelected=false;
@@ -506,11 +506,23 @@ function isContinueOptionSelected() {
 }
 
 function isNewGameOptionSelected() {
+	if (titleMode === 1) {	//new game has been moved into settings menu
+		/*if (isPasswordAvailable()) {
+			return titleSelection == titleSelectOptions-3;
+		}
+		return titleSelection == titleSelectOptions-2;*/
+		return;
+	} else {
+		return titleSelection == 0;
+	}
+}
+
+function isSettingsOptionSelected() {
 	if (titleMode === 1) {
 		if (isPasswordAvailable()) {
 			return titleSelection == titleSelectOptions-3;
 		}
-		return titleSelection == titleSelectOptions-2; // new game option is always second to last
+		return titleSelection == titleSelectOptions-2; // settings option is always second to last
 	} else {
 		return titleSelection == 0;
 	}
@@ -661,7 +673,7 @@ function startMenuMusic() {
 	}
 	currentMusicName = "menu";
 	currentMusic = new Audio('menuMusic.mp3');
-	currentMusic.volume = 0.5;
+	currentMusic.volume = 0.5 * (musicSetting / 10);
 	if (currentMusic != null) {
 		currentMusic.loop = true;
 		currentMusic.play();
@@ -677,7 +689,7 @@ function startLevelMusic1() {
 	}
 	currentMusicName = "level1";
 	currentMusic = new Audio('levelMusic1.mp3');
-	currentMusic.volume = 0.5;
+	currentMusic.volume = 0.5 * (musicSetting / 10);
 	if (currentMusic != null) {
 		currentMusic.loop = true;
 		currentMusic.play();
@@ -693,7 +705,7 @@ function startLevelMusic2() {
 	}
 	currentMusicName = "level2";
 	currentMusic = new Audio('levelMusic2.mp3');
-	currentMusic.volume = 0.5;
+	currentMusic.volume = 0.5 * (musicSetting / 10);
 	if (currentMusic != null) {
 		currentMusic.loop = true;
 		currentMusic.play();
@@ -709,7 +721,7 @@ function startLevelMusic3() {
 	}
 	currentMusicName = "level3";
 	currentMusic = new Audio('levelMusic3.mp3');
-	currentMusic.volume = 0.5;
+	currentMusic.volume = 0.5 * (musicSetting / 10);
 	if (currentMusic != null) {
 		currentMusic.loop = true;
 		currentMusic.play();
@@ -725,7 +737,7 @@ function startLevelMusic4() {
 	}
 	currentMusicName = "level4";
 	currentMusic = new Audio('levelMusic4.mp3');
-	currentMusic.volume = 0.5;
+	currentMusic.volume = 0.4 * (musicSetting / 10);
 	if (currentMusic != null) {
 		currentMusic.loop = true;
 		currentMusic.play();
@@ -741,7 +753,7 @@ function startLevelMusic5() {
 	}
 	currentMusicName = "level5";
 	currentMusic = new Audio('levelMusic5.mp3');
-	currentMusic.volume = 0.5;
+	currentMusic.volume = 0.5 * (musicSetting / 10);
 	if (currentMusic != null) {
 		currentMusic.loop = true;
 		currentMusic.play();
@@ -757,7 +769,7 @@ function startLevelMusic6() {
 	}
 	currentMusicName = "level6";
 	currentMusic = new Audio('levelMusic6.mp3');
-	currentMusic.volume = 0.5;
+	currentMusic.volume = 0.4 * (musicSetting / 10);
 	if (currentMusic != null) {
 		currentMusic.loop = true;
 		currentMusic.play();
@@ -785,13 +797,6 @@ function generateTitleScreen()
 
 	startMenuMusic();
 
-	/*var title = `
-	ĸĸĸĸĸĸĸĸÆÆÆÆÆÆÆÆÆÆ
-	ĸĸĸĸĸŁŀĸÆ¥§¤Æ¢ŸŷųÆ
-    ļĿĸŉŋÆŲűÆŧŦŢŒœÆ
-	ĸĸĸĸĸ€®®ÆÆÆÆÆ†ÆÆÆÆ
-	ĸĸĸĸĸ®®®ÆÆÆÆÆÆÆÆÆÆ
-	ĸĸĸĸĸĸĸĸĸæłĸĸĸĸĸæłĸ`;*/
 	var title = `
 	ĸĸĸĸĸĸĸĸÆÆÆÆÆÆÆÆÆÆÆÆ
 	ĸĸĸĸĸŁŀĸÆÆ¥§¤†¢ŸŷųøÆ
@@ -831,10 +836,10 @@ function generateTitleScreen()
 			availableOptions.push(5);
 		}
 
-		if (titleMode === 1) {
-			availableOptions.push(3);
-			titleSelectOptions++;
-		}
+		//if (titleMode === 1) {
+		availableOptions.push(2);
+		titleSelectOptions++;
+		//}
 
 		if(state.metadata["credits"] !== undefined) {
 			titleSelectOptions++;
@@ -1048,6 +1053,24 @@ function gotoManualScreen() {
 	redraw();
 }
 
+function gotoSettingsScreen() {
+	instructions_index = -1;
+	titleSelected = false;
+	timer = 0;
+	quittingTitleScreen = false;
+	quittingMessageScreen = false;
+	messageselected = false;
+	titleMode = 9;
+	titleScreen = true;
+	textMode = true;
+    againing = false;
+	messagetext = "";
+	twiddleMetadataExtras();
+
+	generateSettingsScreen();
+	redraw();
+}
+
 function gotoManualPageScreen() {
 	quittingTitleScreen = false;
 	titleSelected = false;
@@ -1148,6 +1171,13 @@ delay(10).then(() => redrawSkipDemoScreen());
 function redrawSkipDemoScreen() {
 	if (titleMode === 8) {
 		generateSkipDemoScreen();
+		redraw();
+	}
+}
+
+function redrawSettingsScreen() {
+	if (titleMode === 9) {
+		generateSettingsScreen();
 		redraw();
 	}
 }
@@ -1312,6 +1342,113 @@ function generateManualScreen() {
 	}
 
 	redraw();
+}
+
+var verifying = false;
+var musicSetting = 10;
+var sfxSetting = 10;
+var sfxVolumeChanged = false;
+function generateSettingsScreen() {
+	titleImage = [
+		" [ BACK ]                         ",
+		"             Settings             ",
+		"                                  ",
+		"              Volume              ",
+		"                                  ",
+		" SFX        [-]  ||||||||||  [+]  ",
+		" MUSIC      [-]  ||||||||||  [+]  ",
+		"                                  ",
+		"                                  ",
+		"                                  ",
+		"     [ Reset Level Progress ]     ",
+		"                                  ",
+		"                                  "
+	];
+	var sfxRow = new String(" SFX        [-]  ||||||||||  [+]  ");
+	var musicRow = new String(" MUSIC      [-]  ||||||||||  [+]  ");
+	if (hoverSelection == 10) {
+		if (verifying) {
+			titleImage[10] = "    [    Are You Certain?    ]    "
+		} else {
+		titleImage[10] = "    [  Reset Level Progress  ]    "
+		}
+	} else {
+		verifying = false;
+	if (hoverSelection == 0) {
+		titleImage[0] =	"[  BACK  ]                   ";
+	}  else if (hoverSelection == 5) {
+		if (mouseCoordX >= 11 && mouseCoordX <= 15) {
+			sfxRow = " SFX       [ - ] ||||||||||  [+]  ";
+		} else if (mouseCoordX >= 28 && mouseCoordX <= 32) {
+			sfxRow = " SFX        [-]  |||||||||| [ + ] ";
+		}
+	} else if (hoverSelection == 6) {
+		if (mouseCoordX >= 11 && mouseCoordX <= 15) {
+			musicRow = " MUSIC     [ - ] ||||||||||  [+]  ";
+		} else if (mouseCoordX >= 28 && mouseCoordX <= 32) {
+			musicRow = " MUSIC      [-]  |||||||||| [ + ] ";
+		}
+	}
+}
+
+	for (var x = 0; x < sfxSetting; x++) {
+		sfxRow = sfxRow.replace("|", "Ĥ");
+	}
+
+	for (var y = 0; y < musicSetting; y++) {
+		musicRow = musicRow.replace("|", "Ĥ");
+	}
+	
+	titleImage[5] = sfxRow;
+	titleImage[6] = musicRow;
+
+	redraw();
+}
+
+function increaseSFXVolume() {
+	if (sfxSetting < 10) {
+	sfxSetting += 1;
+	clearSFXCache();
+	tryPlaySimpleSound("sfx9");
+	generateSettingsScreen();
+	} else {
+		tryPlaySimpleSound("sfx1");
+	}
+}
+
+function decreaseSFXVolume() {
+	if (sfxSetting > 0) {
+		sfxSetting -= 1;
+		clearSFXCache();
+		tryPlaySimpleSound("sfx9");
+		generateSettingsScreen();
+	} else {
+		tryPlaySimpleSound("sfx1");
+	}
+}
+
+function increaseMusicVolume() {
+	if (musicSetting < 10) {
+		musicSetting += 1;
+		currentMusic.volume = 0.5 * (musicSetting / 10);
+		currentMusic.play();
+		tryPlaySimpleSound("sfx9");
+		generateSettingsScreen();
+	} else {
+		tryPlaySimpleSound("sfx1");
+	}
+}
+
+function decreaseMusicVolume() {
+	if (musicSetting > 0) {
+		musicSetting -= 1;
+		currentMusic.volume = 0.5 * (musicSetting / 10);
+		currentMusic.play();
+		tryPlaySimpleSound("sfx9");
+		generateSettingsScreen();
+	} else {
+		tryPlaySimpleSound("sfx1");
+	}
 }
 
 function generateLevelSelectScreen() {
@@ -4493,6 +4630,8 @@ function nextLevel() {
 			gotoManualScreen();
 		} else if (isPasswordOptionSelected()) {
 			gotoSkipDemoScreen();
+		} else if (isSettingsOptionSelected) {
+			gotoSettingsScreen();
 		}
 	} else {
 		if (hasUsedCheckpoint){

@@ -686,10 +686,10 @@ function regenText(spritecanvas,spritectx) {
             if (key == '✓') {
                 renderSprite(textsheetContext, fontstr, ['#000000', '#00FF00'], 1, textX, textY);
                 renderSprite(textsheetContext, fontstr, ['#000000', '#00FF00'], 0, textX, textY + textsheetSize);
-            }  else if (/*yellowText ||*/ key == '>' || key == '<' || key == '#' || key == '[' || key == ']' || key == 'Ć' || key == 'ć' || key == 'ľ' || key == 'į' || key == 'ķ' || key == 'ť' || key == 'ŏ' || key == 'ń' || key == 'ū' || key == 'ě' || key == 'Ĺ' || key == 'Ġ' || key == 'Ń' || key == 'Ý' || key == 'Ś' || key == 'ś' || key == 'ā' || key == 'ď' || key == 'ř' || key == 'ñ' || key == 'ŵ' || key == 'Ě' || key == 'Đ') {
+            }  else if (/*yellowText ||*/ key == '>' || key == '<' || key == '#' || key == '[' || key == ']' || key == 'Ć' || key == 'ć' || key == 'ľ' || key == 'į' || key == 'ķ' || key == 'ť' || key == 'ŏ' || key == 'ń' || key == 'ū' || key == 'ě' || key == 'Ĺ' || key == 'Ġ' || key == 'Ń' || key == 'Ý' || key == 'Ś' || key == 'ś' || key == 'ā' || key == 'ď' || key == 'ř' || key == 'ñ' || key == 'ŵ' || key == 'Ě' || key == 'Đ' || key == 'ğ') {
                 renderSprite(textsheetContext, fontstr, ['#000000', '#FFFF00'], 1, textX, textY);
                 renderSprite(textsheetContext, fontstr, ['#000000', '#FFFF00'], 0, textX, textY + textsheetSize);
-            } else if (key == '*' || key == '+') {
+            } else if (key == '*') {
                 renderSprite(textsheetContext, fontstr, ['#000000', '#FF0000'], 1, textX, textY);
                 renderSprite(textsheetContext, fontstr, ['#000000', '#FF0000'], 0, textX, textY + textsheetSize);
             } else {
