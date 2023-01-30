@@ -672,7 +672,7 @@ function startMenuMusic() {
 	currentMusic.pause();
 	}
 	currentMusicName = "menu";
-	currentMusic = new Audio('menuMusic.mp3');
+	currentMusic = new Audio('music/menuMusic.mp3');
 	currentMusic.volume = 0.5 * (musicSetting / 10);
 	if (currentMusic != null) {
 		currentMusic.loop = true;
@@ -688,7 +688,7 @@ function startLevelMusic1() {
 		currentMusic.pause();
 	}
 	currentMusicName = "level1";
-	currentMusic = new Audio('levelMusic1.mp3');
+	currentMusic = new Audio('music/levelMusic1.mp3');
 	currentMusic.volume = 0.5 * (musicSetting / 10);
 	if (currentMusic != null) {
 		currentMusic.loop = true;
@@ -704,7 +704,7 @@ function startLevelMusic2() {
 		currentMusic.pause();
 	}
 	currentMusicName = "level2";
-	currentMusic = new Audio('levelMusic2.mp3');
+	currentMusic = new Audio('music/levelMusic2.mp3');
 	currentMusic.volume = 0.5 * (musicSetting / 10);
 	if (currentMusic != null) {
 		currentMusic.loop = true;
@@ -720,7 +720,7 @@ function startLevelMusic3() {
 		currentMusic.pause();
 	}
 	currentMusicName = "level3";
-	currentMusic = new Audio('levelMusic3.mp3');
+	currentMusic = new Audio('music/levelMusic3.mp3');
 	currentMusic.volume = 0.5 * (musicSetting / 10);
 	if (currentMusic != null) {
 		currentMusic.loop = true;
@@ -736,7 +736,7 @@ function startLevelMusic4() {
 		currentMusic.pause();
 	}
 	currentMusicName = "level4";
-	currentMusic = new Audio('levelMusic4.mp3');
+	currentMusic = new Audio('music/levelMusic4.mp3');
 	currentMusic.volume = 0.4 * (musicSetting / 10);
 	if (currentMusic != null) {
 		currentMusic.loop = true;
@@ -752,7 +752,7 @@ function startLevelMusic5() {
 		currentMusic.pause();
 	}
 	currentMusicName = "level5";
-	currentMusic = new Audio('levelMusic5.mp3');
+	currentMusic = new Audio('music/levelMusic5.mp3');
 	currentMusic.volume = 0.5 * (musicSetting / 10);
 	if (currentMusic != null) {
 		currentMusic.loop = true;
@@ -768,7 +768,7 @@ function startLevelMusic6() {
 		currentMusic.pause();
 	}
 	currentMusicName = "level6";
-	currentMusic = new Audio('levelMusic6.mp3');
+	currentMusic = new Audio('music/levelMusic6.mp3');
 	currentMusic.volume = 0.4 * (musicSetting / 10);
 	if (currentMusic != null) {
 		currentMusic.loop = true;
