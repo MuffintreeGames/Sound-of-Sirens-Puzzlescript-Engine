@@ -621,6 +621,15 @@ function mouseAction(event,click,id) {
 
 					tryPlayTitleSound();
 					canvasResize();
+				} else if (mouseCoordY===11) {
+					if (creditsPage === 1) {
+						creditsPage = 2;
+					} else if (creditsPage === 2) {
+						creditsPage = 1;
+					}
+
+					generateCreditsScreen();
+					tryPlaySimpleSound("sfx9");
 				}
 			} else if (titleMode === 4 ) {
 				if (!musicPlaying) {

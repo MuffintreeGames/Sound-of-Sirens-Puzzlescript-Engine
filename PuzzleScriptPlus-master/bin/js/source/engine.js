@@ -481,6 +481,21 @@ var titleSelected=false;
 var hoverSelection=-1; //When mouse controls are enabled, over which row the mouse is hovering. -1 when disabled.
 var instructions_index = -1; //page of manual to use
 
+function attemptFullScreen() {
+	var elem = document.getElementById("gameContainer");
+	if (elem == null) {
+		console.error("couldn't get game container");
+		return;
+	}
+	if (elem.requestFullscreen) {
+		elem.requestFullscreen();
+	  } else if (elem.webkitRequestFullscreen) { /* Safari */
+		elem.webkitRequestFullscreen();
+	  } else if (elem.msRequestFullscreen) { /* IE11 */
+		elem.msRequestFullscreen();
+	  }
+}
+
 function showContinueOptionOnTitleScreen(){
 	return (curlevel>0||curlevelTarget!==null)&&(curlevel in state.levels);
 }
@@ -668,6 +683,7 @@ function startMenuMusic() {
 	if (currentMusicName == "menu") {
 		return;
 	}
+	attemptFullScreen();
 	if (currentMusic != null) {
 	currentMusic.pause();
 	}
@@ -776,11 +792,30 @@ function startLevelMusic6() {
 	}
 }
 
+function testNGIO() {
+
+	NGIO.init("55847:mx3f5tpU","/8rRdzdXNqnIk/9QYOSTbg==", {
+		version: "1.0.0",
+		preloadMedals: true,
+	});
+	NGIO.getConnectionStatus(function(status){
+		console.error("current status is " + status);
+	});
+
+	var testMedal = NGIO.getMedal(72616);
+	console.error("test medal is " + testMedal);
+}
+
+function testGetMedal(medal) {
+	console.error("got a medal, yay");
+}
+
 var musicPlaying = false;
 var currentMusic = null;
 var currentMusicName = "";
 function generateTitleScreen()
 {
+	testNGIO();
   tryLoadCustomFont();
 
 	titleMode=showContinueOptionOnTitleScreen()?1:0;
@@ -1025,6 +1060,7 @@ function gotoCreditsScreen() {
 	textMode = true;
     againing = false;
 	messagetext = "";
+	creditsPage = 1;
 	twiddleMetadataExtras();
 
 	generateCreditsScreen();
@@ -1107,7 +1143,7 @@ function gotoSkipDemoScreen() {
 var underlineVisible = true;
 var flashTimer = 350;
 var passwordEntry = "";
-var correctPassword = "GARFUNKL"
+var correctPassword = "GARFUNKEL"
 
 function checkPassword() {
 	if (passwordEntry == correctPassword) {
@@ -1205,10 +1241,11 @@ function autocompleteDemo() {
 	}
 }
 
+var creditsPage = 1;
 function generateCreditsScreen() {
+	if (creditsPage === 1) {
 	titleImage = [
-		" [ BACK ]                    ",
-		"              Credits             ",
+		" [ BACK ]      Credits            ",
 		"                                  ",
 		"           Developed by:          ",
 		"                Joey Meffen       ",
@@ -1218,12 +1255,35 @@ function generateCreditsScreen() {
 		"       Kiran   Ken   Curtis       ",
 		"           Tracy   Gary           ",
 		"                                  ",
-		"     A PuzzleScript Plus Game     "
+		" Created using PuzzleScript Plus  ",
+		"                       [ NEXT ]   "
 	];
-
 	if (hoverSelection == 0) {
-		titleImage[0] =	"[  BACK  ]                   ";
+		titleImage[0] =	"[  BACK  ]     Credits       ";
+	} else if (hoverSelection == 11) {
+		titleImage[11] ="                      [  NEXT  ]  ";
 	}
+} else if (creditsPage === 2) {
+	titleImage = [
+		" [ BACK ]     Credits             ",
+		"       Music by Eric Matyas       ",
+		"    Available on SoundImage.org   ",
+		"                                  ",
+		"Menu Theme:    Winter Puzzles     ",
+		"Level Theme 1: Peaceful Puzzles   ",
+		"Level Theme 2: Mellow Puzzler     ",
+		"Level Theme 3: Electric Raindrops ",
+		"Level Theme 4: Puzzle Dreams 2    ",
+		"Level Theme 5: Build it W/ Pixels ",
+		"Level Theme 6: Cryptic Puzzler 2  ",
+		"                       [ PREV ]   "
+	];
+	if (hoverSelection == 0) {
+		titleImage[0] =	"[  BACK  ]     Credits         ";
+	} else if (hoverSelection == 11) {
+		titleImage[11] ="                      [  PREV  ]  ";
+	}
+}
 
 	for(var i = titleImage.length; i < 13; i++) {
 		titleImage.push("                                  ");
