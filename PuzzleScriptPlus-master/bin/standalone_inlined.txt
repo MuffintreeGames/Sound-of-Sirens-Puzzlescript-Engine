@@ -7494,6 +7494,7 @@ function attemptFullScreen() {
   console.error("couldn't get game container");
   return;
  }
+ console.error("trying to do fullscreen");
  if (elem.requestFullscreen) {
   elem.requestFullscreen();
    } else if (elem.webkitRequestFullscreen) { /* Safari */
