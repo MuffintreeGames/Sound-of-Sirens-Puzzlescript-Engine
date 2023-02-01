@@ -7489,9 +7489,8 @@ var hoverSelection=-1; //When mouse controls are enabled, over which row the mou
 var instructions_index = -1; //page of manual to use
 
 function attemptFullScreen() {
- var elem = document.getElementById("gameCanvas");
+ var elem = document.documentElement;
  if (elem == null) {
-  console.error("couldn't get game canvas");
   return;
  }
  console.error("trying to do fullscreen");

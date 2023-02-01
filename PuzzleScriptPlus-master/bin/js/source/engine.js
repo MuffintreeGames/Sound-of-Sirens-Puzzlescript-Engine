@@ -481,12 +481,11 @@ var titleSelected=false;
 var hoverSelection=-1; //When mouse controls are enabled, over which row the mouse is hovering. -1 when disabled.
 var instructions_index = -1; //page of manual to use
 
-function attemptFullScreen() {
+function enterFullScreen() {
 	var elem = document.documentElement;
 	if (elem == null) {
 		return;
 	}
-	console.error("trying to do fullscreen");
 	if (elem.requestFullscreen) {
 		elem.requestFullscreen();
 	  } else if (elem.webkitRequestFullscreen) { /* Safari */
@@ -494,6 +493,23 @@ function attemptFullScreen() {
 	  } else if (elem.msRequestFullscreen) { /* IE11 */
 		elem.msRequestFullscreen();
 	  }
+}
+
+function exitFullScreen() {
+	if (document.exitFullscreen) {
+		document.exitFullscreen();
+	  } else if (document.webkitExitFullscreen) { /* Safari */
+		document.webkitExitFullscreen();
+	  } else if (document.msExitFullscreen) { /* IE11 */
+		document.msExitFullscreen();
+	  }
+}
+
+function isInFullscreen() {
+	if (document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement) { 
+		return true;  
+	} 
+	return false;
 }
 
 function showContinueOptionOnTitleScreen(){
@@ -591,9 +607,28 @@ function isPasswordOptionSelected() {
 	return false;
 }
 
+function loadMusic(){
+	var loadingMusic = new Audio('music/menuMusic.mp3');
+	loadingMusic.load();
+	loadingMusic = new Audio('music/levelMusic1.mp3');
+	loadingMusic.load();
+	loadingMusic = new Audio('music/levelMusic2.mp3');
+	loadingMusic.load();
+	loadingMusic = new Audio('music/levelMusic3.mp3');
+	loadingMusic.load();
+	loadingMusic = new Audio('music/levelMusic4.mp3');
+	loadingMusic.load();
+	loadingMusic = new Audio('music/levelMusic5.mp3');
+	loadingMusic.load();
+	loadingMusic = new Audio('music/levelMusic6.mp3');
+	loadingMusic.load();
+	console.error("music loaded");
+}
+
 function playPreIntro() {
 	if ( titleMode === 7) {
 	titleImage = deepClone(titletemplate_pre_intro);
+	loadMusic();
 	}
 }
 
@@ -683,7 +718,6 @@ function startMenuMusic() {
 	if (currentMusicName == "menu") {
 		return;
 	}
-	attemptFullScreen();
 	if (currentMusic != null) {
 	currentMusic.pause();
 	}
@@ -799,15 +833,15 @@ function testNGIO() {
 		preloadMedals: true,
 	});
 	NGIO.getConnectionStatus(function(status){
-		console.error("current status is " + status);
+		//console.error("current status is " + status);
 	});
 
 	var testMedal = NGIO.getMedal(72616);
-	console.error("test medal is " + testMedal);
+	//console.error("test medal is " + testMedal);
 }
 
 function testGetMedal(medal) {
-	console.error("got a medal, yay");
+	//console.error("got a medal, yay");
 }
 
 var musicPlaying = false;
@@ -1009,6 +1043,27 @@ function generateTitleScreen()
 }
 
 var levelSelectScrollPos = 0;
+
+function gotoEndSequence() {
+	if(state.metadata["credits"] === undefined){
+		goToTitleScreen();
+		return;
+	}
+	titleSelected = false;
+	timer = 0;
+	quittingTitleScreen = false;
+	quittingMessageScreen = false;
+	messageselected = false;
+	titleMode = 7;
+	titleScreen = true;
+	textMode = true;
+    againing = false;
+	messagetext = "";
+	twiddleMetadataExtras();
+
+	playPreIntro();
+	redraw();
+}
 
 function gotoLevelSelectScreen() {
 	if(state.metadata["level_select"] === undefined){
@@ -1405,9 +1460,6 @@ function generateManualScreen() {
 }
 
 var verifying = false;
-var musicSetting = 10;
-var sfxSetting = 10;
-var sfxVolumeChanged = false;
 function generateSettingsScreen() {
 	titleImage = [
 		" [ BACK ]                         ",
@@ -1418,9 +1470,9 @@ function generateSettingsScreen() {
 		" SFX        [-]  ||||||||||  [+]  ",
 		" MUSIC      [-]  ||||||||||  [+]  ",
 		"                                  ",
+		"      [ Toggle Fullscreen ]       ",
 		"                                  ",
-		"                                  ",
-		"     [ Reset Level Progress ]     ",
+		"        [ Reset Progress ]        ",
 		"                                  ",
 		"                                  "
 	];
@@ -1430,7 +1482,7 @@ function generateSettingsScreen() {
 		if (verifying) {
 			titleImage[10] = "    [    Are You Certain?    ]    "
 		} else {
-		titleImage[10] = "    [  Reset Level Progress  ]    "
+		titleImage[10] = "       [  Reset Progress  ]       "
 		}
 	} else {
 		verifying = false;
@@ -1448,6 +1500,8 @@ function generateSettingsScreen() {
 		} else if (mouseCoordX >= 28 && mouseCoordX <= 32) {
 			musicRow = " MUSIC      [-]  |||||||||| [ + ] ";
 		}
+	} else if (hoverSelection == 8) {
+		titleImage[8] = "     [  Toggle Fullscreen  ]      ";
 	}
 }
 
@@ -1471,6 +1525,7 @@ function increaseSFXVolume() {
 	clearSFXCache();
 	tryPlaySimpleSound("sfx9");
 	generateSettingsScreen();
+	localStorage.setItem(document.URL+'_sfx', JSON.stringify(sfxSetting));
 	} else {
 		tryPlaySimpleSound("sfx1");
 	}
@@ -1482,6 +1537,7 @@ function decreaseSFXVolume() {
 		clearSFXCache();
 		tryPlaySimpleSound("sfx9");
 		generateSettingsScreen();
+		localStorage.setItem(document.URL+'_sfx', JSON.stringify(sfxSetting));
 	} else {
 		tryPlaySimpleSound("sfx1");
 	}
@@ -1494,6 +1550,7 @@ function increaseMusicVolume() {
 		currentMusic.play();
 		tryPlaySimpleSound("sfx9");
 		generateSettingsScreen();
+		localStorage.setItem(document.URL+'_music', JSON.stringify(musicSetting));
 	} else {
 		tryPlaySimpleSound("sfx1");
 	}
@@ -1506,6 +1563,7 @@ function decreaseMusicVolume() {
 		currentMusic.play();
 		tryPlaySimpleSound("sfx9");
 		generateSettingsScreen();
+		localStorage.setItem(document.URL+'_music', JSON.stringify(musicSetting));
 	} else {
 		tryPlaySimpleSound("sfx1");
 	}
@@ -4659,7 +4717,6 @@ function anyMovements() {
 }*/
 
 function nextLevel() {
-	console.error("calling next level function");
     againing=false;
 	messagetext="";
 	if (state && state.levels && (curlevel>state.levels.length) ){
@@ -4698,8 +4755,9 @@ function nextLevel() {
 			curlevelTarget=null;
 			hasUsedCheckpoint=false;
 		}
-
-		if (curlevel<(state.levels.length-1)) {
+		if (curlevel==(state.levels.length-2)) {	//just finished penultimate level
+			gotoEndSequence();
+		} else if (curlevel<(state.levels.length-1)) {
 			var skip = false;
 			var curSection = state.levels[Number(curlevel)].section;
 			var nextSection = state.levels[Number(curlevel)+1].section;

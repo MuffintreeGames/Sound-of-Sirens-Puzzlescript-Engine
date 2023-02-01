@@ -735,6 +735,14 @@ function mouseAction(event,click,id) {
 					} else if (mouseCoordX >= 28 && mouseCoordX <= 32) {
 						increaseMusicVolume();
 					}
+				} else if (mouseCoordY===8) {
+					tryPlayStartGameSound();
+					if (isInFullscreen()) {
+						exitFullScreen();
+					} else {
+						enterFullScreen();
+					}
+					generateSettingsScreen();
 				}
 			}
 			}

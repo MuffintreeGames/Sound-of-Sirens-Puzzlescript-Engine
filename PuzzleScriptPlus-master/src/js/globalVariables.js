@@ -7,6 +7,8 @@ var levelEditorOpened=false;
 var muted=0;
 var runrulesonlevelstart_phase=false;
 var ignoreNotJustPressedAction=true;
+var musicSetting;
+var sfxSetting;
 
 function doSetupTitleScreenLevelContinue(){
     try {
@@ -27,6 +29,17 @@ function doSetupTitleScreenLevelContinue(){
                     solvedSections = JSON.parse(localStorage.getItem(document.URL + "_sections"));
                 }
     		}
+            if (storage_has(document.URL+'_sfx')) {
+                sfxSetting = JSON.parse(localStorage.getItem(document.URL + "_sfx"));
+            } else {
+                sfxSetting = 10;
+            }
+
+            if (storage_has(document.URL+'_music')) {
+                musicSetting = JSON.parse(localStorage.getItem(document.URL + "_music"));
+            } else {
+                musicSetting = 10;
+            }
     } catch(ex) {
     }
 }
