@@ -289,6 +289,553 @@ var titletemplate_empty = [
 															"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
 															"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
 															"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ"];
+
+
+
+
+	var titletemplate_outro0 = [
+																"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																"ĸĸĸĸĸĸĸĸĸAndĸso,ĸtheĸcityĸĸĸĸĸĸĸĸĸ",
+																"ĸĸĸĸĸĸĸĸĸĸĸĸwasĸsaved.ĸĸĸĸĸĸĸĸĸĸĸĸ",
+																"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																"                       [ SKIP ]   "];
+	var titletemplate_outroblank = [
+																"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																"                       [ SKIP ]   "];
+
+	var titletemplate_outro1 = [
+																	"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																	"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																	"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																	"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																	"ĸĸĸĸĸĸĸĸĸAllĸtheĸcitizensĸĸĸĸĸĸĸĸĸ",
+																	"ĸĸĸĸĸĸĸhadĸbeenĸhealed,ĸandĸĸĸĸĸĸĸ",
+																	"ĸĸĸĸtheĸworkĸofĸtheĸambulancesĸĸĸĸ",
+																	"ĸĸĸĸĸĸĸĸĸĸhadĸfinallyĸcomeĸĸĸĸĸĸĸĸ",
+																	"ĸĸĸĸĸĸĸĸĸĸĸĸtoĸanĸend.ĸĸĸĸĸĸĸĸĸĸĸĸ",
+																	"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																	"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																	"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																	"                       [ SKIP ]   "];
+
+
+										var titletemplate_outro3 = [
+											"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+											"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+											"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+											"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+											"ĸĸButĸwithĸtheĸhealthcareĸcrisisĸĸ",
+											"ĸĸĸĸĸĸĸĸĸavertedĸatĸlast,ĸĸĸĸĸĸĸĸĸ",
+											"ĸĸĸĸĸĸĸĸĸwhatĸwillĸbecomeĸĸĸĸĸĸĸĸĸ",
+											"ĸĸĸĸĸĸĸofĸourĸbraveĸheroes?ĸĸĸĸĸĸĸ",
+											"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+											"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+											"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+											"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+											"                       [ SKIP ]   "];
+											var titletemplate_outro4 = [
+												"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+												"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+												"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸª",
+												"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸª",
+												"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸª",
+												"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+												"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+												"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+												"ĸNoĸlongerĸplaguedĸbyĸgreen-ness,ĸ",
+												"ĸmanyĸcitizensĸhaveĸnowĸchosenĸtoĸ",
+												"ĸformĸaĸband.ĸTheirĸcurrentĸtitleĸ",
+												"ĸĸisĸtheĸ'CeruleanĸPersonĸGang'.ĸĸ",
+												"                       [ SKIP ]   "];
+											var titletemplate_outro5 = [
+												"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸªªª",
+												"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸªªªª",
+												"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸªªĸªª",
+												"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸªªªªª",
+												"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸªªĸĸĸ",
+												"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸªªĸĸ",
+												"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸªªª",
+												"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+												"ĸNoĸlongerĸplaguedĸbyĸgreen-ness,ĸ",
+												"ĸmanyĸcitizensĸhaveĸnowĸchosenĸtoĸ",
+												"ĸformĸaĸband.ĸTheirĸcurrentĸtitleĸ",
+												"ĸĸisĸtheĸ'CeruleanĸPersonĸGang'.ĸĸ",
+												"                       [ SKIP ]   "];
+											var titletemplate_outro6 = [
+												"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸªªªªĸĸĸ",
+												"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸªªªªªªĸĸ",
+												"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸªªĸªªĸªªĸ",
+												"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸªªªªªªªªĸ",
+												"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸªªĸĸĸĸªªĸ",
+												"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸªªĸĸªªĸĸ",
+												"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸªªªªĸĸĸ",
+												"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+												"ĸNoĸlongerĸplaguedĸbyĸgreen-ness,ĸ",
+												"ĸmanyĸcitizensĸhaveĸnowĸchosenĸtoĸ",
+												"ĸformĸaĸband.ĸTheirĸcurrentĸtitleĸ",
+												"ĸĸisĸtheĸ'CeruleanĸPersonĸGang'.ĸĸ",
+												"                       [ SKIP ]   "];
+											var titletemplate_outro7 = [
+												"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸªªªªĸĸĸĸĸĸĸ",
+												"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸªªªªªªĸĸĸĸĸĸ",
+												"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸªªĸªªĸªªĸĸĸĸĸ",
+												"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸªªªªªªªªĸĸĸĸĸ",
+												"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸªªĸĸĸĸªªĸĸĸĸĸ",
+												"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸªªĸĸªªĸĸĸĸĸĸ",
+												"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸªªªªĸĸĸĸĸĸĸ",
+												"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+												"ĸNoĸlongerĸplaguedĸbyĸgreen-ness,ĸ",
+												"ĸmanyĸcitizensĸhaveĸnowĸchosenĸtoĸ",
+												"ĸformĸaĸband.ĸTheirĸcurrentĸtitleĸ",
+												"ĸĸisĸtheĸ'CeruleanĸPersonĸGang'.ĸĸ",
+												"                       [ SKIP ]   "];
+											var titletemplate_outro8 = [
+												"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸªªªªĸĸĸĸĸĸĸĸĸĸĸ",
+												"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸªªªªªªĸĸĸĸĸĸĸĸĸĸ",
+												"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸªªĸªªĸªªĸĸĸĸĸĸĸĸĸ",
+												"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸªªªªªªªªĸĸĸĸĸĸĸĸĸ",
+												"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸªªĸĸĸĸªªĸĸĸĸĸĸĸĸĸ",
+												"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸªªĸĸªªĸĸĸĸĸĸĸĸĸĸ",
+												"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸªªªªĸĸĸĸĸĸĸĸĸĸĸ",
+												"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+												"ĸNoĸlongerĸplaguedĸbyĸgreen-ness,ĸ",
+												"ĸmanyĸcitizensĸhaveĸnowĸchosenĸtoĸ",
+												"ĸformĸaĸband.ĸTheirĸcurrentĸtitleĸ",
+												"ĸĸisĸtheĸ'CeruleanĸPersonĸGang'.ĸĸ",
+												"                       [ SKIP ]   "];
+											var titletemplate_outro9 = [
+												"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸªªªªĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+												"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸªªªªªªĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+												"ĸĸĸĸĸĸĸĸĸĸĸĸĸªªĸªªĸªªĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+												"ĸĸĸĸĸĸĸĸĸĸĸĸĸªªªªªªªªĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+												"ĸĸĸĸĸĸĸĸĸĸĸĸĸªªĸĸĸĸªªĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+												"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸªªĸĸªªĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+												"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸªªªªĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+												"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+												"ĸNoĸlongerĸplaguedĸbyĸgreen-ness,ĸ",
+												"ĸmanyĸcitizensĸhaveĸnowĸchosenĸtoĸ",
+												"ĸformĸaĸband.ĸTheirĸcurrentĸtitleĸ",
+												"ĸĸisĸtheĸ'CeruleanĸPersonĸGang'.ĸĸ",
+												"                       [ SKIP ]   "];
+											var titletemplate_outro10 = [
+													"ĸĸĸĸĸĸĸĸĸĸĸªªªªĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+													"ĸĸĸĸĸĸĸĸĸĸªªªªªªĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+													"ĸĸĸĸĸĸĸĸĸªªĸªªĸªªĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+													"ĸĸĸĸĸĸĸĸĸªªªªªªªªĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+													"ĸĸĸĸĸĸĸĸĸªªĸĸĸĸªªĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+													"ĸĸĸĸĸĸĸĸĸĸªªĸĸªªĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+													"ĸĸĸĸĸĸĸĸĸĸĸªªªªĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+													"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+													"ĸNoĸlongerĸplaguedĸbyĸgreen-ness,ĸ",
+													"ĸmanyĸcitizensĸhaveĸnowĸchosenĸtoĸ",
+													"ĸformĸaĸband.ĸTheirĸcurrentĸtitleĸ",
+													"ĸĸisĸtheĸ'CeruleanĸPersonĸGang'.ĸĸ",
+													"                       [ SKIP ]   "];
+											var titletemplate_outro11 = [
+														"ĸĸĸĸĸĸĸªªªªĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+														"ĸĸĸĸĸĸªªªªªªĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+														"ĸĸĸĸĸªªĸªªĸªªĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+														"ĸĸĸĸĸªªªªªªªªĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+														"ĸĸĸĸĸªªĸĸĸĸªªĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+														"ĸĸĸĸĸĸªªĸĸªªĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+														"ĸĸĸĸĸĸĸªªªªĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+														"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+														"ĸNoĸlongerĸplaguedĸbyĸgreen-ness,ĸ",
+														"ĸmanyĸcitizensĸhaveĸnowĸchosenĸtoĸ",
+														"ĸformĸaĸband.ĸTheirĸcurrentĸtitleĸ",
+														"ĸĸisĸtheĸ'CeruleanĸPersonĸGang'.ĸĸ",
+														"                       [ SKIP ]   "];
+														var titletemplate_outro12 = [
+															"ĸĸĸªªªªĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+															"ĸĸªªªªªªĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+															"ĸªªĸªªĸªªĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+															"ĸªªªªªªªªĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+															"ĸªªĸĸĸĸªªĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+															"ĸĸªªĸĸªªĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+															"ĸĸĸªªªªĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+															"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+															"ĸNoĸlongerĸplaguedĸbyĸgreen-ness,ĸ",
+															"ĸmanyĸcitizensĸhaveĸnowĸchosenĸtoĸ",
+															"ĸformĸaĸband.ĸTheirĸcurrentĸtitleĸ",
+															"ĸĸisĸtheĸ'CeruleanĸPersonĸGang'.ĸĸ",
+															"                       [ SKIP ]   "];
+															var titletemplate_outro13 = [
+																"ªªªªĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																"ªªªªªĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																"ªªĸªªĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																"ªªªªªĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																"ĸĸĸªªĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																"ĸĸªªĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																"ªªªªĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																"ĸNoĸlongerĸplaguedĸbyĸgreen-ness,ĸ",
+																"ĸmanyĸcitizensĸhaveĸnowĸchosenĸtoĸ",
+																"ĸformĸaĸband.ĸTheirĸcurrentĸtitleĸ",
+																"ĸĸisĸtheĸ'CeruleanĸPersonĸGang'.ĸĸ",
+																"                       [ SKIP ]   "];
+																var titletemplate_outro14 = [
+																	"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																	"ªĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																	"ªĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																	"ªĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																	"ªĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																	"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																	"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																	"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																	"ĸNoĸlongerĸplaguedĸbyĸgreen-ness,ĸ",
+																	"ĸmanyĸcitizensĸhaveĸnowĸchosenĸtoĸ",
+																	"ĸformĸaĸband.ĸTheirĸcurrentĸtitleĸ",
+																	"ĸĸisĸtheĸ'CeruleanĸPersonĸGang'.ĸĸ",
+																	"                       [ SKIP ]   "];
+																	var titletemplate_outro15 = [
+																		"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																		"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																		"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																		"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸļĿ",
+																		"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																		"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																		"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																		"Havingĸaccomplishedĸtheirĸmission,",
+																		"ĸĸtheĸcity'sĸambulanceĸteamsĸallĸĸ",
+																		"ĸreceivedĸaĸreward:ĸunemployment.ĸ",
+																		"ĸĸInĸrevenge,ĸtheyĸnowĸannoyĸtheĸĸ",
+																		"ĸĸcityĸwithĸtheĸsoundĸofĸsirens.ĸĸ",
+																		"                       [ SKIP ]   ",];
+																	var titletemplate_outro16 = [
+																		"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																		"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸÆÆ",
+																		"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸŁŀĸÆÆ",
+																		"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸļĿĸŉŋÆÆ",
+																		"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ€®®ÆÆ",
+																		"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ®®®ÆÆ",
+																		"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸæ",
+																		"Havingĸaccomplishedĸtheirĸmission,",
+																		"ĸĸtheĸcity'sĸambulanceĸteamsĸallĸĸ",
+																		"ĸreceivedĸaĸreward:ĸunemployment.ĸ",
+																		"ĸĸInĸrevenge,ĸtheyĸnowĸannoyĸtheĸĸ",
+																		"ĸĸcityĸwithĸtheĸsoundĸofĸsirens.ĸĸ",
+																		"                       [ SKIP ]   ",];
+																	var titletemplate_outro17 = [
+																		"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																		"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸÆÆÆÆÆÆÆ",
+																		"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸŁŀĸÆÆÆÆÆ†Æ",
+																		"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸļĿĸŉŋÆÆÆÆ†††",
+																		"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ€®®ÆÆÆÆÆ†Æ",
+																		"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ®®®ÆÆÆÆÆÆÆ",
+																		"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸæłĸĸĸĸ",
+																		"Havingĸaccomplishedĸtheirĸmission,",
+																		"ĸĸtheĸcity'sĸambulanceĸteamsĸallĸĸ",
+																		"ĸreceivedĸaĸreward:ĸunemployment.ĸ",
+																		"ĸĸInĸrevenge,ĸtheyĸnowĸannoyĸtheĸĸ",
+																		"ĸĸcityĸwithĸtheĸsoundĸofĸsirens.ĸĸ",
+																		"                       [ SKIP ]   ",];
+																		var titletemplate_outro18 = [
+																			"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																			"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸÆÆÆÆÆÆÆÆÆÆÆÆ",
+																			"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸŁŀĸÆÆÆÆÆ†ÆÆÆÆÆÆ",
+																			"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸļĿĸŉŋÆÆÆÆ†††ÆÆÆÆÆ",
+																			"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ€®®ÆÆÆÆÆ†ÆÆÆÆÆÆ",
+																			"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ®®®ÆÆÆÆÆÆÆÆÆÆÆÆ",
+																			"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸæłĸĸĸĸĸĸæłĸ",
+																			"Havingĸaccomplishedĸtheirĸmission,",
+																			"ĸĸtheĸcity'sĸambulanceĸteamsĸallĸĸ",
+																			"ĸreceivedĸaĸreward:ĸunemployment.ĸ",
+																			"ĸĸInĸrevenge,ĸtheyĸnowĸannoyĸtheĸĸ",
+																			"ĸĸcityĸwithĸtheĸsoundĸofĸsirens.ĸĸ",
+																			"                       [ SKIP ]   ",];
+																			var titletemplate_outro19 = [
+																				"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																				"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸÆÆÆÆÆÆÆÆÆÆÆÆĸĸĸĸĸ",
+																				"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸŁŀĸÆÆÆÆÆ†ÆÆÆÆÆÆĸĸĸĸĸ",
+																				"ĸĸĸĸĸĸĸĸĸĸĸĸļĿĸŉŋÆÆÆÆ†††ÆÆÆÆÆĸĸĸĸĸ",
+																				"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸ€®®ÆÆÆÆÆ†ÆÆÆÆÆÆĸĸĸĸĸ",
+																				"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸ®®®ÆÆÆÆÆÆÆÆÆÆÆÆĸĸĸĸĸ",
+																				"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸæłĸĸĸĸĸĸæłĸĸĸĸĸĸ",
+																				"Havingĸaccomplishedĸtheirĸmission,",
+																				"ĸĸtheĸcity'sĸambulanceĸteamsĸallĸĸ",
+																				"ĸreceivedĸaĸreward:ĸunemployment.ĸ",
+																				"ĸĸInĸrevenge,ĸtheyĸnowĸannoyĸtheĸĸ",
+																				"ĸĸcityĸwithĸtheĸsoundĸofĸsirens.ĸĸ",
+																				"                       [ SKIP ]   ",];
+																				var titletemplate_outro20 = [
+																					"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																					"ĸĸĸĸĸĸĸĸĸĸĸĸÆÆÆÆÆÆÆÆÆÆÆÆĸĸĸĸĸĸĸĸĸĸ",
+																					"ĸĸĸĸĸĸĸĸĸŁŀĸÆÆÆÆÆ†ÆÆÆÆÆÆĸĸĸĸĸĸĸĸĸĸ",
+																					"ĸĸĸĸĸĸĸļĿĸŉŋÆÆÆÆ†††ÆÆÆÆÆĸĸĸĸĸĸĸĸĸĸ",
+																					"ĸĸĸĸĸĸĸĸĸ€®®ÆÆÆÆÆ†ÆÆÆÆÆÆĸĸĸĸĸĸĸĸĸĸ",
+																					"ĸĸĸĸĸĸĸĸĸ®®®ÆÆÆÆÆÆÆÆÆÆÆÆĸĸĸĸĸĸĸĸĸĸ",
+																					"ĸĸĸĸĸĸĸĸĸĸĸĸĸæłĸĸĸĸĸĸæłĸĸĸĸĸĸĸĸĸĸĸ",
+																					"Havingĸaccomplishedĸtheirĸmission,",
+																					"ĸĸtheĸcity'sĸambulanceĸteamsĸallĸĸ",
+																					"ĸreceivedĸaĸreward:ĸunemployment.ĸ",
+																					"ĸĸInĸrevenge,ĸtheyĸnowĸannoyĸtheĸĸ",
+																					"ĸĸcityĸwithĸtheĸsoundĸofĸsirens.ĸĸ",
+																					"                       [ SKIP ]   ",];
+																					var titletemplate_outro21 = [
+																						"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																						"ĸĸĸĸĸĸĸÆÆÆÆÆÆÆÆÆÆÆÆĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																						"ĸĸĸĸŁŀĸÆÆÆÆÆ†ÆÆÆÆÆÆĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																						"ĸĸļĿĸŉŋÆÆÆÆ†††ÆÆÆÆÆĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																						"ĸĸĸĸ€®®ÆÆÆÆÆ†ÆÆÆÆÆÆĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																						"ĸĸĸĸ®®®ÆÆÆÆÆÆÆÆÆÆÆÆĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																						"ĸĸĸĸĸĸĸĸæłĸĸĸĸĸĸæłĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																						"Havingĸaccomplishedĸtheirĸmission,",
+																						"ĸĸtheĸcity'sĸambulanceĸteamsĸallĸĸ",
+																						"ĸreceivedĸaĸreward:ĸunemployment.ĸ",
+																						"ĸĸInĸrevenge,ĸtheyĸnowĸannoyĸtheĸĸ",
+																						"ĸĸcityĸwithĸtheĸsoundĸofĸsirens.ĸĸ",
+																						"                       [ SKIP ]   ",];
+																						var titletemplate_outro22 = [
+																							"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																							"ĸĸÆÆÆÆÆÆÆÆÆÆÆÆĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																							"ŀĸÆÆÆÆÆ†ÆÆÆÆÆÆĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																							"ŉŋÆÆÆÆ†††ÆÆÆÆÆĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																							"®®ÆÆÆÆÆ†ÆÆÆÆÆÆĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																							"®®ÆÆÆÆÆÆÆÆÆÆÆÆĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																							"ĸĸĸæłĸĸĸĸĸĸæłĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																							"Havingĸaccomplishedĸtheirĸmission,",
+																							"ĸĸtheĸcity'sĸambulanceĸteamsĸallĸĸ",
+																							"ĸreceivedĸaĸreward:ĸunemployment.ĸ",
+																							"ĸĸInĸrevenge,ĸtheyĸnowĸannoyĸtheĸĸ",
+																							"ĸĸcityĸwithĸtheĸsoundĸofĸsirens.ĸĸ",
+																							"                       [ SKIP ]   ",];
+																							var titletemplate_outro23 = [
+																								"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																								"ÆÆÆÆÆÆÆÆÆĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																								"ÆÆ†ÆÆÆÆÆÆĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																								"Æ†††ÆÆÆÆÆĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																								"ÆÆ†ÆÆÆÆÆÆĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																								"ÆÆÆÆÆÆÆÆÆĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																								"ĸĸĸĸĸĸæłĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																								"Havingĸaccomplishedĸtheirĸmission,",
+																								"ĸĸtheĸcity'sĸambulanceĸteamsĸallĸĸ",
+																								"ĸreceivedĸaĸreward:ĸunemployment.ĸ",
+																								"ĸĸInĸrevenge,ĸtheyĸnowĸannoyĸtheĸĸ",
+																								"ĸĸcityĸwithĸtheĸsoundĸofĸsirens.ĸĸ",
+																								"                       [ SKIP ]   ",];
+																	var titletemplate_outro24 = [
+																		"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																		"ÆÆÆÆĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																		"ÆÆÆÆĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																		"ÆÆÆÆĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																		"ÆÆÆÆĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																		"ÆÆÆÆĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																		"ĸæłĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																		"Havingĸaccomplishedĸtheirĸmission,",
+																		"ĸĸtheĸcity'sĸambulanceĸteamsĸallĸĸ",
+																		"ĸreceivedĸaĸreward:ĸunemployment.ĸ",
+																		"ĸĸInĸrevenge,ĸtheyĸnowĸannoyĸtheĸĸ",
+																		"ĸĸcityĸwithĸtheĸsoundĸofĸsirens.ĸĸ",
+																		"                       [ SKIP ]   ",];
+																		var titletemplate_outro25 = [
+																			"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																			"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																			"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																			"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																			"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																			"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																			"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																			"Havingĸaccomplishedĸtheirĸmission,",
+																			"ĸĸtheĸcity'sĸambulanceĸteamsĸallĸĸ",
+																			"ĸreceivedĸaĸreward:ĸunemployment.ĸ",
+																			"ĸĸInĸrevenge,ĸtheyĸnowĸannoyĸtheĸĸ",
+																			"ĸĸcityĸwithĸtheĸsoundĸofĸsirens.ĸĸ",
+																			"                       [ SKIP ]   ",];
+
+																			
+																			var titletemplate_outro26 = [
+																				"ĸĸĸĸššĸĸĸĸĸĸĸĸĸªªªªĸĸĸĸĸĸĸĸĸššĸĸĸĸ",
+																				"ĸĸĸĸšššĸĸĸĸĸĸĸªªªªªªĸĸĸĸĸĸĸšššĸĸĸĸ",
+																				"ĸšššššššĸĸĸĸĸªªşªªşªªĸĸĸĸĸšššššššĸ",
+																				"ĸšššššššĸĸĸĸĸªªªªªªªªĸĸĸĸĸšššššššĸ",
+																				"ĸĸĸĸšššĸĸĸĸĸĸªªĸĸĸĸªªĸĸĸĸĸĸšššĸĸĸĸ",
+																				"ĸĸĸĸššĸĸĸĸĸĸĸĸªªªªªªĸĸĸĸĸĸĸĸššĸĸĸĸ",
+																				"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸªªªªĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																				"Unfortunately,ĸtheĸambulanceĸteams",
+																				"ĸĸĸwereĸfiredĸbeforeĸtheyĸcouldĸĸĸ",
+																				"ĸremoveĸallĸtheĸarrowsĸtheyĸused.ĸ",
+																				"ĸĸĸItĸisĸnowĸnextĸtoĸimpossibleĸĸĸ",
+																				"ĸĸĸĸĸĸtoĸgetĸaroundĸtheĸcity.ĸĸĸĸĸ",
+																				"                       [ SKIP ]   ",];
+																				var titletemplate_outro27 = [
+																					"ĸĸĸĸššĸĸĸĸĸĸĸĸĸĸĸĸĸĸªªªªĸĸĸĸššĸĸĸĸ",
+																					"ĸĸĸĸšššĸĸĸĸĸĸĸĸĸĸĸĸªªªªªªĸĸšššĸĸĸĸ",
+																					"ĸšššššššĸĸĸĸĸĸĸĸĸĸªªşªªşªªšššššššĸ",
+																					"ĸšššššššĸĸĸĸĸĸĸĸĸĸªªªªªªªªšššššššĸ",
+																					"ĸĸĸĸšššĸĸĸĸĸĸĸĸĸĸĸªªĸĸĸĸªªĸšššĸĸĸĸ",
+																					"ĸĸĸĸššĸĸĸĸĸĸĸĸĸĸĸĸĸªªªªªªĸĸĸššĸĸĸĸ",
+																					"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸªªªªĸĸĸĸĸĸĸĸĸĸ",
+																					"Unfortunately,ĸtheĸambulanceĸteams",
+																					"ĸĸĸwereĸfiredĸbeforeĸtheyĸcouldĸĸĸ",
+																					"ĸremoveĸallĸtheĸarrowsĸtheyĸused.ĸ",
+																					"ĸĸĸItĸisĸnowĸnextĸtoĸimpossibleĸĸĸ",
+																					"ĸĸĸĸĸĸtoĸgetĸaroundĸtheĸcity.ĸĸĸĸĸ",
+																					"                       [ SKIP ]   ",];
+																					var titletemplate_outro28 = [
+																						"ĸĸĸĸššĸĸĸĸªªªªĸĸĸĸĸĸĸĸĸĸĸĸĸĸššĸĸĸĸ",
+																						"ĸĸĸĸšššĸĸªªªªªªĸĸĸĸĸĸĸĸĸĸĸĸšššĸĸĸĸ",
+																						"ĸšššššššªªşªªşªªĸĸĸĸĸĸĸĸĸĸšššššššĸ",
+																						"ĸšššššššªªªªªªªªĸĸĸĸĸĸĸĸĸĸšššššššĸ",
+																						"ĸĸĸĸšššĸªªĸĸĸĸªªĸĸĸĸĸĸĸĸĸĸĸšššĸĸĸĸ",
+																						"ĸĸĸĸššĸĸĸªªªªªªĸĸĸĸĸĸĸĸĸĸĸĸĸššĸĸĸĸ",
+																						"ĸĸĸĸĸĸĸĸĸĸªªªªĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																						"Unfortunately,ĸtheĸambulanceĸteams",
+																						"ĸĸĸwereĸfiredĸbeforeĸtheyĸcouldĸĸĸ",
+																						"ĸremoveĸallĸtheĸarrowsĸtheyĸused.ĸ",
+																						"ĸĸĸItĸisĸnowĸnextĸtoĸimpossibleĸĸĸ",
+																						"ĸĸĸĸĸĸtoĸgetĸaroundĸtheĸcity.ĸĸĸĸĸ",
+																						"                       [ SKIP ]   ",];
+																						var titletemplate_outro29 = [
+																							"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																							"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																							"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																							"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																							"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																							"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																							"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																							"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																							"ĸĸNoĸgreenĸpeopleĸhaveĸbeenĸseenĸĸ",
+																							"ĸĸĸinĸquiteĸsomeĸtime.ĸTheyĸareĸĸĸ",
+																							"ĸĸĸĸĸwidelyĸbelievedĸtoĸhaveĸĸĸĸĸĸ",
+																							"ĸĸĸĸĸĸĸĸĸĸgoneĸextinct.ĸĸĸĸĸĸĸĸĸĸĸ",
+																							"                       [ SKIP ]   ",];
+
+																							var titletemplate_outro30 = [
+																								"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																								"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																								"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĳ",
+																								"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĳ",
+																								"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĳ",
+																								"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																								"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																								"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																								"ĸĸNoĸgreenĸpeopleĸhaveĸbeenĸseenĸĸ",
+																								"ĸĸĸinĸquiteĸsomeĸtime.ĸTheyĸareĸĸĸ",
+																								"ĸĸĸĸĸwidelyĸbelievedĸtoĸhaveĸĸĸĸĸĸ",
+																								"ĸĸĸĸĸĸĸĸĸĸgoneĸextinct.ĸĸĸĸĸĸĸĸĸĸĸ",
+																								"                       [ SKIP ]   ",];
+
+																							var titletemplate_outro31 = [
+																								"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																								"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĳ",
+																								"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĳĸ",
+																								"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĳĳ",
+																								"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĳĳ",
+																								"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĳ",
+																								"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																								"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																								"ĸĸNoĸgreenĸpeopleĸhaveĸbeenĸseenĸĸ",
+																								"ĸĸĸinĸquiteĸsomeĸtime.ĸTheyĸareĸĸĸ",
+																								"ĸĸĸĸĸwidelyĸbelievedĸtoĸhaveĸĸĸĸĸĸ",
+																								"ĸĸĸĸĸĸĸĸĸĸgoneĸextinct..ĸĸĸĸĸĸĸĸĸĸ",
+																								"                       [ SKIP ]   ",];
+
+																							var titletemplate_outro32 = [
+																								"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĳ",
+																								"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĳĳ",
+																								"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĳĸĳ",
+																								"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĳĳĳ",
+																								"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĳĳĳ",
+																								"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĳĳ",
+																								"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĳ",
+																								"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																								"ĸĸNoĸgreenĸpeopleĸhaveĸbeenĸseenĸĸ",
+																								"ĸĸĸinĸquiteĸsomeĸtime.ĸTheyĸareĸĸĸ",
+																								"ĸĸĸĸĸwidelyĸbelievedĸtoĸhaveĸĸĸĸĸĸ",
+																								"ĸĸĸĸĸĸĸĸĸĸgoneĸextinct...ĸĸĸĸĸĸĸĸĸ",
+																								"                       [ SKIP ]   ",];
+
+																							var titletemplate_outro33 = [
+																								"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĳĳ",
+																								"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĳĳĳ",
+																								"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĳĸĳĳ",
+																								"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĳĳĳĳ",
+																								"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĳĳĳĸ",
+																								"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĳĳĳ",
+																								"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĳĳ",
+																								"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																								"ĸĸNoĸgreenĸpeopleĸhaveĸbeenĸseenĸĸ",
+																								"ĸĸĸinĸquiteĸsomeĸtime.ĸTheyĸareĸĸĸ",
+																								"ĸĸĸĸĸwidelyĸbelievedĸtoĸhaveĸĸĸĸĸĸ",
+																								"ĸĸĸĸĸĸĸĸĸĸgoneĸextinct...?ĸĸĸĸĸĸĸĸ",
+																								"                       [ SKIP ]   ",];
+																							var titletemplate_2outro33 = [
+																									"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĳĳĳ",
+																									"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĳĳĳĳ",
+																									"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĳĸĳĳĸ",
+																									"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĳĳĳĳĳ",
+																									"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĳĳĳĸĸ",
+																									"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĳĳĳĳ",
+																									"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĳĳĳ",
+																									"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																									"ĸĸNoĸgreenĸpeopleĸhaveĸbeenĸseenĸĸ",
+																									"ĸĸĸinĸquiteĸsomeĸtime.ĸTheyĸareĸĸĸ",
+																									"ĸĸĸĸĸwidelyĸbelievedĸtoĸhaveĸĸĸĸĸĸ",
+																									"ĸĸĸĸĸĸĸĸĸĸgoneĸextinct...?ĸĸĸĸĸĸĸĸ",
+																									"                       [ SKIP ]   ",];
+
+																								var titletemplate_outro34 = [
+																									"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																									"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																									"ĸĸĸĸĸĸĸĸĸĸAndĸofĸcourse,ĸĸĸĸĸĸĸĸĸĸ",
+																									"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																									"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																									"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																									"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																									"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																									"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																									"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																									"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																									"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																									"                       [ SKIP ]   ",];
+																									var titletemplate_outro35 = [
+																										"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																										"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																										"ĸĸĸĸĸĸĸĸĸĸAndĸofĸcourse,ĸĸĸĸĸĸĸĸĸĸ",
+																										"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸYOUĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																										"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																										"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																										"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																										"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																										"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																										"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																										"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																										"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																										"                       [ SKIP ]   ",];
+																										var titletemplate_outro36 = [
+																											"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																											"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																											"ĸĸĸĸĸĸĸĸĸĸAndĸofĸcourse,ĸĸĸĸĸĸĸĸĸĸ",
+																											"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸYOUĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																											"ĸĸĸĸĸĸshouldĸfindĸsomethingĸĸĸĸĸĸĸ",
+																											"ĸĸĸĸĸĸĸĸĸĸbetterĸtoĸdo.ĸĸĸĸĸĸĸĸĸĸĸ",
+																											"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																											"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																											"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																											"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																											"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																											"ĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸĸ",
+																											"                       [ SKIP ]   ",];
+
 var title_options = [[
 	".............Continue.............",
 	".............Continue.............",
@@ -474,7 +1021,7 @@ var titleWidth=titletemplate_empty[0].length;
 var titleHeight=titletemplate_empty.length;
 var textMode=true;
 var titleScreen=true;
-var titleMode=0;//1 means title screen with options, 2 means level select, 3 means credits, 4 means intro, 5 means manual, 6 means manual sub-page, 7 means pre-intro, 8 means demo code page, 9 means settings
+var titleMode=0;//1 means title screen with options, 2 means level select, 3 means credits, 4 means intro, 5 means manual, 6 means manual sub-page, 7 means pre-intro, 8 means demo code page, 9 means settings, 10 means outro
 var titleSelection=0;
 var titleSelectOptions=3;
 var titleSelected=false;
@@ -622,7 +1169,8 @@ function loadMusic(){
 	loadingMusic.load();
 	loadingMusic = new Audio('music/levelMusic6.mp3');
 	loadingMusic.load();
-	console.error("music loaded");
+	loadingMusic = new Audio('music/endingMusic.mp3');
+	loadingMusic.load();
 }
 
 function playPreIntro() {
@@ -711,6 +1259,324 @@ function playIntro0() {
 	titleImage = deepClone(titletemplate_intro0);
 	delay(750).then(() => generateTitleScreen());
 	delay(750).then(() => startMenuMusic());
+	}
+}
+
+function playOutro0() {
+	if (titleMode === 10) {
+		titleImage = deepClone(titletemplate_outro0);
+		playingOutro();
+		delay(5000).then(() => playOutro1());
+	}
+}
+
+function playOutro1() {
+	if (titleMode === 10) {
+		titleImage = deepClone(titletemplate_outro1);
+		playingOutro();
+		delay(5000).then(() => playOutro3());
+	}
+}
+
+/*function playOutro2() {
+	if (titleMode === 10) {
+		titleImage = deepClone(titletemplate_outro2);
+		playingOutro();
+		delay(3000).then(() => playOutro3());
+	}
+}*/
+
+function playOutro3() {
+	if (titleMode === 10) {
+		titleImage = deepClone(titletemplate_outro3);
+		playingOutro();
+		delay(5000).then(() => playOutro4());
+	}
+}
+
+function playOutro4() {
+	if (titleMode === 10) {
+		titleImage = deepClone(titletemplate_outro4);
+		playingOutro();
+		delay(250).then(() => playOutro5());
+	}
+}
+
+function playOutro5() {
+	if (titleMode === 10) {
+		titleImage = deepClone(titletemplate_outro5);
+		playingOutro();
+		delay(250).then(() => playOutro6());
+	}
+}
+
+function playOutro6() {
+	if (titleMode === 10) {
+		titleImage = deepClone(titletemplate_outro6);
+		playingOutro();
+		delay(250).then(() => playOutro7());
+	}
+}
+
+function playOutro7() {
+	if (titleMode === 10) {
+		titleImage = deepClone(titletemplate_outro7);
+		playingOutro();
+		delay(250).then(() => playOutro8());
+	}
+}
+
+function playOutro8() {
+	if (titleMode === 10) {
+		titleImage = deepClone(titletemplate_outro8);
+		playingOutro();
+		delay(250).then(() => playOutro9());
+	}
+}
+
+function playOutro9() {
+	if (titleMode === 10) {
+		titleImage = deepClone(titletemplate_outro9);
+		playingOutro();
+		delay(5000).then(() => playOutro10());
+	}
+}
+
+function playOutro10() {
+	if (titleMode === 10) {
+		titleImage = deepClone(titletemplate_outro10);
+		playingOutro();
+		delay(250).then(() => playOutro11());
+	}
+}
+function playOutro11() {
+	if (titleMode === 10) {
+		titleImage = deepClone(titletemplate_outro11);
+		playingOutro();
+		delay(250).then(() => playOutro12());
+	}
+}
+function playOutro12() {
+	if (titleMode === 10) {
+		titleImage = deepClone(titletemplate_outro12);
+		playingOutro();
+		delay(250).then(() => playOutro13());
+	}
+}
+
+function playOutro13() {
+	if (titleMode === 10) {
+		titleImage = deepClone(titletemplate_outro13);
+		playingOutro();
+		delay(250).then(() => playOutro14());
+	}
+}
+
+function playOutro14() {
+	if (titleMode === 10) {
+		titleImage = deepClone(titletemplate_outro14);
+		playingOutro();
+		delay(250).then(() => playOutro15());
+	}
+}
+
+function playOutro15() {
+	if (titleMode === 10) {
+		titleImage = deepClone(titletemplate_outro15);
+		playingOutro();
+		delay(250).then(() => playOutro16());
+	}
+}
+
+function playOutro16() {
+	if (titleMode === 10) {
+		titleImage = deepClone(titletemplate_outro16);
+		playingOutro();
+		delay(250).then(() => playOutro17());
+	}
+}
+
+function playOutro17() {
+	if (titleMode === 10) {
+		titleImage = deepClone(titletemplate_outro17);
+		playingOutro();
+		delay(250).then(() => playOutro18());
+	}
+}
+
+function playOutro18() {
+	if (titleMode === 10) {
+		titleImage = deepClone(titletemplate_outro18);
+		playingOutro();
+		delay(250).then(() => playOutro19());
+	}
+}
+
+function playOutro19() {
+	if (titleMode === 10) {
+		titleImage = deepClone(titletemplate_outro19);
+		playingOutro();
+		delay(250).then(() => playOutro20());
+	}
+}
+
+function playOutro20() {
+	if (titleMode === 10) {
+		titleImage = deepClone(titletemplate_outro20);
+		playingOutro();
+		delay(5000).then(() => playOutro21());
+	}
+}
+
+function playOutro21() {
+	if (titleMode === 10) {
+		titleImage = deepClone(titletemplate_outro21);
+		playingOutro();
+		delay(250).then(() => playOutro22());
+	}
+}
+
+function playOutro22() {
+	if (titleMode === 10) {
+		titleImage = deepClone(titletemplate_outro22);
+		playingOutro();
+		delay(250).then(() => playOutro23());
+	}
+}
+
+function playOutro23() {
+	if (titleMode === 10) {
+		titleImage = deepClone(titletemplate_outro23);
+		playingOutro();
+		delay(250).then(() => playOutro24());
+	}
+}
+
+function playOutro24() {
+	if (titleMode === 10) {
+		titleImage = deepClone(titletemplate_outro24);
+		playingOutro();
+		delay(250).then(() => playOutro25());
+	}
+}
+
+function playOutro25() {
+	if (titleMode === 10) {
+		titleImage = deepClone(titletemplate_outro25);
+		playingOutro();
+		arrowLoops = 0;
+		delay(250).then(() => playOutro26());
+	}
+}
+
+var arrowLoops = 0;
+function playOutro26() {
+	if (titleMode === 10) {
+		titleImage = deepClone(titletemplate_outro26);
+		playingOutro();
+		delay(250).then(() => playOutro27());
+	}
+}
+
+function playOutro27() {
+	if (titleMode === 10) {
+		titleImage = deepClone(titletemplate_outro27);
+		playingOutro();
+		delay(250).then(() => play2Outro26());
+	}
+}
+
+function play2Outro26() {
+	if (titleMode === 10) {
+		titleImage = deepClone(titletemplate_outro26);
+		playingOutro();
+		delay(250).then(() => playOutro28());
+	}
+}
+
+function playOutro28() {
+	if (titleMode === 10) {
+		titleImage = deepClone(titletemplate_outro28);
+		playingOutro();
+		console.error("arrowloops = " + arrowLoops);
+		if (arrowLoops < 5) {
+			arrowLoops += 1;
+		delay(250).then(() => playOutro26());
+		} else {
+			delay(250).then(() => playOutro29());
+		}
+	}
+}
+
+function playOutro29() {
+	if (titleMode === 10) {
+		titleImage = deepClone(titletemplate_outro29);
+		playingOutro();
+		delay(3500).then(() => playOutro30());
+	}
+}
+
+function playOutro30() {
+	if (titleMode === 10) {
+		titleImage = deepClone(titletemplate_outro30);
+		playingOutro();
+		delay(600).then(() => playOutro31());
+	}
+}
+
+function playOutro31() {
+	if (titleMode === 10) {
+		titleImage = deepClone(titletemplate_outro31);
+		playingOutro();
+		delay(600).then(() => playOutro32());
+	}
+}
+
+function playOutro32() {
+	if (titleMode === 10) {
+		titleImage = deepClone(titletemplate_outro32);
+		playingOutro();
+		delay(600).then(() => playOutro33());
+	}
+}
+
+function playOutro33() {
+	if (titleMode === 10) {
+		titleImage = deepClone(titletemplate_outro33);
+		playingOutro();
+		delay(600).then(() => play2Outro33());
+	}
+}
+
+function play2Outro33() {
+	if (titleMode === 10) {
+		titleImage = deepClone(titletemplate_2outro33);
+		playingOutro();
+		delay(1200).then(() => playOutro34());
+	}
+}
+
+function playOutro34() {
+	if (titleMode === 10) {
+		titleImage = deepClone(titletemplate_outro34);
+		playingOutro();
+		delay(3000).then(() => playOutro35());
+	}
+}
+
+function playOutro35() {
+	if (titleMode === 10) {
+		titleImage = deepClone(titletemplate_outro35);
+		playingOutro();
+		delay(3000).then(() => playOutro36());
+	}
+}
+
+function playOutro36() {
+	if (titleMode === 10) {
+		titleImage = deepClone(titletemplate_outro36);
+		playingOutro();
+		delay(3000).then(() => gotoLevel(state.sections.length - 1));
 	}
 }
 
@@ -819,6 +1685,22 @@ function startLevelMusic6() {
 	}
 	currentMusicName = "level6";
 	currentMusic = new Audio('music/levelMusic6.mp3');
+	currentMusic.volume = 0.4 * (musicSetting / 10);
+	if (currentMusic != null) {
+		currentMusic.loop = true;
+		currentMusic.play();
+	}
+}
+
+function startEndingMusic() {
+	if (currentMusicName == "ending") {
+		return;
+	}
+	if (currentMusic != null) {
+		currentMusic.pause();
+	}
+	currentMusicName = "ending";
+	currentMusic = new Audio('music/endingMusic.mp3');
 	currentMusic.volume = 0.4 * (musicSetting / 10);
 	if (currentMusic != null) {
 		currentMusic.loop = true;
@@ -1044,27 +1926,6 @@ function generateTitleScreen()
 
 var levelSelectScrollPos = 0;
 
-function gotoEndSequence() {
-	if(state.metadata["credits"] === undefined){
-		goToTitleScreen();
-		return;
-	}
-	titleSelected = false;
-	timer = 0;
-	quittingTitleScreen = false;
-	quittingMessageScreen = false;
-	messageselected = false;
-	titleMode = 7;
-	titleScreen = true;
-	textMode = true;
-    againing = false;
-	messagetext = "";
-	twiddleMetadataExtras();
-
-	playPreIntro();
-	redraw();
-}
-
 function gotoLevelSelectScreen() {
 	if(state.metadata["level_select"] === undefined){
 		goToTitleScreen();
@@ -1195,6 +2056,32 @@ function gotoSkipDemoScreen() {
 	redraw();
 }
 
+function gotoOutro() {
+	quittingTitleScreen = false;
+	titleSelected = false;
+	quittingMessageScreen = false;
+	messageselected = false;
+	titleMode = 10;
+	titleScreen = true;
+	textMode = true;
+    againing = false;
+	messagetext = "";
+	twiddleMetadataExtras();
+	startEndingMusic();
+	playOutro0();
+	generateManualPageScreen();
+	redraw();
+}
+
+function playingOutro() {
+	if (hoverSelection != 12) {
+	titleImage[12] = "                       [ SKIP ]   "
+	} else {
+		titleImage[12] = "                      [  SKIP  ]  "
+	}
+	redraw();
+}
+
 var underlineVisible = true;
 var flashTimer = 350;
 var passwordEntry = "";
@@ -1322,8 +2209,7 @@ function generateCreditsScreen() {
 	titleImage = [
 		" [ BACK ]     Credits             ",
 		"       Music by Eric Matyas       ",
-		"    Available on SoundImage.org   ",
-		"                                  ",
+		"        www.soundimage.org        ",
 		"Menu Theme:    Winter Puzzles     ",
 		"Level Theme 1: Peaceful Puzzles   ",
 		"Level Theme 2: Mellow Puzzler     ",
@@ -1331,6 +2217,7 @@ function generateCreditsScreen() {
 		"Level Theme 4: Puzzle Dreams 2    ",
 		"Level Theme 5: Build it W/ Pixels ",
 		"Level Theme 6: Cryptic Puzzler 2  ",
+		"Ending Theme:  Key West Sunset    ",
 		"                       [ PREV ]   "
 	];
 	if (hoverSelection == 0) {
@@ -4755,8 +5642,8 @@ function nextLevel() {
 			curlevelTarget=null;
 			hasUsedCheckpoint=false;
 		}
-		if (curlevel==(state.levels.length-2)) {	//just finished penultimate level
-			gotoEndSequence();
+		if (curlevel==(state.levels.length-3)) {	//just finished penultimate level
+			gotoOutro();
 		} else if (curlevel<(state.levels.length-1)) {
 			var skip = false;
 			var curSection = state.levels[Number(curlevel)].section;
@@ -4835,7 +5722,7 @@ function loadLevelFromStateOrTarget() {
 	} else if (realLevel <= 85) {
 		startLevelMusic6();
 	} else {
-		startMenuMusic();
+		startEndingMusic();
 	}
 }
 

@@ -95,6 +95,26 @@ function regenText(spritecanvas,spritectx) {
             var textY = (n / textsheetSize)|0;
             renderSprite(textsheetContext, fontstr, ['#FF0000', '#FF0000'], 1, textX, textY);
             renderSprite(textsheetContext, fontstr, ['#FF0000', '#FF0000'], 1, textX, textY + textsheetSize);
+        } else if (key == 'ª') {
+                console.log("making blue character");
+                fontstr = `11111
+                11111
+                11111
+                11111
+                11111
+                11111
+                11111
+                11111
+                11111
+                11111
+                11111
+                11111`
+                fontstr = fontstr.split('\n').map(a=>a.trim().split('').map(t=>parseInt(t)));
+                fontstr.shift();
+                var textX = (n % textsheetSize)|0;
+                var textY = (n / textsheetSize)|0;
+                renderSprite(textsheetContext, fontstr, ['#000000', '#0000FF'], 1, textX, textY);
+                renderSprite(textsheetContext, fontstr, ['#000000', '#0000FF'], 1, textX, textY + textsheetSize);
         }  else if (key == 'ŋ') {
             console.log("making blue siren character");
             fontstr = `00000
@@ -156,7 +176,7 @@ function regenText(spritecanvas,spritectx) {
             renderSprite(textsheetContext, fontstr, ['#FFFFFF', '#FFFFFF'], 1, textX, textY);
             renderSprite(textsheetContext, fontstr, ['#FFFFFF', '#FFFFFF'], 1, textX, textY + textsheetSize);
         } else if (key == 'Ĳ') {
-            console.log("making custom half-black character");
+            console.log("making custom half-black half-green character");
             fontstr = `00000
             00000
             00000
@@ -175,7 +195,27 @@ function regenText(spritecanvas,spritectx) {
             var textY = (n / textsheetSize)|0;
             renderSprite(textsheetContext, fontstr, ['#016b16', '#000000'], 1, textX, textY);
             renderSprite(textsheetContext, fontstr, ['#016b16', '#000000'], 1, textX, textY + textsheetSize);
-        } else if (key == 'ĳ') {
+        } else if (key == 'ş') {
+            console.log("making custom half-black half-blue character");
+            fontstr = `00000
+            00000
+            00000
+            00000
+            00000
+            00000
+            11111
+            11111
+            11111
+            11111
+            11111
+            11111`
+            fontstr = fontstr.split('\n').map(a=>a.trim().split('').map(t=>parseInt(t)));
+            fontstr.shift();
+            var textX = (n % textsheetSize)|0;
+            var textY = (n / textsheetSize)|0;
+            renderSprite(textsheetContext, fontstr, ['#0000FF', '#000000'], 1, textX, textY);
+            renderSprite(textsheetContext, fontstr, ['#0000FF', '#000000'], 1, textX, textY + textsheetSize);
+        }else if (key == 'ĳ') {
             console.log("making custom green character");
             fontstr = `11111
             11111
@@ -195,7 +235,27 @@ function regenText(spritecanvas,spritectx) {
             var textY = (n / textsheetSize)|0;
             renderSprite(textsheetContext, fontstr, ['#016b16', '#016b16'], 1, textX, textY);
             renderSprite(textsheetContext, fontstr, ['#016b16', '#016b16'], 1, textX, textY + textsheetSize);
-        } else if (key == 'æ') {
+        } else if (key == 'š') {
+            console.log("making custom orange character");
+            fontstr = `11111
+            11111
+            11111
+            11111
+            11111
+            11111
+            11111
+            11111
+            11111
+            11111
+            11111
+            11111`
+            fontstr = fontstr.split('\n').map(a=>a.trim().split('').map(t=>parseInt(t)));
+            fontstr.shift();
+            var textX = (n % textsheetSize)|0;
+            var textY = (n / textsheetSize)|0;
+            renderSprite(textsheetContext, fontstr, ['#FFA500', '#FFA500'], 1, textX, textY);
+            renderSprite(textsheetContext, fontstr, ['#FFA500', '#FFA500'], 1, textX, textY + textsheetSize);
+        }else if (key == 'æ') {
             console.log("making custom left wheel character");
             fontstr = `11111
             11111
@@ -972,7 +1032,7 @@ function redraw() {
                         var textX = (index % textsheetSize)|0;
                         var textY = (index / textsheetSize)|0;
                         ctx.imageSmoothingEnabled = false;
-                        if (ch == '†' || ch == 'Æ' || ch == 'æ' || ch == '®' || ch == '€' || ch == '¥' || ch == '§' || ch == '¤' || ch == '¢' || ch == 'Ÿ' || ch == 'ŷ' || ch == 'ų' ||ch == 'Ų' || ch == 'ű' || ch == 'ŧ' || ch == 'Ŧ' || ch == 'Ţ' || ch == 'Œ' || ch == 'œ' || ch == 'ŋ' || ch == 'ŉ' || ch == 'ł' || ch == 'Ł' || ch == 'ŀ' || ch == 'Ŀ' || ch == 'ļ' || ch == 'ĸ' || ch == 'ĳ' || ch == 'Ĳ' || ch == 'ø') {
+                        if (ch == '†' || ch == 'Æ' || ch == 'æ' || ch == '®' || ch == '€' || ch == '¥' || ch == '§' || ch == '¤' || ch == '¢' || ch == 'Ÿ' || ch == 'ŷ' || ch == 'ų' ||ch == 'Ų' || ch == 'ű' || ch == 'ŧ' || ch == 'Ŧ' || ch == 'Ţ' || ch == 'Œ' || ch == 'œ' || ch == 'ŋ' || ch == 'ŉ' || ch == 'ł' || ch == 'Ł' || ch == 'ŀ' || ch == 'Ŀ' || ch == 'ļ' || ch == 'ĸ' || ch == 'ĳ' || ch == 'Ĳ' || ch == 'ø' || ch == 'ª' || ch == 'š' || ch == 'ş') {
                             ctx.drawImage(
                                 textsheetCanvas,
                                 textX * textcellwidth,

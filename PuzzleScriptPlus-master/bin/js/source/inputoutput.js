@@ -495,6 +495,9 @@ function ValidatePassword() {
 
 function mouseAction(event,click,id) {
 	if (textMode) {
+		if (id == state.lmbupID) {
+			return;
+		}
 		if (!click) {
 			if (quittingTitleScreen) {return;}
 
@@ -745,6 +748,11 @@ function mouseAction(event,click,id) {
 					generateSettingsScreen();
 				}
 			}
+			} else if (titleMode === 10) {
+				if (mouseCoordY === 12) {
+					tryPlaySimpleSound('sfx0');
+					gotoLevel(state.sections.length - 1);
+				}
 			}
 		} else if (messageselected===false && state.levels[curlevel].message) {
 			messageselected=true;
@@ -1123,6 +1131,9 @@ function mouseMove(event) {
 				redraw();
 			} else if (titleMode == 6) {
 				generateManualPageScreen();
+				redraw();
+			} else if (titleMode == 10) {
+				playingOutro();
 				redraw();
 			}
 		}
