@@ -6662,7 +6662,7 @@ function redraw() {
 
                                 if (dir != 16) { //Cardinal directions
                                     var delta = dirMasksDelta[dir];
-                
+                                    console.error("delta x is " + delta[0] + ", tween is " + tween);
                                     x -= cellwidth*delta[0]*tween
                                     y -= cellheight*delta[1]*tween
                                 } else if (dir == 16) { //Action button
@@ -7952,6 +7952,8 @@ var instruction_pages = [[
  "                                  ",
  "Right-click: delete arrows        ",
  "                                  ",
+ "Hold left-click: delete arrows    ",
+ "                                  ",
  "R key:       reset ambulances     ",
  "                                  ",
  "ESC key:     exit level           "
@@ -7978,13 +7980,14 @@ var instruction_pages = [[
  "  Clicking on an empty tile will  ",
  "  place an arrow there. Click the ",
  "   arrow again to rotate it, or   ",
- "   right-click it to remove it.   ",
+ "   remove it by right-clicking    ",
+ "     or by holding left-click.    ",
  "  Each level has a max number of  ",
  "    arrows that can be placed.    ",
  "                                  ",
  " Ambulances that move over arrows ",
- "     will start moving in the     ",
- " direction the arrow is pointing. "
+ "      will change direction.      ",
+ "                                  "
 ],
 [
  " [ BACK ]                    ",
@@ -12131,6 +12134,8 @@ function resolveMovements(level, bannedGroup){
 var sfxCreateMask=null;
 var sfxDestroyMask=null;
 
+var cancelDone = false; //used to prevent unnecessary tween skips
+
 function calculateRowColMasks() {
  for(var i=0;i<level.mapCellContents.length;i++) {
   level.mapCellContents[i]=0;
@@ -12173,6 +12178,7 @@ var playerPositionsAtTurnStart;
 
 /* returns a bool indicating if anything changed */
 function processInput(dir,dontDoWin,dontModify,bak) {
+ //var tempMovedEntities = newMovedEntities;
  if (!dontModify) {
   newMovedEntities = {};
  }
@@ -12376,10 +12382,11 @@ playerPositionsAtTurnStart = getPlayerPositions();
    }
    processOutputCommands(level.commandQueue);
       addUndoState(bak);
-      DoUndo(true,false, true, false);
+      DoUndo(true,false, false, false);
       tryPlayCancelSound();
+   //newMovedEntities = tempMovedEntities;
       return false;
-     } 
+     }
 
      if (level.commandQueue.indexOf('restart')>=0) {
       if (verbose_logging) { 
@@ -16875,6 +16882,7 @@ function mouseAction(event,click,id) {
      try {
       var bak = backupLevel();
       var cell = level.getCell(coordIndex);
+      var oldcell = cell;
       cell.ibitset(id);
       level.setCell(coordIndex, cell);
       var inputdir = 5;

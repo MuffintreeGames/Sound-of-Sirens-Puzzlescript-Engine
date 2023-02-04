@@ -5067,6 +5067,8 @@ function resolveMovements(level, bannedGroup){
 var sfxCreateMask=null;
 var sfxDestroyMask=null;
 
+var cancelDone = false; //used to prevent unnecessary tween skips
+
 function calculateRowColMasks() {
 	for(var i=0;i<level.mapCellContents.length;i++) {
 		level.mapCellContents[i]=0;
@@ -5109,6 +5111,7 @@ var playerPositionsAtTurnStart;
 
 /* returns a bool indicating if anything changed */
 function processInput(dir,dontDoWin,dontModify,bak) {
+	//var tempMovedEntities = newMovedEntities;
 	if (!dontModify) {
 		newMovedEntities = {};
 	}
@@ -5312,10 +5315,11 @@ playerPositionsAtTurnStart = getPlayerPositions();
 			}
 			processOutputCommands(level.commandQueue);
     		addUndoState(bak);
-    		DoUndo(true,false, true, false);
+    		DoUndo(true,false, false, false);
     		tryPlayCancelSound();
+			//newMovedEntities = tempMovedEntities;
     		return false;
-	    } 
+	    }
 
 	    if (level.commandQueue.indexOf('restart')>=0) {
 	    	if (verbose_logging) { 

@@ -793,6 +793,7 @@ function mouseAction(event,click,id) {
 					try {
 						var bak = backupLevel();
 						var cell = level.getCell(coordIndex);
+						var oldcell = cell;
 						cell.ibitset(id);
 						level.setCell(coordIndex, cell);
 						var inputdir = 5;

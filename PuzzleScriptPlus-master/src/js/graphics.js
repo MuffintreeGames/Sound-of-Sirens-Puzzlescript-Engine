@@ -1251,7 +1251,7 @@ function redraw() {
 
                                 if (dir != 16) { //Cardinal directions
                                     var delta = dirMasksDelta[dir];
-                
+                                    console.error("delta x is " + delta[0] + ", tween is " + tween);
                                     x -= cellwidth*delta[0]*tween
                                     y -= cellheight*delta[1]*tween
                                 } else if (dir == 16) { //Action button
