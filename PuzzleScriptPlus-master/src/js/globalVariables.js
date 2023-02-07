@@ -9,6 +9,9 @@ var runrulesonlevelstart_phase=false;
 var ignoreNotJustPressedAction=true;
 var musicSetting;
 var sfxSetting;
+var earnedAchievements;
+var placedArrows;
+var crashes;
 
 function doSetupTitleScreenLevelContinue(){
     try {
@@ -39,6 +42,24 @@ function doSetupTitleScreenLevelContinue(){
                 musicSetting = JSON.parse(localStorage.getItem(document.URL + "_music"));
             } else {
                 musicSetting = 10;
+            }
+
+            if (storage_has(document.URL+'_achievements')) {
+                earnedAchievements = JSON.parse(localStorage.getItem(document.URL + "_achievements"));
+            } else {
+                earnedAchievements = {};
+            }
+
+            if (storage_has(document.URL+'_arrows')) {
+                placedArrows = JSON.parse(localStorage.getItem(document.URL + "_arrows"));
+            } else {
+                placedArrows = 0;
+            }
+
+            if (storage_has(document.URL+'_crashes')) {
+                crashes = JSON.parse(localStorage.getItem(document.URL + "_crashes"));
+            } else {
+                crashes = 0;
             }
     } catch(ex) {
     }

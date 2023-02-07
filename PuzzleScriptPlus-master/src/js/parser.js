@@ -200,7 +200,7 @@ var codeMirrorFn = function() {
     //var logicWords = ['all', 'no', 'on', 'some'];
     var sectionNames = ['objects', 'legend', 'sounds', 'collisionlayers', 'rules', 'winconditions', 'levels'];
     var commandwords = ["sfx0","sfx1","sfx2","sfx3","sfx4","sfx5","sfx6","sfx7","sfx8","sfx9","sfx10", "sfx11", "sfx12", "sfx13", "cancel","checkpoint","restart","win","message","again","undo",
-    "nosave","quit","zoomscreen","flickscreen","smoothscreen","again_interval","realtime_interval","key_repeat_interval",'noundo','norestart','background_color','text_color','goto','message_text_align'];
+    "nosave","quit","zoomscreen","flickscreen","smoothscreen","again_interval","realtime_interval","key_repeat_interval",'noundo','norestart','background_color','text_color','goto','message_text_align', 'achieve1', 'achieve2', 'achieve3', 'achieve4', 'achieve5'];
 	
     var reg_commands = /[\p{Z}\s]*(sfx0|sfx1|sfx2|sfx3|Sfx4|sfx5|sfx6|sfx7|sfx8|sfx9|sfx10|sfx11|sfx12|sfx13|cancel|checkpoint|restart|win|message|again|undo|nosave)[\p{Z}\s]*/u;
     var reg_name = /[\p{L}\p{N}_]+[\p{Z}\s]*/u;///\w*[a-uw-zA-UW-Z0-9_]/;

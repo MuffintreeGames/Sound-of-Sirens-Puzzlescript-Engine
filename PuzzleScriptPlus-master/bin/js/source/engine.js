@@ -869,10 +869,10 @@ var title_options = [[
 	"............>.Manual.<............",
    ],
    [
-	".............Password.............",
-	".............Password.............",
-	".............Đāśśŵŏřď.............",
-	"...........>.Password.<...........",
+	"...........Achievements...........",
+	"...........Achievements...........",
+	"...........ĐćħįěÝěñěńťś...........",
+	".........>.Achievements.<.........",
    ]
 ];
 
@@ -1019,17 +1019,41 @@ var instruction_pages = [[
 ],
 ]
 
+var achievementList = [
+	["Ambulance Amateur", "         Ambulance Amateur        ", "Cleared level 15."],
+	["Hospital Helper", "          Hospital Helper         ", "Cleared level 32."],
+	["Patient Pacifier", "         Patient Pacifier         ", "Cleared level 45."],
+	["Vehicle Voyeur", "          Vehicle Voyeur          ", "Cleared level 57."],
+	["Paramedic Professional", "      Paramedic Professional      ", "Cleared level 73."],
+	["Siren Savant", "           Siren Savant           ", "Finished the game."],
+	["Medical Master", "          Medical Master          ", "Cleared the bonus level."],
+	["Arrow Artist", "           Arrow Artist           ", "Place a total of 250 arrows."],
+	["Dedicated Driver", "         Dedicated Driver         ", "Let a level run for over 200 steps."],
+	["Crash Craver", "           Crash Craver           ", "Cause 30 vehicles to crash."],
+	["Efficient Emergency", "        Efficient Emergency       ", "Cleared a level with at least one", "leftover arrow."]
+]
+
 var titleImage=[];
 var titleWidth=titletemplate_empty[0].length;
 var titleHeight=titletemplate_empty.length;
 var textMode=true;
 var titleScreen=true;
-var titleMode=0;//1 means title screen with options, 2 means level select, 3 means credits, 4 means intro, 5 means manual, 6 means manual sub-page, 7 means pre-intro, 8 means demo code page, 9 means settings, 10 means outro
+var titleMode=0;//1 means title screen with options, 2 means level select, 3 means credits, 4 means intro, 5 means manual, 6 means manual sub-page, 7 means pre-intro, 8 means demo code page, 9 means settings, 10 means outro, 11 means achievements, 12 means achievement description
 var titleSelection=0;
 var titleSelectOptions=3;
 var titleSelected=false;
 var hoverSelection=-1; //When mouse controls are enabled, over which row the mouse is hovering. -1 when disabled.
 var instructions_index = -1; //page of manual to use
+var achievementIndex = -1; //index of achievement list to use
+
+function earnAchievement(achievementName) {
+	if (earnedAchievements[achievementName] === 1) {	//already have achievement
+		return;
+	}
+	earnedAchievements[achievementName] = 1;
+	localStorage.setItem(document.URL+'_achievements', JSON.stringify(earnedAchievements));
+	tryPlaySimpleSound("sfx3");
+}
 
 function enterFullScreen() {
 	var elem = document.documentElement;
@@ -1088,10 +1112,6 @@ function isContinueOptionSelected() {
 
 function isNewGameOptionSelected() {
 	if (titleMode === 1) {	//new game has been moved into settings menu
-		/*if (isPasswordAvailable()) {
-			return titleSelection == titleSelectOptions-3;
-		}
-		return titleSelection == titleSelectOptions-2;*/
 		return;
 	} else {
 		return titleSelection == 0;
@@ -1100,10 +1120,7 @@ function isNewGameOptionSelected() {
 
 function isSettingsOptionSelected() {
 	if (titleMode === 1) {
-		if (isPasswordAvailable()) {
-			return titleSelection == titleSelectOptions-3;
-		}
-		return titleSelection == titleSelectOptions-2; // settings option is always second to last
+		return titleSelection == titleSelectOptions-3; // settings option is always third to last
 	} else {
 		return titleSelection == 0;
 	}
@@ -1133,10 +1150,7 @@ function isCreditsOptionSelected() {
 		return false;
 	}
 
-	if (isPasswordAvailable()) {
-		return titleSelection == titleSelectOptions-2;
-	}
-	return titleSelection == titleSelectOptions-1; // credits option is on bottom
+	return titleSelection == titleSelectOptions-2; // credits option is second to last
 }
 
 function isManualOptionSelected() {
@@ -1146,15 +1160,12 @@ function isManualOptionSelected() {
 	if (titleMode === 1) {
 	return titleSelection == 2; // manual option is third from top
 	} else {
-		return titleSelection == 1; // no level select option, this is secondd
+		return titleSelection == 1; // no level select option, this is second
 	}
 }
 
-function isPasswordOptionSelected() {
-	if (isPasswordAvailable()) {
-		return titleSelection == titleSelectOptions-1;
-	}
-	return false;
+function isAchievementsOptionSelected() {
+	return titleSelection == titleSelectOptions-1;
 }
 
 function loadMusic(){
@@ -1579,7 +1590,7 @@ function playOutro36() {
 	if (titleMode === 10) {
 		titleImage = deepClone(titletemplate_outro36);
 		playingOutro();
-		delay(3000).then(() => gotoLevel(state.sections.length - 1));
+		delay(3000).then(() => gotoLevel(state.sections.length - 2));
 	}
 }
 
@@ -1757,7 +1768,7 @@ function generateTitleScreen()
     ļĿĸŉŋÆÆÆÆ†††ÆÆÆÆÆ
 	ĸĸĸĸĸ€®®ÆÆÆŲű†ŧŦŢŒœÆ
 	ĸĸĸĸĸ®®®ÆÆÆÆÆÆÆÆÆÆÆÆ
-	ĸĸĸĸĸĸĸĸæłĸDEMOĸæłĸ`;
+	ĸĸĸĸĸĸĸĸæłĸĸĸĸĸĸæłĸ`;
 		if (state.metadata.title!==undefined) {
 		title=state.metadata.title;
 	}
@@ -1801,10 +1812,8 @@ function generateTitleScreen()
 			availableOptions.push(4);
 		}
 
-		if (isPasswordAvailable()) {
-			availableOptions.push(6);
-			titleSelectOptions++;
-		}
+		availableOptions.push(6);
+		titleSelectOptions++;
 
 		titleImage = deepClone(titletemplate_empty);
 
@@ -2059,6 +2068,41 @@ function gotoSkipDemoScreen() {
 	redraw();
 }
 
+function gotoAchievementsScreen() {
+	titleSelected = false;
+	timer = 0;
+	quittingTitleScreen = false;
+	quittingMessageScreen = false;
+	messageselected = false;
+	titleMode = 11;
+	titleScreen = true;
+	textMode = true;
+    againing = false;
+	messagetext = "";
+	achieveScrollPos = 0;
+	twiddleMetadataExtras();
+
+	generateAchievementsScreen();
+	redraw();
+}
+
+function gotoAchievementDescription() {
+	titleSelected = false;
+	timer = 0;
+	quittingTitleScreen = false;
+	quittingMessageScreen = false;
+	messageselected = false;
+	titleMode = 12;
+	titleScreen = true;
+	textMode = true;
+    againing = false;
+	messagetext = "";
+	twiddleMetadataExtras();
+
+	generateAchievementDescription();
+	redraw();
+}
+
 function gotoOutro() {
 	quittingTitleScreen = false;
 	titleSelected = false;
@@ -2072,7 +2116,6 @@ function gotoOutro() {
 	twiddleMetadataExtras();
 	startEndingMusic();
 	playOutro0();
-	generateManualPageScreen();
 	redraw();
 }
 
@@ -2088,7 +2131,7 @@ function playingOutro() {
 var underlineVisible = true;
 var flashTimer = 350;
 var passwordEntry = "";
-var correctPassword = "GARFUNKEL"
+var correctPassword = "GARFUNKL"
 
 function checkPassword() {
 	if (passwordEntry == correctPassword) {
@@ -2210,7 +2253,7 @@ function generateCreditsScreen() {
 	}
 } else if (creditsPage === 2) {
 	titleImage = [
-		" [ BACK ]     Credits             ",
+		" [ BACK ]      Credits            ",
 		"       Music by Eric Matyas       ",
 		"        www.soundimage.org        ",
 		"Menu Theme:    Winter Puzzles     ",
@@ -2253,20 +2296,43 @@ function generateManualPageScreen() {
 	redraw();
 }
 
+function generateAchievementDescription() {
+	if (achievementIndex == -1) {
+		return;
+	}
+	var achievementName = achievementList[achievementIndex][1];
+	//var achievementDesc = achievementList[achievementIndex][2];
+	if (hoverSelection == 0) {
+		titleImage[0] =	"[  BACK  ]                   ";
+	} else {
+		titleImage[0] = " [ BACK ]                    ";
+	}
+	titleImage[1] = achievementName;
+	titleImage[2] = "                                  ";
+	for (var i = 2; i < achievementList[achievementIndex].length; i++) {
+		titleImage[i+1] = achievementList[achievementIndex][i];
+	}
+
+	for(; i < 12; i++) {
+		titleImage[i+1]= "                                  ";
+	}
+	redraw();
+}
+
 function generateManualScreen() {
 	titleImage = [
 		" [ BACK ]                    ",
 		"              Manual              ",
 		"                                  ",
-		" 1. Basics 1: Controls            ",
-		" 2. Basics 2: Ambulances          ",
-		" 3. Basics 3: Arrows              ",
-		" 4. Basics 4: Miscellaneous       ",
-		" 5. Rafts                         ",
-		" 6. Buttons and Gates             ",
-		" 7. Red Tiles                     ",
-		" 8. Cars                          ",
-		" 9. Temp Arrows                   ",
+		" 1.  Basics 1: Controls           ",
+		" 2.  Basics 2: Ambulances         ",
+		" 3.  Basics 3: Arrows             ",
+		" 4.  Basics 4: Miscellaneous      ",
+		" 5.  Rafts                        ",
+		" 6.  Buttons and Gates            ",
+		" 7.  Red Tiles                    ",
+		" 8.  Cars                         ",
+		" 9.  Temp Arrows                  ",
 		" 10. Placing Temp Arrows          "
 	];
 
@@ -2362,17 +2428,17 @@ function generateSettingsScreen() {
 		"                                  ",
 		"      [ Toggle Fullscreen ]       ",
 		"                                  ",
-		"        [ Reset Progress ]        ",
+		"       [ Skip Demo Levels ]       ",
 		"                                  ",
-		"                                  "
+		"        [ Reset Progress ]        ",
 	];
 	var sfxRow = new String(" SFX        [-]  ||||||||||  [+]  ");
 	var musicRow = new String(" MUSIC      [-]  ||||||||||  [+]  ");
-	if (hoverSelection == 10) {
+	if (hoverSelection == 12) {
 		if (verifying) {
-			titleImage[10] = "    [    Are You Certain?    ]    "
+			titleImage[12] = "    [    Are You Certain?    ]    "
 		} else {
-		titleImage[10] = "       [  Reset Progress  ]       "
+		titleImage[12] = "       [  Reset Progress  ]       "
 		}
 	} else {
 		verifying = false;
@@ -2392,8 +2458,14 @@ function generateSettingsScreen() {
 		}
 	} else if (hoverSelection == 8) {
 		titleImage[8] = "     [  Toggle Fullscreen  ]      ";
+	} else if (hoverSelection == 10) {
+		titleImage[10] = 	"      [  Skip Demo Levels  ]      ";
 	}
 }
+
+	if (!isPasswordAvailable()) {
+		titleImage[10] = "                                 ";
+	}
 
 	for (var x = 0; x < sfxSetting; x++) {
 		sfxRow = sfxRow.replace("|", "Ĥ");
@@ -2457,6 +2529,102 @@ function decreaseMusicVolume() {
 	} else {
 		tryPlaySimpleSound("sfx1");
 	}
+}
+
+var amountOfAchievesOnScreen = 0;
+var achieveScrollPos = 0;
+function generateAchievementsScreen() {
+	titleImage = [
+		" [ BACK ]                    ",
+		"           Achievements           "
+	];
+
+	if (hoverSelection == 0) {
+		titleImage[0] =	"[  BACK  ]                   ";
+	}
+
+	amountOfAchievesOnScreen = 9;
+
+	titleSelectOptions = achievementList.length;
+
+	if(titleSelection < achieveScrollPos) { //Up
+		achieveScrollPos = titleSelection;
+	} else if(titleSelection >= achieveScrollPos + amountOfAchievesOnScreen) { //Down
+		achieveScrollPos = titleSelection - amountOfAchievesOnScreen + 1;
+	}
+
+	var posOnScreen = titleSelection - achieveScrollPos;
+	if (posOnScreen == 0) {
+		achieveScrollPos = Math.max(0, achieveScrollPos - 1);
+		//console.log("On first position");
+	}
+
+	if (posOnScreen == amountOfAchievesOnScreen-1) {
+		achieveScrollPos = Math.min(achievementList.length-amountOfAchievesOnScreen, achieveScrollPos + 1);
+		//console.log("On last position");
+	}
+
+	if (achieveScrollPos != 0) {
+		if (hoverSelection == 2) {
+			titleImage.push("                        [  PREV  ]");
+		} else {
+			titleImage.push("                         [ PREV ] ");
+		}
+	} else {
+		titleImage.push("                                  ");
+	}
+
+	console.error("scroll pos: " + achieveScrollPos + ", achievementlist length: " + achievementList.length);
+	for(var i = achieveScrollPos; i < achieveScrollPos + amountOfAchievesOnScreen; i++) {
+		if(i < 0 || i >= achievementList.length) {
+			break;
+		}
+		console.error("achieve i is " + i);
+		var achievement = achievementList[i];
+		var selected = (i == titleSelection);
+		var name = achievement[0].substring(0, 31);
+		var solved = earnedAchievements[name] === 1;
+
+		if (selected && titleSelected) {
+			tryPlayStartGameSound();
+		}
+		
+		var solved_symbol = "✓";
+		var line = (solved ? solved_symbol : " ") + " ";
+
+		var hover_symbol = " ";
+		
+		if (hoverSelection - 3 + achieveScrollPos == i) {hover_symbol = ">"}
+		if (selected && titleSelected) {hover_symbol = " "}
+		
+		line += hover_symbol + " " + name;
+		for(var j = name.length; j < 32; j++) {
+			/*if(selected && titleSelected && j != name.length) {
+				line += "#";
+			} else {*/
+				line += " ";
+			//}
+		}
+		//line += (selected ? "#" : " ") + "  ";
+
+		titleImage.push(line);
+	}
+
+	if (achieveScrollPos != titleSelectOptions - amountOfAchievesOnScreen && titleSelectOptions - amountOfAchievesOnScreen > 0) {
+		if (hoverSelection == 12) {
+			titleImage.push("                        [  NEXT  ]")
+		} else {
+			titleImage.push("                         [ NEXT ] ")
+		}
+	} else {
+		titleImage.push("                                  ");
+	}
+
+	for(var i = titleImage.length; i < 13; i++) {
+		titleImage.push("                                  ");
+	}
+
+	redraw();
 }
 
 function generateLevelSelectScreen() {
@@ -5339,6 +5507,7 @@ playerPositionsAtTurnStart = getPlayerPositions();
 				consolePrintFromRule('QUIT command executed, exiting level.',r);
 				consoleCacheDump();
 			}
+			tryPlayEndGameSound();
 			if (state.metadata.level_select !== undefined) {
 				gotoLevelSelectScreen();
 			} else {
@@ -5347,6 +5516,32 @@ playerPositionsAtTurnStart = getPlayerPositions();
 			messagetext = "";
 			canvasResize();	
 			return true;
+		}
+
+		if (level.commandQueue.indexOf('achieve1')>=0) {
+	    	earnAchievement("Efficient Emergency");
+		}
+
+		if (level.commandQueue.indexOf('achieve2')>=0) {
+	    	placedArrows += 1;
+			localStorage.setItem(document.URL+'_arrows', JSON.stringify(placedArrows));
+			console.error("placed arrows: " + placedArrows);
+			if (placedArrows >= 250) {
+				earnAchievement("Arrow Artist");
+			}
+		}
+
+		if (level.commandQueue.indexOf('achieve3')>=0) {
+	    	crashes += 1;
+			localStorage.setItem(document.URL+'_crashes', JSON.stringify(crashes));
+			console.error("crashes: " + crashes);
+			if (crashes >= 30) {
+				earnAchievement("Crash Craver");
+			}
+		}
+
+		if (level.commandQueue.indexOf('achieve4')>=0) {
+			earnAchievement("Dedicated Driver");
 		}
 
 	    if (dontModify && level.commandQueue.indexOf('win')>=0) {
@@ -5639,8 +5834,8 @@ function nextLevel() {
 			gotoCreditsScreen();
 		} else if (isManualOptionSelected()) {
 			gotoManualScreen();
-		} else if (isPasswordOptionSelected()) {
-			gotoSkipDemoScreen();
+		} else if (isAchievementsOptionSelected()) {
+			gotoAchievementsScreen();
 		} else if (isSettingsOptionSelected) {
 			gotoSettingsScreen();
 		}
@@ -5649,7 +5844,7 @@ function nextLevel() {
 			curlevelTarget=null;
 			hasUsedCheckpoint=false;
 		}
-		if (curlevel==(state.levels.length-3)) {	//just finished penultimate level
+		if (curlevel==(state.levels.length-7)) {	//just finished final normal level
 			gotoOutro();
 		} else if (curlevel<(state.levels.length-1)) {
 			var skip = false;
@@ -5715,21 +5910,41 @@ function loadLevelFromStateOrTarget() {
 	} else {
 		loadLevelFromState(state,curlevel);
 	}
+	console.error("curlevel is " + curlevel);
 	var realLevel = Math.ceil((parseInt(curlevel) + 1) / 2);
+	if (realLevel == 16) {
+		earnAchievement("Ambulance Amateur");
+	} else if (realLevel == 33) {
+		earnAchievement("Hospital Helper");
+	} else if (realLevel == 46) {
+		earnAchievement("Patient Pacifier");
+	} else if (realLevel == 58) {
+		earnAchievement("Vehicle Voyeur");
+	} else if (realLevel == 74) {
+		earnAchievement("Paramedic Professional");
+	} else if (realLevel == 86) {
+		earnAchievement("Siren Savant");
+	} else if (curlevel === 173) {
+		earnAchievement("Medical Master");
+	}
+
+	//set correct music
 	if (realLevel <= 15) {
 		startLevelMusic1();
 	} else if (realLevel <= 32) {
 		startLevelMusic2();
 	} else if (realLevel <= 45) {
 		startLevelMusic3();
-	} else if (realLevel <= 58) {
+	} else if (realLevel <= 57) {
 		startLevelMusic4();
 	} else if (realLevel <= 73) {
 		startLevelMusic5();
-	} else if (realLevel <= 85) {
+	} else if (realLevel <= 84) {
 		startLevelMusic6();
-	} else {
+	} else if (realLevel <= 85 || curlevel === 170) {	//since there's an extra message after normal final level, end up needing to use curlevel here
 		startEndingMusic();
+	} else {
+		startLevelMusic6();
 	}
 }
 
@@ -5804,6 +6019,9 @@ function clearLocalStorage() {
 			localStorage.removeItem(document.URL);
 			localStorage.removeItem(document.URL+'_checkpoint');
 			localStorage.removeItem(document.URL+'_sections');
+			localStorage.removeItem(document.URL+'_achievements');
+			localStorage.removeItem(document.URL+'_crashes');
+			localStorage.removeItem(document.URL+'_arrows');
 		}
 	} catch(ex){ }
 }

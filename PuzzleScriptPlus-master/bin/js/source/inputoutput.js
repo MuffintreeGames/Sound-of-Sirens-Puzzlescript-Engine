@@ -696,7 +696,7 @@ function mouseAction(event,click,id) {
 				if (mouseCoordY===0) {
 					titleSelection = 0;
 					tryPlayEndGameSound();
-					goToTitleScreen();
+					gotoSettingsScreen();
 
 					tryPlayTitleSound();
 					canvasResize();
@@ -707,7 +707,7 @@ function mouseAction(event,click,id) {
 				if (quittingTitleScreen || titleSelected) {
 					return;
 				}
-				if (mouseCoordY==10) {
+				if (mouseCoordY==12) {
 					if (!verifying) {
 						verifying = true;
 						tryPlaySimpleSound("sfx7");
@@ -746,12 +746,73 @@ function mouseAction(event,click,id) {
 						enterFullScreen();
 					}
 					generateSettingsScreen();
+				} else if (mouseCoordY===10) {
+					tryPlayStartGameSound();
+					gotoSkipDemoScreen();
 				}
 			}
 			} else if (titleMode === 10) {
 				if (mouseCoordY === 12) {
 					tryPlaySimpleSound('sfx0');
-					gotoLevel(state.sections.length - 1);
+					gotoLevel(state.sections.length - 2);
+				}
+			} else if (titleMode===11) {
+				if (quittingTitleScreen || titleSelected) {
+					return;
+				}
+				if (mouseCoordY===0) {
+					titleSelection = 0;
+					tryPlayEndGameSound();
+					goToTitleScreen();
+
+					tryPlayTitleSound();
+					canvasResize();
+				} else if (mouseCoordY===2) {
+					if (achieveScrollPos != 0) {
+						tryPlaySimpleSound("sfx9");
+						achievementScroll(-3)
+					}
+				} else if (mouseCoordY===12) {
+					if (titleSelectOptions - amountOfAchievesOnScreen > achieveScrollPos) {
+						tryPlaySimpleSound("sfx9");
+						achievementScroll(3)
+					}
+				} else {
+					var clickedAchieve = -1;
+					switch (mouseCoordY) {
+						case 3: clickedAchieve = 0; break;
+						case 4: clickedAchieve = 1; break;
+						case 5: clickedAchieve = 2; break;
+						case 6: clickedAchieve = 3; break;
+						case 7: clickedAchieve = 4; break;
+						case 8: clickedAchieve = 5; break;
+						case 9: clickedAchieve = 6; break;
+						case 10: clickedAchieve = 7; break;
+						case 11: clickedAchieve = 8; break;
+					}
+					if (clickedAchieve != -1) {
+						clickedAchieve += achieveScrollPos;
+						if (clickedAchieve < titleSelectOptions) {
+							achievementIndex = clickedAchieve;
+							titleSelected=true;
+							messageselected=false;
+							timer=0;
+							tryPlayStartGameSound();
+							gotoAchievementDescription();
+						}
+					}
+				}
+			} else if (titleMode === 12) {
+				if (quittingTitleScreen || titleSelected) {
+					return;
+				}
+				if (mouseCoordY===0) {
+					titleSelection = 0;
+					tryPlayEndGameSound();
+					gotoAchievementsScreen();
+
+					tryPlayTitleSound();
+					canvasResize();
 				}
 			}
 		} else if (messageselected===false && state.levels[curlevel].message) {
@@ -1136,6 +1197,12 @@ function mouseMove(event) {
 			} else if (titleMode == 10) {
 				playingOutro();
 				redraw();
+			} else if (titleMode == 11) {
+				generateAchievementsScreen();
+				redraw();
+			} else if (titleMode == 12) {
+				generateAchievementDescription();
+				redraw();
 			}
 		}
 	} else if (dragging && "mouse_drag" in state.metadata) {
@@ -1202,6 +1269,12 @@ function onMouseWheel(event) {
 		redraw();
 		prevent(event)
 	}
+	if (titleScreen && titleMode == 11 && (IsMouseGameInputEnabled())) {
+		achievementScroll(normalizedDelta);
+
+		redraw();
+		prevent(event)
+	}
 	if (levelEditorOpened) {
 		glyphSelectedIndex = clamp(glyphSelectedIndex + normalizedDelta, 0, glyphCount() - 1);
 		redraw();
@@ -1213,6 +1286,12 @@ function levelSelectScroll(direction) {
 	levelSelectScrollPos = clamp(levelSelectScrollPos + direction, 0, Math.max(state.sections.length - amountOfLevelsOnScreen, 0));
 	titleSelection = clamp(titleSelection + direction, 0, state.sections.length - 1);
 	generateLevelSelectScreen();
+}
+
+function achievementScroll(direction) {
+	achieveScrollPos = clamp(achieveScrollPos + direction, 0, Math.max(achievementList.length - amountOfAchievesOnScreen, 0));
+	titleSelection = clamp(titleSelection + direction, 0, achievementList.length - 1);
+	generateAchievementsScreen();
 }
 
 function clamp(number, min, max) {
@@ -1459,6 +1538,10 @@ function checkKey(e,justPressed) {
 						gotoLevelSelectScreen();
 					} else if (titleMode === 6) {
 						gotoManualScreen();
+					} else if (titleMode === 8) {
+						gotoSettingsScreen();
+					} else if (titleMode === 12) {
+						gotoAchievementsScreen();
 					} else {
 						goToTitleScreen();
 					}

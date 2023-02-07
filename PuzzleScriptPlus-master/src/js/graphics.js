@@ -746,7 +746,7 @@ function regenText(spritecanvas,spritectx) {
             if (key == '✓') {
                 renderSprite(textsheetContext, fontstr, ['#000000', '#00FF00'], 1, textX, textY);
                 renderSprite(textsheetContext, fontstr, ['#000000', '#00FF00'], 0, textX, textY + textsheetSize);
-            }  else if (/*yellowText ||*/ key == '>' || key == '<' || key == '#' || key == '[' || key == ']' || key == 'Ć' || key == 'ć' || key == 'ľ' || key == 'į' || key == 'ķ' || key == 'ť' || key == 'ŏ' || key == 'ń' || key == 'ū' || key == 'ě' || key == 'Ĺ' || key == 'Ġ' || key == 'Ń' || key == 'Ý' || key == 'Ś' || key == 'ś' || key == 'ā' || key == 'ď' || key == 'ř' || key == 'ñ' || key == 'ŵ' || key == 'Ě' || key == 'Đ' || key == 'ğ') {
+            }  else if (/*yellowText ||*/ key == '>' || key == '<' || key == '#' || key == '[' || key == ']' || key == 'Ć' || key == 'ć' || key == 'ľ' || key == 'į' || key == 'ķ' || key == 'ť' || key == 'ŏ' || key == 'ń' || key == 'ū' || key == 'ě' || key == 'Ĺ' || key == 'Ġ' || key == 'Ń' || key == 'Ý' || key == 'Ś' || key == 'ś' || key == 'ā' || key == 'ď' || key == 'ř' || key == 'ñ' || key == 'ŵ' || key == 'Ě' || key == 'Đ' || key == 'ğ' || key == 'ħ') {
                 renderSprite(textsheetContext, fontstr, ['#000000', '#FFFF00'], 1, textX, textY);
                 renderSprite(textsheetContext, fontstr, ['#000000', '#FFFF00'], 0, textX, textY + textsheetSize);
             } else if (key == '*') {
@@ -1251,7 +1251,6 @@ function redraw() {
 
                                 if (dir != 16) { //Cardinal directions
                                     var delta = dirMasksDelta[dir];
-                                    console.error("delta x is " + delta[0] + ", tween is " + tween);
                                     x -= cellwidth*delta[0]*tween
                                     y -= cellheight*delta[1]*tween
                                 } else if (dir == 16) { //Action button
