@@ -1090,6 +1090,7 @@ function grantMedal(achievementName) {
 		console.error("not ready");
 	}
 	if (NGIO.hasUser) {
+		console.error("unlocking medal " + medalID);
 		NGIO.unlockMedal(medalID, function(medal){});
 	} else {
 		console.error("no user");
@@ -1764,7 +1765,7 @@ function startEndingMusic() {
 }
 
 function initNGIO() {
-
+	Newgrounds
 	NGIO.init("55902:h0c6jrd2","ejhcRjEPr9+FcD6ROI++JQ==", {
 		version: "1.0.0",
 		preloadMedals: true
@@ -1783,6 +1784,7 @@ function initNGIO() {
 }
 
 function NGIOStatus() {
+	
 	NGIO.getConnectionStatus(function(status){
 		console.error("current status is " + status);
 		console.error ("waiting for " + NGIO.STATUS_LOGIN_REQUIRED);
