@@ -1780,6 +1780,9 @@ function initNGIO() {
 function NGIOStatus() {
 	NGIO.getConnectionStatus(function(status){
 		console.error("current status is " + status);
+		if (status == NGIO.STATUS_LOGIN_REQUIRED) {
+			NGIO.openLoginPage();
+		}
 	});
 }
 
