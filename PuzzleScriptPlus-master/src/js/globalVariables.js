@@ -12,6 +12,7 @@ var sfxSetting;
 var earnedAchievements;
 var placedArrows;
 var crashes;
+var currentMusic = null;
 
 function doSetupTitleScreenLevelContinue(){
     try {

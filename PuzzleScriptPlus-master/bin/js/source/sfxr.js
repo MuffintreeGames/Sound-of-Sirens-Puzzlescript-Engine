@@ -1124,6 +1124,7 @@ function toggleMute() {
 
 function muteAudio() {
   muted=1; 
+  currentMusic.pause();
   tryDeactivateYoutube();
   var mb = document.getElementById("muteButton");
   var umb = document.getElementById("unMuteButton");
@@ -1133,7 +1134,8 @@ function muteAudio() {
   }
 }
 function unMuteAudio() {
-  muted=0; 
+  muted=0;
+  currentMusic.play();
   tryActivateYoutube();
   var mb = document.getElementById("muteButton");
   var umb = document.getElementById("unMuteButton");

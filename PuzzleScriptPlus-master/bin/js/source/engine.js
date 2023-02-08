@@ -1604,7 +1604,7 @@ function startMenuMusic() {
 	currentMusicName = "menu";
 	currentMusic = new Audio('music/menuMusic.mp3');
 	currentMusic.volume = 0.5 * (musicSetting / 10);
-	if (currentMusic != null) {
+	if (currentMusic != null && !muted) {
 		currentMusic.loop = true;
 		currentMusic.play();
 	}
@@ -1620,7 +1620,7 @@ function startLevelMusic1() {
 	currentMusicName = "level1";
 	currentMusic = new Audio('music/levelMusic1.mp3');
 	currentMusic.volume = 0.5 * (musicSetting / 10);
-	if (currentMusic != null) {
+	if (currentMusic != null && !muted) {
 		currentMusic.loop = true;
 		currentMusic.play();
 	}
@@ -1636,7 +1636,7 @@ function startLevelMusic2() {
 	currentMusicName = "level2";
 	currentMusic = new Audio('music/levelMusic2.mp3');
 	currentMusic.volume = 0.5 * (musicSetting / 10);
-	if (currentMusic != null) {
+	if (currentMusic != null && !muted) {
 		currentMusic.loop = true;
 		currentMusic.play();
 	}
@@ -1652,7 +1652,7 @@ function startLevelMusic3() {
 	currentMusicName = "level3";
 	currentMusic = new Audio('music/levelMusic3.mp3');
 	currentMusic.volume = 0.5 * (musicSetting / 10);
-	if (currentMusic != null) {
+	if (currentMusic != null && !muted) {
 		currentMusic.loop = true;
 		currentMusic.play();
 	}
@@ -1668,7 +1668,7 @@ function startLevelMusic4() {
 	currentMusicName = "level4";
 	currentMusic = new Audio('music/levelMusic4.mp3');
 	currentMusic.volume = 0.4 * (musicSetting / 10);
-	if (currentMusic != null) {
+	if (currentMusic != null && !muted) {
 		currentMusic.loop = true;
 		currentMusic.play();
 	}
@@ -1684,7 +1684,7 @@ function startLevelMusic5() {
 	currentMusicName = "level5";
 	currentMusic = new Audio('music/levelMusic5.mp3');
 	currentMusic.volume = 0.5 * (musicSetting / 10);
-	if (currentMusic != null) {
+	if (currentMusic != null && !muted) {
 		currentMusic.loop = true;
 		currentMusic.play();
 	}
@@ -1700,7 +1700,7 @@ function startLevelMusic6() {
 	currentMusicName = "level6";
 	currentMusic = new Audio('music/levelMusic6.mp3');
 	currentMusic.volume = 0.4 * (musicSetting / 10);
-	if (currentMusic != null) {
+	if (currentMusic != null && !muted) {
 		currentMusic.loop = true;
 		currentMusic.play();
 	}
@@ -1716,7 +1716,7 @@ function startEndingMusic() {
 	currentMusicName = "ending";
 	currentMusic = new Audio('music/endingMusic.mp3');
 	currentMusic.volume = 0.4 * (musicSetting / 10);
-	if (currentMusic != null) {
+	if (currentMusic != null && !muted) {
 		currentMusic.loop = true;
 		currentMusic.play();
 	}
@@ -1741,7 +1741,6 @@ function testGetMedal(medal) {
 }
 
 var musicPlaying = false;
-var currentMusic = null;
 var currentMusicName = "";
 function generateTitleScreen()
 {
