@@ -1078,7 +1078,8 @@ function earnAchievement(achievementName) {
 		case "Efficient Emergency":
 			medalID = 72713;
 	}
-	NGIO.UnlockMedal(medalID, function(medal){});
+	NGIOStatus();
+	NGIO.unlockMedal(medalID, function(medal){});
 }
 
 function enterFullScreen() {
@@ -1748,7 +1749,7 @@ function startEndingMusic() {
 	}
 }
 
-function testNGIO() {
+function initNGIO() {
 
 	NGIO.init("55902:h0c6jrd2","ejhcRjEPr9+FcD6ROI++JQ==", {
 		version: "1.0.0",
@@ -1762,6 +1763,12 @@ function testNGIO() {
 	console.error("test medal is " + testMedal);
 }
 
+function NGIOStatus() {
+	NGIO.getConnectionStatus(function(status){
+		console.error("current status is " + status);
+	});
+}
+
 function testGetMedal(medal) {
 	//console.error("got a medal, yay");
 }
@@ -1770,7 +1777,7 @@ var musicPlaying = false;
 var currentMusicName = "";
 function generateTitleScreen()
 {
-	testNGIO();
+	initNGIO();
   tryLoadCustomFont();
 
 	titleMode=showContinueOptionOnTitleScreen()?1:0;
