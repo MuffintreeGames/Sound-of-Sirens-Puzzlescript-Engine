@@ -8833,7 +8833,6 @@ function startEndingMusic() {
 }
 
 function initNGIO() {
- Newgrounds
  NGIO.init("55902:h0c6jrd2","ejhcRjEPr9+FcD6ROI++JQ==", {
   version: "1.0.0",
   preloadMedals: true
