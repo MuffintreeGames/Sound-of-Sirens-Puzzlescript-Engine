@@ -1053,6 +1053,32 @@ function earnAchievement(achievementName) {
 	earnedAchievements[achievementName] = 1;
 	localStorage.setItem(document.URL+'_achievements', JSON.stringify(earnedAchievements));
 	tryPlaySimpleSound("sfx3");
+	var medalID = 0;
+	switch (achievementName) {
+		case "Ambulance Amateur":
+			medalID = 72703;
+		case "Hospital Helper":
+			medalID = 72704;
+		case "Patient Pacifier":
+			medalID = 72705;
+		case "Vehicle Voyeur":
+			medalID = 72706;
+		case "Paramedic Professional":
+			medalID = 72707;
+		case "Siren Savant":
+			medalID = 72708;
+		case "Medical Master":
+			medalID = 72709;
+		case "Arrow Artist":
+			medalID = 72710;
+		case "Dedicated Driver":
+			medalID = 72711;
+		case "Crash Craver":
+			medalID = 72712;
+		case "Efficient Emergency":
+			medalID = 72713;
+	}
+	NGIO.UnlockMedal(medalID, function(medal){});
 }
 
 function enterFullScreen() {
@@ -1607,8 +1633,6 @@ function startMenuMusic() {
 	if (currentMusic != null && !muted) {
 		currentMusic.loop = true;
 		currentMusic.play();
-	} else {
-		console.error("not playing music");
 	}
 }
 
@@ -1726,16 +1750,16 @@ function startEndingMusic() {
 
 function testNGIO() {
 
-	NGIO.init("55847:mx3f5tpU","/8rRdzdXNqnIk/9QYOSTbg==", {
+	NGIO.init("55902:h0c6jrd2","ejhcRjEPr9+FcD6ROI++JQ==", {
 		version: "1.0.0",
-		preloadMedals: true,
+		preloadMedals: true
 	});
 	NGIO.getConnectionStatus(function(status){
-		//console.error("current status is " + status);
+		console.error("current status is " + status);
 	});
 
-	var testMedal = NGIO.getMedal(72616);
-	//console.error("test medal is " + testMedal);
+	var testMedal = NGIO.getMedal(72703);
+	console.error("test medal is " + testMedal);
 }
 
 function testGetMedal(medal) {
