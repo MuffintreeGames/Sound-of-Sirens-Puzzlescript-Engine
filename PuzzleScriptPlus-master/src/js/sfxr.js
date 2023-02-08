@@ -1123,6 +1123,7 @@ function toggleMute() {
 }
 
 function muteAudio() {
+  console.error("muting audio");
   muted=1; 
   currentMusic.pause();
   tryDeactivateYoutube();
@@ -1134,6 +1135,7 @@ function muteAudio() {
   }
 }
 function unMuteAudio() {
+  console.error("unmuting audio");
   muted=0;
   currentMusic.play();
   tryActivateYoutube();

@@ -1607,6 +1607,8 @@ function startMenuMusic() {
 	if (currentMusic != null && !muted) {
 		currentMusic.loop = true;
 		currentMusic.play();
+	} else {
+		console.error("not playing music");
 	}
 }
 
