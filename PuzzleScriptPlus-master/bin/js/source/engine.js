@@ -1053,6 +1053,10 @@ function earnAchievement(achievementName) {
 	earnedAchievements[achievementName] = 1;
 	localStorage.setItem(document.URL+'_achievements', JSON.stringify(earnedAchievements));
 	tryPlaySimpleSound("sfx3");
+	grantMedal(achievementName)
+}
+
+function grantMedal(achievementName) {
 	var medalID = 0;
 	switch (achievementName) {
 		case "Ambulance Amateur":
@@ -1079,7 +1083,14 @@ function earnAchievement(achievementName) {
 			medalID = 72713;
 	}
 	NGIOStatus();
-	NGIO.unlockMedal(medalID, function(medal){});
+	if (!NGIO.hasSession) {
+		console.error("no session");
+	}
+	if (NGIO.hasUser()) {
+		NGIO.unlockMedal(medalID, function(medal){});
+	} else {
+		console.error("no user");
+	}
 }
 
 function enterFullScreen() {
@@ -2616,6 +2627,10 @@ function generateAchievementsScreen() {
 		var selected = (i == titleSelection);
 		var name = achievement[0].substring(0, 31);
 		var solved = earnedAchievements[name] === 1;
+
+		if (solved) {
+			grantMedal(name);
+		}
 
 		if (selected && titleSelected) {
 			tryPlayStartGameSound();
