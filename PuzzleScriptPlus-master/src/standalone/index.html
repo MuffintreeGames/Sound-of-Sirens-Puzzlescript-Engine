@@ -8154,7 +8154,7 @@ function grantMedal(achievementName) {
  if (!NGIO.hasSession) {
   console.error("no session");
  }
- if (NGIO.hasUser()) {
+ if (NGIO.hasUser) {
   NGIO.unlockMedal(medalID, function(medal){});
  } else {
   console.error("no user");
