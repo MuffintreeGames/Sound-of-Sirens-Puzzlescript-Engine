@@ -1771,6 +1771,11 @@ function initNGIO() {
 	});
 	NGIO.getConnectionStatus(function(status){
 		console.error("current status is " + status);
+		console.error ("waiting for " + NGIO.STATUS_LOGIN_REQUIRED);
+		if (status == NGIO.STATUS_LOGIN_REQUIRED) {
+			console.error("opening login");
+			NGIO.openLoginPage();
+		}
 	});
 
 	var testMedal = NGIO.getMedal(72703);
@@ -1780,7 +1785,9 @@ function initNGIO() {
 function NGIOStatus() {
 	NGIO.getConnectionStatus(function(status){
 		console.error("current status is " + status);
+		console.error ("waiting for " + NGIO.STATUS_LOGIN_REQUIRED);
 		if (status == NGIO.STATUS_LOGIN_REQUIRED) {
+			console.error("opening login");
 			NGIO.openLoginPage();
 		}
 	});
