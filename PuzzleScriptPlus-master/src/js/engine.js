@@ -1053,7 +1053,7 @@ function earnAchievement(achievementName) {
 	earnedAchievements[achievementName] = 1;
 	localStorage.setItem(document.URL+'_achievements', JSON.stringify(earnedAchievements));
 	tryPlaySimpleSound("sfx3");
-	grantMedal(achievementName)
+	//grantMedal(achievementName)
 }
 
 function grantMedal(achievementName) {
@@ -1093,7 +1093,7 @@ function grantMedal(achievementName) {
 			medalID = 72713;
 			break;
 	}
-	NGIOStatus();
+	/*NGIOStatus();
 	if (!NGIO.hasSession) {
 		console.error("no session");
 	}
@@ -1105,7 +1105,7 @@ function grantMedal(achievementName) {
 		NGIO.unlockMedal(medalID, function(medal){});
 	} else {
 		console.error("no user");
-	}
+	}*/
 }
 
 function enterFullScreen() {
@@ -1813,7 +1813,7 @@ var musicPlaying = false;
 var currentMusicName = "";
 function generateTitleScreen()
 {
-	initNGIO();
+	//initNGIO();
   tryLoadCustomFont();
 
 	titleMode=showContinueOptionOnTitleScreen()?1:0;
