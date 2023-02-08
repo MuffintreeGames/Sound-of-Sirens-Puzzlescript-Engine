@@ -486,6 +486,8 @@ function ValidatePassword() {
 	if (checkPassword()) {
 		tryPlayEndLevelSound();
 		autocompleteDemo();
+		earnAchievement("Ambulance Amateur");
+		earnAchievement("Hospital Helper");
 		gotoLevel(32);
 	} else {
 		tryPlaySimpleSound("sfx5");

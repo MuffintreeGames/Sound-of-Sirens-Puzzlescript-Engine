@@ -2131,7 +2131,7 @@ function playingOutro() {
 var underlineVisible = true;
 var flashTimer = 350;
 var passwordEntry = "";
-var correctPassword = "GARFUNKL"
+var correctPassword = "GARFUNKEL"
 
 function checkPassword() {
 	if (passwordEntry == correctPassword) {

@@ -2131,7 +2131,7 @@ function playingOutro() {
 var underlineVisible = true;
 var flashTimer = 350;
 var passwordEntry = "";
-var correctPassword = "GARFUNKL"
+var correctPassword = "GARFUNKEL"
 
 function checkPassword() {
 	if (passwordEntry == correctPassword) {
@@ -5525,7 +5525,6 @@ playerPositionsAtTurnStart = getPlayerPositions();
 		if (level.commandQueue.indexOf('achieve2')>=0) {
 	    	placedArrows += 1;
 			localStorage.setItem(document.URL+'_arrows', JSON.stringify(placedArrows));
-			console.error("placed arrows: " + placedArrows);
 			if (placedArrows >= 250) {
 				earnAchievement("Arrow Artist");
 			}
@@ -5534,7 +5533,6 @@ playerPositionsAtTurnStart = getPlayerPositions();
 		if (level.commandQueue.indexOf('achieve3')>=0) {
 	    	crashes += 1;
 			localStorage.setItem(document.URL+'_crashes', JSON.stringify(crashes));
-			console.error("crashes: " + crashes);
 			if (crashes >= 30) {
 				earnAchievement("Crash Craver");
 			}
