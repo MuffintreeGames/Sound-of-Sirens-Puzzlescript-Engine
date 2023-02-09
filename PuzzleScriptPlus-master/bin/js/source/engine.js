@@ -889,7 +889,7 @@ var instruction_pages = [[
 	"                                  ",
 	"R key:       reset ambulances     ",
 	"                                  ",
-	"ESC key:     exit level           "
+	"Q key:       exit level           "
 ],
 [
 	" [ Q: BACK ]                 ",
