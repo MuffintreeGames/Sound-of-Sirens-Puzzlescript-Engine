@@ -1,3 +1,4 @@
+var loginShown = false;
 var onLevelRestarted = new Event("levelRestarted");
 
 var RandomGen = new RNG();
@@ -1093,7 +1094,7 @@ function grantMedal(achievementName) {
 			medalID = 72713;
 			break;
 	}
-	/*NGIOStatus();
+	NGIOStatus();
 	if (!NGIO.hasSession) {
 		console.error("no session");
 	}
@@ -1105,7 +1106,7 @@ function grantMedal(achievementName) {
 		NGIO.unlockMedal(medalID, function(medal){});
 	} else {
 		console.error("no user");
-	}*/
+	}
 }
 
 function enterFullScreen() {
@@ -1776,31 +1777,35 @@ function startEndingMusic() {
 }
 
 function initNGIO() {
-	/*NGIO.init("55902:h0c6jrd2","ejhcRjEPr9+FcD6ROI++JQ==", {
+	if (loginShown) {
+		return;
+	}
+	NGIO.init("55902:h0c6jrd2","ejhcRjEPr9+FcD6ROI++JQ==", {
 		version: "1.0.0",
 		preloadMedals: true
 	});
 	NGIO.getConnectionStatus(function(status){
 		if (status == NGIO.STATUS_LOGIN_REQUIRED) {
 			NGIO.openLoginPage();
+			loginShown = true;
 		}
-	});*/
+	});
 }
 
 function NGIOStatus() {
-	
-	/*NGIO.getConnectionStatus(function(status){
+	NGIO.getConnectionStatus(function(status){
 		if (status == NGIO.STATUS_LOGIN_REQUIRED) {
 			NGIO.openLoginPage();
+			loginShown = true;
 		}
-	});*/
+	});
 }
 
 var musicPlaying = false;
 var currentMusicName = "";
 function generateTitleScreen()
 {
-	//initNGIO();
+	initNGIO();
   tryLoadCustomFont();
 
 	titleMode=showContinueOptionOnTitleScreen()?1:0;
