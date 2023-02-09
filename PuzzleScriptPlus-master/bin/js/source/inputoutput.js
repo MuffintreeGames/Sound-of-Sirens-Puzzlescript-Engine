@@ -1073,7 +1073,7 @@ function onKeyDown(event) {
 		}
 	}
 	if (titleMode === 8 ) {
-		if (event.keyCode >= 65 && event.keyCode <= 90) {
+		if (event.keyCode >= 65 && event.keyCode <= 90 && event.keyCode != 81) {
 			if (passwordEntry.length <= 14) {
 			passwordEntry += event.key.toUpperCase();
 			tryPlaySimpleSound("sfx9");
@@ -1524,7 +1524,7 @@ function checkKey(e,justPressed) {
             }
             break;
         }
-        case 27://escape
+        case 81://q
         {
         	if(solving) {
         		stopSolving();

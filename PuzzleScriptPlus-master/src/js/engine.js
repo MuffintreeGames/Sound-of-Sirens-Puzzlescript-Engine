@@ -877,7 +877,7 @@ var title_options = [[
 ];
 
 var instruction_pages = [[
-	" [ BACK ]                    ",
+	" [ Q: BACK ]                 ",
 	"        Basics 1: Controls        ",
 	"                                  ",
 	"Left-click:  place/rotate arrows, ",
@@ -892,7 +892,7 @@ var instruction_pages = [[
 	"ESC key:     exit level           "
 ],
 [
-	" [ BACK ]                    ",
+	" [ Q: BACK ]                 ",
 	"       Basics 2: Ambulances       ",
 	"                                  ",
 	" Ambulances appear from hospitals ",
@@ -907,7 +907,7 @@ var instruction_pages = [[
 	" ambulances crash, you will lose. "
 ],
 [
-	" [ BACK ]                    ",
+	" [ Q: BACK ]                 ",
 	"          Basics 3: Arrows        ",
 	"                                  ",
 	"  Clicking on an empty tile will  ",
@@ -923,7 +923,7 @@ var instruction_pages = [[
 	"                                  "
 ],
 [
-	" [ BACK ]                    ",
+	" [ Q: BACK ]                 ",
 	"      Basics 4: Miscellaneous     ",
 	"                                  ",
 	" Red-outlined arrows are fixed in ",
@@ -938,7 +938,7 @@ var instruction_pages = [[
 	"  correct solution with the hint. "
 ],
 [
-	" [ BACK ]                    ",
+	" [ Q: BACK ]                 ",
 	"               Rafts              ",
 	"                                  ",
 	"  Rafts act like normal tiles at  ",
@@ -951,7 +951,7 @@ var instruction_pages = [[
 	"   many rafts and get trapped!    "
 ],
 [
-	" [ BACK ]                    ",
+	" [ Q: BACK ]                 ",
 	"          Buttons & Gates         ",
 	"                                  ",
 	"   Coloured gates will act like   ",
@@ -966,7 +966,7 @@ var instruction_pages = [[
 	"      clear one type of gate!     "
 ],
 [
-	" [ BACK ]                    ",
+	" [ Q: BACK ]                 ",
 	"            Red Tiles             ",
 	"                                  ",
 	"   Red tiles work exactly like    ",
@@ -978,7 +978,7 @@ var instruction_pages = [[
 	" feel free to drive right through!"
 ],
 [
-	" [ BACK ]                    ",
+	" [ Q: BACK ]                 ",
 	"               Cars               ",
 	"                                  ",
 	" Just like ambulances appear from ",
@@ -993,7 +993,7 @@ var instruction_pages = [[
 	"          protect them!           "
 ],
 [
-	" [ BACK ]                    ",
+	" [ Q: BACK ]                 ",
 	"            Temp Arrows           ",
 	"                                  ",
 	" Yellow arrows are temporary. If  ",
@@ -1005,7 +1005,7 @@ var instruction_pages = [[
 	"        arrows otherwise.         "
 ],
 [
-	" [ BACK ]                    ",
+	" [ Q: BACK ]                 ",
 	"        Placing Temp Arrows       ",
 	"                                  ",
 	"  In later levels, you can place  ",
@@ -2210,7 +2210,7 @@ function checkPassword() {
 
 function generateSkipDemoScreen() {
 	titleImage = [
-		" [ BACK ]                    ",
+		" [ Q: BACK ]                 ",
 		"             Password             ",
 		"                                  ",
 		"                                  ",
@@ -2225,7 +2225,7 @@ function generateSkipDemoScreen() {
 	];
 
 	if (hoverSelection == 0) {
-		titleImage[0] =	"[  BACK  ]                   ";
+		titleImage[0] =	"[  Q: BACK  ]                ";
 	}
 
 	for(var i = titleImage.length; i < 13; i++) {
@@ -2301,7 +2301,7 @@ var creditsPage = 1;
 function generateCreditsScreen() {
 	if (creditsPage === 1) {
 	titleImage = [
-		" [ BACK ]      Credits            ",
+		" [ Q: BACK ]   Credits            ",
 		"                                  ",
 		"           Developed by:          ",
 		"                Joey Meffen       ",
@@ -2315,13 +2315,13 @@ function generateCreditsScreen() {
 		"                       [ NEXT ]   "
 	];
 	if (hoverSelection == 0) {
-		titleImage[0] =	"[  BACK  ]     Credits       ";
+		titleImage[0] =	"[  Q: BACK  ]  Credits       ";
 	} else if (hoverSelection == 11) {
 		titleImage[11] ="                      [  NEXT  ]  ";
 	}
 } else if (creditsPage === 2) {
 	titleImage = [
-		" [ BACK ]      Credits            ",
+		" [ Q: BACK ]   Credits            ",
 		"       Music by Eric Matyas       ",
 		"        www.soundimage.org        ",
 		"Menu Theme:    Winter Puzzles     ",
@@ -2335,7 +2335,7 @@ function generateCreditsScreen() {
 		"                       [ PREV ]   "
 	];
 	if (hoverSelection == 0) {
-		titleImage[0] =	"[  BACK  ]     Credits         ";
+		titleImage[0] =	"[  Q: BACK  ]  Credits         ";
 	} else if (hoverSelection == 11) {
 		titleImage[11] ="                      [  PREV  ]  ";
 	}
@@ -2353,9 +2353,9 @@ function generateManualPageScreen() {
 	}
 	titleImage = instruction_pages[instructions_index];
 	if (hoverSelection == 0) {
-		titleImage[0] =	"[  BACK  ]                   ";
+		titleImage[0] =	"[  Q: BACK  ]                ";
 	} else {
-		titleImage[0] = " [ BACK ]                    ";
+		titleImage[0] = " [ Q: BACK ]                 ";
 	}
 
 	for(var i = titleImage.length; i < 13; i++) {
@@ -2371,9 +2371,9 @@ function generateAchievementDescription() {
 	var achievementName = achievementList[achievementIndex][1];
 	//var achievementDesc = achievementList[achievementIndex][2];
 	if (hoverSelection == 0) {
-		titleImage[0] =	"[  BACK  ]                   ";
+		titleImage[0] =	"[  Q: BACK  ]                ";
 	} else {
-		titleImage[0] = " [ BACK ]                    ";
+		titleImage[0] = " [ Q: BACK ]                 ";
 	}
 	titleImage[1] = achievementName;
 	titleImage[2] = "                                  ";
@@ -2389,7 +2389,7 @@ function generateAchievementDescription() {
 
 function generateManualScreen() {
 	titleImage = [
-		" [ BACK ]                    ",
+		" [ Q: BACK ]                 ",
 		"              Manual              ",
 		"                                  ",
 		" 1.  Basics 1: Controls           ",
@@ -2405,7 +2405,7 @@ function generateManualScreen() {
 	];
 
 	if (hoverSelection == 0) {
-		titleImage[0] =	"[  BACK  ]                   ";
+		titleImage[0] =	"[  Q: BACK  ]                ";
 	}
 
 	amountOfOptionsOnScreen = 10;
@@ -2486,7 +2486,7 @@ function generateManualScreen() {
 var verifying = false;
 function generateSettingsScreen() {
 	titleImage = [
-		" [ BACK ]                         ",
+		" [ Q: BACK ]                      ",
 		"             Settings             ",
 		"                                  ",
 		"              Volume              ",
@@ -2511,7 +2511,7 @@ function generateSettingsScreen() {
 	} else {
 		verifying = false;
 	if (hoverSelection == 0) {
-		titleImage[0] =	"[  BACK  ]                   ";
+		titleImage[0] =	"[  Q: BACK  ]                ";
 	}  else if (hoverSelection == 5) {
 		if (mouseCoordX >= 11 && mouseCoordX <= 15) {
 			sfxRow = " SFX       [ - ] ||||||||||  [+]  ";
@@ -2603,12 +2603,12 @@ var amountOfAchievesOnScreen = 0;
 var achieveScrollPos = 0;
 function generateAchievementsScreen() {
 	titleImage = [
-		" [ BACK ]                    ",
+		" [ Q: BACK ]                 ",
 		"           Achievements           "
 	];
 
 	if (hoverSelection == 0) {
-		titleImage[0] =	"[  BACK  ]                   ";
+		titleImage[0] =	"[  Q: BACK  ]                ";
 	}
 
 	amountOfAchievesOnScreen = 9;
@@ -2716,12 +2716,12 @@ function generateLevelSelectScreen() {
 	"[ ]...Another section............|"
   */
 	titleImage = [
-		" [ BACK ]                    ",
+		" [ Q: BACK ]                 ",
 		"           Level Select           "
 	];
 
 	if (hoverSelection == 0) {
-		titleImage[0] =	"[  BACK  ]                   ";
+		titleImage[0] =	"[  Q: BACK  ]                ";
 	}
 
 	amountOfLevelsOnScreen = 9;
