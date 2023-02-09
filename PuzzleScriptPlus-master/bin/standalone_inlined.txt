@@ -8121,7 +8121,7 @@ function earnAchievement(achievementName) {
  earnedAchievements[achievementName] = 1;
  localStorage.setItem(document.URL+'_achievements', JSON.stringify(earnedAchievements));
  tryPlaySimpleSound("sfx3");
- //grantMedal(achievementName)
+ grantMedal(achievementName)
 }
 
 function grantMedal(achievementName) {
