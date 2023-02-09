@@ -2450,7 +2450,7 @@ function generateManualScreen() {
 		}
 		var hover_symbol = " ";
 		
-		if (hoverSelection - 3 + levelSelectScrollPos == i) {hover_symbol = ">"}
+		if (hoverSelection - 3 /*+ levelSelectScrollPos */== i) {hover_symbol = ">"}
 		if (selected && titleSelected) {hover_symbol = " "}
 		
 		var line = hover_symbol + " " + name;
