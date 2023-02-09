@@ -1093,7 +1093,7 @@ function grantMedal(achievementName) {
 			medalID = 72713;
 			break;
 	}
-	/*NGIOStatus();
+	NGIOStatus();
 	if (!NGIO.hasSession) {
 		console.error("no session");
 	}
@@ -1105,7 +1105,7 @@ function grantMedal(achievementName) {
 		NGIO.unlockMedal(medalID, function(medal){});
 	} else {
 		console.error("no user");
-	}*/
+	}
 }
 
 function enterFullScreen() {
@@ -1781,39 +1781,26 @@ function initNGIO() {
 		preloadMedals: true
 	});
 	NGIO.getConnectionStatus(function(status){
-		console.error("current status is " + status);
-		console.error ("waiting for " + NGIO.STATUS_LOGIN_REQUIRED);
 		if (status == NGIO.STATUS_LOGIN_REQUIRED) {
-			console.error("opening login");
 			NGIO.openLoginPage();
 		}
 	});
-
-	var testMedal = NGIO.getMedal(72703);
-	console.error("test medal is " + testMedal);
 }
 
 function NGIOStatus() {
 	
 	NGIO.getConnectionStatus(function(status){
-		console.error("current status is " + status);
-		console.error ("waiting for " + NGIO.STATUS_LOGIN_REQUIRED);
 		if (status == NGIO.STATUS_LOGIN_REQUIRED) {
-			console.error("opening login");
 			NGIO.openLoginPage();
 		}
 	});
-}
-
-function testGetMedal(medal) {
-	//console.error("got a medal, yay");
 }
 
 var musicPlaying = false;
 var currentMusicName = "";
 function generateTitleScreen()
 {
-	//initNGIO();
+	initNGIO();
   tryLoadCustomFont();
 
 	titleMode=showContinueOptionOnTitleScreen()?1:0;
