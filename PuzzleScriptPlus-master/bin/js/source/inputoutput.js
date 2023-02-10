@@ -1510,7 +1510,7 @@ function checkKey(e,justPressed) {
 						}
 					break;
 					}
-        //case 67://c
+        case 67://c
         //case 88://x
 
         case 85://u
@@ -1822,7 +1822,7 @@ function update() {
 		(state.metadata.smoothscreen !== undefined || state.metadata.tween_length !== undefined))) {
       redraw();
 	}
-	//NGIO.keepSessionAlive();
+	NGIO.keepSessionAlive();
 }
 
 var looping=false;
