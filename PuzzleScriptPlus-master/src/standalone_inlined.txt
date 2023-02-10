@@ -8878,7 +8878,7 @@ var currentMusicName = "";
 function generateTitleScreen()
 {
  initNGIO();
- updateLocalStorage();
+ //updateLocalStorage();
   tryLoadCustomFont();
 
  titleMode=showContinueOptionOnTitleScreen()?1:0;
@@ -10500,7 +10500,7 @@ function setGameState(_state, command, randomseed) {
     norepeat_action = state.metadata.norepeat_action!==undefined;
     
  storage_remove(storageTitle+"_checkpoint");
- storage_remove(storageTitle); 
+ //storage_remove(storageTitle); 
     switch(command[0]){
      case "restart":
      {
