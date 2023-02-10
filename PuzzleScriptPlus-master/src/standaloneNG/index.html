@@ -7066,7 +7066,8 @@ EasingFunctions = {
       11: "easeInQuint",
       12: "easeOutQuint",
       13: "easeInOutQuint"
-  }</script> <script>var onLevelRestarted = new Event("levelRestarted");
+  }</script> <script>var loginShown = false;
+var onLevelRestarted = new Event("levelRestarted");
 
 var RandomGen = new RNG();
 
@@ -8844,6 +8845,9 @@ function startEndingMusic() {
 }
 
 function initNGIO() {
+ if (loginShown) {
+  return;
+ }
  NGIO.init("55902:h0c6jrd2","ejhcRjEPr9+FcD6ROI++JQ==", {
   version: "1.0.0",
   preloadMedals: true
@@ -8851,15 +8855,16 @@ function initNGIO() {
  NGIO.getConnectionStatus(function(status){
   if (status == NGIO.STATUS_LOGIN_REQUIRED) {
    NGIO.openLoginPage();
+   loginShown = true;
   }
  });
 }
 
 function NGIOStatus() {
- 
  NGIO.getConnectionStatus(function(status){
   if (status == NGIO.STATUS_LOGIN_REQUIRED) {
    NGIO.openLoginPage();
+   loginShown = true;
   }
  });
 }
