@@ -1098,7 +1098,7 @@ function grantMedal(achievementName) {
 			medalID = 72713;
 			break;
 	}
-	//NGIOStatus();
+	/*NGIOStatus();
 	if (!NGIO.hasSession) {
 		console.error("no session");
 	}
@@ -1110,7 +1110,7 @@ function grantMedal(achievementName) {
 		NGIO.unlockMedal(medalID, function(medal){});
 	} else {
 		console.error("no user");
-	}
+	}*/
 }
 
 function enterFullScreen() {
@@ -1784,7 +1784,7 @@ function initNGIO() {
 	if (loginShown) {
 		return;
 	}
-	NGIO.init("55902:h0c6jrd2","ejhcRjEPr9+FcD6ROI++JQ==", {
+	/*NGIO.init("55902:h0c6jrd2","ejhcRjEPr9+FcD6ROI++JQ==", {
 		version: "1.0.0",
 		preloadMedals: true
 	});
@@ -1793,14 +1793,14 @@ function initNGIO() {
 			NGIO.openLoginPage();
 			loginShown = true;
 		}
-	});
+	});*/
 }
 
 var musicPlaying = false;
 var currentMusicName = "";
 function generateTitleScreen()
 {
-	initNGIO();
+	//initNGIO();
 	//updateLocalStorage();
   tryLoadCustomFont();
 
