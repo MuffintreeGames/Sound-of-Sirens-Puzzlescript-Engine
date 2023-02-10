@@ -2195,13 +2195,22 @@ function playingOutro() {
 var underlineVisible = true;
 var flashTimer = 350;
 var passwordEntry = "";
-var correctPassword = "GARFUNKEL"
+var correctPassword = "GARFUNKEL";
+var skipPast3Password = "SIRENADE";
+var skipPast4Password = "STEERCLEAR";
+var skipPast5Password = "BRAINSTRAIN";
 
 function checkPassword() {
 	if (passwordEntry == correctPassword) {
-		return true;
+		return 1;
+	} else if (passwordEntry == skipPast3Password) {
+		return 2;
+	} else if (passwordEntry == skipPast4Password) {
+		return 3;
+	} else if (passwordEntry == skipPast5Password) {
+		return 4
 	}
-	return false;
+	return 0;
 }
 
 function generateSkipDemoScreen() {
@@ -2271,7 +2280,7 @@ function redrawSettingsScreen() {
 }
 
 function isPasswordAvailable() {
-	if(state.metadata["level_select_lock"] !== undefined) {
+	/*if(state.metadata["level_select_lock"] !== undefined) {
 		// find last solved section:
 		var unlockedUntil = 0;
 		for(var i = 0; i < state.sections.length; i++) {
@@ -2284,11 +2293,30 @@ function isPasswordAvailable() {
 			return true;
 		}
 	}
-	return false;
+	return false;*/
+	return true;
 }
 
 function autocompleteDemo() {
 	for(var i = 0; i < 32; i++) {
+		setSectionSolved(state.sections[i].name);
+	}
+}
+
+function autocompleteSection3() {
+	for(var i = 0; i < 45; i++) {
+		setSectionSolved(state.sections[i].name);
+	}
+}
+
+function autocompleteSection4() {
+	for(var i = 0; i < 57; i++) {
+		setSectionSolved(state.sections[i].name);
+	}
+}
+
+function autocompleteSection5() {
+	for(var i = 0; i < 73; i++) {
 		setSectionSolved(state.sections[i].name);
 	}
 }

@@ -483,15 +483,27 @@ function ValidatePassword() {
 	if (passwordEntry.length <= 0) {
 		return;
 	}
-	if (checkPassword()) {
-		tryPlayEndLevelSound();
-		autocompleteDemo();
-		earnAchievement("Ambulance Amateur");
-		earnAchievement("Hospital Helper");
-		gotoLevel(32);
-	} else {
+	var result = checkPassword();
+	if (result == 0) {
 		tryPlaySimpleSound("sfx5");
 		passwordEntry = "";
+	} else {
+		tryPlayEndLevelSound();
+		if (result == 1) {
+			autocompleteDemo();
+			//earnAchievement("Ambulance Amateur");
+			//earnAchievement("Hospital Helper");
+			gotoLevel(32);
+		} else if (result == 2) {
+			autocompleteSection3();
+			gotoLevel(45);
+		} else if (result == 3) {
+			autocompleteSection4();
+			gotoLevel(57);
+		} else if (result == 4) {
+			autocompleteSection5();
+			gotoLevel(73);
+		}
 	}
 }
 
