@@ -8089,6 +8089,7 @@ var instruction_pages = [[
 ]
 
 var achievementList = [
+ ["Sickly Start", "           Sickly Start           ", "Started the game."],
  ["Ambulance Amateur", "         Ambulance Amateur        ", "Cleared level 15."],
  ["Hospital Helper", "          Hospital Helper         ", "Cleared level 32."],
  ["Patient Pacifier", "         Patient Pacifier         ", "Cleared level 45."],
@@ -8128,6 +8129,9 @@ function earnAchievement(achievementName) {
 function grantMedal(achievementName) {
  var medalID = 0;
  switch (achievementName) {
+  case "Sickly Start":
+   medalID = 72721;
+   break;
   case "Ambulance Amateur":
    medalID = 72703;
    break;
@@ -13042,19 +13046,28 @@ function loadLevelFromStateOrTarget() {
  }
  console.error("curlevel is " + curlevel);
  var realLevel = Math.ceil((parseInt(curlevel) + 1) / 2);
- if (realLevel == 16) {
+ if (realLevel >= 1) {
+  earnAchievement("Sickly Start");
+ }
+ if (realLevel >= 16) {
   earnAchievement("Ambulance Amateur");
- } else if (realLevel == 33) {
+ }
+ if (realLevel >= 33) {
   earnAchievement("Hospital Helper");
- } else if (realLevel == 46) {
+ }
+ if (realLevel >= 46) {
   earnAchievement("Patient Pacifier");
- } else if (realLevel == 58) {
+ }
+ if (realLevel >= 58) {
   earnAchievement("Vehicle Voyeur");
- } else if (realLevel == 74) {
+ }
+ if (realLevel >= 74) {
   earnAchievement("Paramedic Professional");
- } else if (realLevel == 86) {
+ }
+ if (realLevel >= 86) {
   earnAchievement("Siren Savant");
- } else if (curlevel === 173) {
+ }
+ if (curlevel === 173) {
   earnAchievement("Medical Master");
  }
 

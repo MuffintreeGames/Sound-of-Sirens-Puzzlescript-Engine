@@ -1053,7 +1053,7 @@ function earnAchievement(achievementName) {
 		return;
 	}
 	earnedAchievements[achievementName] = 1;
-	localStorage.setItem(document.URL+'_achievements', JSON.stringify(earnedAchievements));
+	localStorage.setItem(storageTitle+'_achievements', JSON.stringify(earnedAchievements));
 	tryPlaySimpleSound("sfx3");
 	grantMedal(achievementName)
 }
@@ -2551,7 +2551,7 @@ function increaseSFXVolume() {
 	clearSFXCache();
 	tryPlaySimpleSound("sfx9");
 	generateSettingsScreen();
-	localStorage.setItem(document.URL+'_sfx', JSON.stringify(sfxSetting));
+	localStorage.setItem(storageTitle+'_sfx', JSON.stringify(sfxSetting));
 	} else {
 		tryPlaySimpleSound("sfx1");
 	}
@@ -2563,7 +2563,7 @@ function decreaseSFXVolume() {
 		clearSFXCache();
 		tryPlaySimpleSound("sfx9");
 		generateSettingsScreen();
-		localStorage.setItem(document.URL+'_sfx', JSON.stringify(sfxSetting));
+		localStorage.setItem(storageTitle+'_sfx', JSON.stringify(sfxSetting));
 	} else {
 		tryPlaySimpleSound("sfx1");
 	}
@@ -2576,7 +2576,7 @@ function increaseMusicVolume() {
 		currentMusic.play();
 		tryPlaySimpleSound("sfx9");
 		generateSettingsScreen();
-		localStorage.setItem(document.URL+'_music', JSON.stringify(musicSetting));
+		localStorage.setItem(storageTitle+'_music', JSON.stringify(musicSetting));
 	} else {
 		tryPlaySimpleSound("sfx1");
 	}
@@ -2589,7 +2589,7 @@ function decreaseMusicVolume() {
 		currentMusic.play();
 		tryPlaySimpleSound("sfx9");
 		generateSettingsScreen();
-		localStorage.setItem(document.URL+'_music', JSON.stringify(musicSetting));
+		localStorage.setItem(storageTitle+'_music', JSON.stringify(musicSetting));
 	} else {
 		tryPlaySimpleSound("sfx1");
 	}
@@ -3402,8 +3402,8 @@ function setGameState(_state, command, randomseed) {
     }
     norepeat_action = state.metadata.norepeat_action!==undefined;
     
-	storage_remove(document.URL+"_checkpoint");
-	storage_remove(document.URL);	
+	storage_remove(storageTitle+"_checkpoint");
+	storage_remove(storageTitle);	
     switch(command[0]){
     	case "restart":
     	{
@@ -5592,7 +5592,7 @@ playerPositionsAtTurnStart = getPlayerPositions();
 
 		if (level.commandQueue.indexOf('achieve2')>=0) {
 	    	placedArrows += 1;
-			localStorage.setItem(document.URL+'_arrows', JSON.stringify(placedArrows));
+			localStorage.setItem(storageTitle+'_arrows', JSON.stringify(placedArrows));
 			if (placedArrows >= 250) {
 				earnAchievement("Arrow Artist");
 			}
@@ -5600,7 +5600,7 @@ playerPositionsAtTurnStart = getPlayerPositions();
 
 		if (level.commandQueue.indexOf('achieve3')>=0) {
 	    	crashes += 1;
-			localStorage.setItem(document.URL+'_crashes', JSON.stringify(crashes));
+			localStorage.setItem(storageTitle+'_crashes', JSON.stringify(crashes));
 			if (crashes >= 30) {
 				earnAchievement("Crash Craver");
 			}
@@ -5698,8 +5698,8 @@ playerPositionsAtTurnStart = getPlayerPositions();
 				restartTarget=level4Serialization();
 				hasUsedCheckpoint=true;
 				var backupStr = JSON.stringify(restartTarget);
-				storage_set(document.URL+'_checkpoint',backupStr);
-				storage_set(document.URL,curlevel);				
+				storage_set(storageTitle+'_checkpoint',backupStr);
+				storage_set(storageTitle,curlevel);				
 			}
 
 		    if (level.commandQueue.indexOf('again')>=0 /*&& modified*/) {	//Muffin edit: allow section to be run without modification to allow infinite loops
@@ -5942,8 +5942,8 @@ function nextLevel() {
 				if(state.metadata["level_select"] === undefined) {
 					// solved all
           try{
-            storage_remove(document.URL);
-            storage_remove(document.URL+'_checkpoint');				
+            storage_remove(storageTitle);
+            storage_remove(storageTitle+'_checkpoint');				
           } catch(ex){
           }
 					
@@ -6050,13 +6050,13 @@ function resetFlickDat() {
 
 function updateLocalStorage() {
 	try {
-		storage_set(document.URL,curlevel);
+		storage_set(storageTitle,curlevel);
 		if (curlevelTarget!==null){
 			restartTarget=level4Serialization();
 			var backupStr = JSON.stringify(restartTarget);
-			storage_set(document.URL+'_checkpoint',backupStr);
+			storage_set(storageTitle+'_checkpoint',backupStr);
 		} else {
-			storage_remove(document.URL+"_checkpoint");
+			storage_remove(storageTitle+"_checkpoint");
 		}		
 		
 	} catch (ex) {
@@ -6079,7 +6079,7 @@ function setSectionSolved(section) {
 	try {
 		if(!!window.localStorage) {
 			solvedSections.push(section);
-			localStorage.setItem(document.URL + "_sections", JSON.stringify(solvedSections));
+			localStorage.setItem(storageTitle + "_sections", JSON.stringify(solvedSections));
 		}
 	} catch(ex) { }
 }
@@ -6091,12 +6091,12 @@ function clearLocalStorage() {
 
 	try {
 		if (!!window.localStorage) {
-			localStorage.removeItem(document.URL);
-			localStorage.removeItem(document.URL+'_checkpoint');
-			localStorage.removeItem(document.URL+'_sections');
-			localStorage.removeItem(document.URL+'_achievements');
-			localStorage.removeItem(document.URL+'_crashes');
-			localStorage.removeItem(document.URL+'_arrows');
+			localStorage.removeItem(storageTitle);
+			localStorage.removeItem(storageTitle+'_checkpoint');
+			localStorage.removeItem(storageTitle+'_sections');
+			localStorage.removeItem(storageTitle+'_achievements');
+			localStorage.removeItem(storageTitle+'_crashes');
+			localStorage.removeItem(storageTitle+'_arrows');
 		}
 	} catch(ex){ }
 }

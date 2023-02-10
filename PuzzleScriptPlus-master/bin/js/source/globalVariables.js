@@ -13,12 +13,13 @@ var earnedAchievements;
 var placedArrows;
 var crashes;
 var currentMusic = null;
+var storageTitle = "tSoSMuffinTreeGames";
 
 function doSetupTitleScreenLevelContinue(){
     try {
-        if (storage_has(document.URL)) {
-            if (storage_has(document.URL+'_checkpoint')){
-                var backupStr = storage_get(document.URL+'_checkpoint');
+        if (storage_has(storageTitle)) {
+            if (storage_has(storageTitle+'_checkpoint')){
+                var backupStr = storage_get(storageTitle+'_checkpoint');
                 curlevelTarget = JSON.parse(backupStr);
                 
                 var arr = [];
@@ -28,37 +29,37 @@ function doSetupTitleScreenLevelContinue(){
                 curlevelTarget.dat = new Int32Array(arr);
 
             }
-            curlevel = storage_get(document.URL); 
-    		    if (localStorage[document.URL+"_sections"]!==undefined) {
-                    solvedSections = JSON.parse(localStorage.getItem(document.URL + "_sections"));
+            curlevel = storage_get(storageTitle); 
+    		    if (localStorage[storageTitle+"_sections"]!==undefined) {
+                    solvedSections = JSON.parse(localStorage.getItem(storageTitle + "_sections"));
                 }
     		}
-            if (storage_has(document.URL+'_sfx')) {
-                sfxSetting = JSON.parse(localStorage.getItem(document.URL + "_sfx"));
+            if (storage_has(storageTitle+'_sfx')) {
+                sfxSetting = JSON.parse(localStorage.getItem(storageTitle + "_sfx"));
             } else {
                 sfxSetting = 10;
             }
 
-            if (storage_has(document.URL+'_music')) {
-                musicSetting = JSON.parse(localStorage.getItem(document.URL + "_music"));
+            if (storage_has(storageTitle+'_music')) {
+                musicSetting = JSON.parse(localStorage.getItem(storageTitle + "_music"));
             } else {
                 musicSetting = 10;
             }
 
-            if (storage_has(document.URL+'_achievements')) {
-                earnedAchievements = JSON.parse(localStorage.getItem(document.URL + "_achievements"));
+            if (storage_has(storageTitle+'_achievements')) {
+                earnedAchievements = JSON.parse(localStorage.getItem(storageTitle + "_achievements"));
             } else {
                 earnedAchievements = {};
             }
 
-            if (storage_has(document.URL+'_arrows')) {
-                placedArrows = JSON.parse(localStorage.getItem(document.URL + "_arrows"));
+            if (storage_has(storageTitle+'_arrows')) {
+                placedArrows = JSON.parse(localStorage.getItem(storageTitle + "_arrows"));
             } else {
                 placedArrows = 0;
             }
 
-            if (storage_has(document.URL+'_crashes')) {
-                crashes = JSON.parse(localStorage.getItem(document.URL + "_crashes"));
+            if (storage_has(storageTitle+'_crashes')) {
+                crashes = JSON.parse(localStorage.getItem(storageTitle + "_crashes"));
             } else {
                 crashes = 0;
             }
