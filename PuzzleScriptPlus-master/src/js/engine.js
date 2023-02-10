@@ -884,13 +884,13 @@ var instruction_pages = [[
 	"Left-click:  place/rotate arrows, ",
 	"              use menu buttons    ",
 	"                                  ",
-	"Right-click: delete arrows        ",
+	"Right-click/: delete arrows       ",
 	"                                  ",
 	"Hold left-click: delete arrows    ",
 	"                                  ",
-	"R key:       reset ambulances     ",
-	"                                  ",
-	"Q key:       exit level           "
+	"Space key:  start/reset ambulances",
+	"R key:      reset ambulances      ",
+	"Q key:      exit level            "
 ],
 [
 	" [ Q: BACK ]                 ",
@@ -932,9 +932,9 @@ var instruction_pages = [[
 	"               them.              ",
 	"                                  ",
 	" If you get stuck, the HINT button",
-	"  can highlight a tile where an   ",
-	" arrow should be placed. Note that",
-	"you may have to remove some arrows",
+	" can highlight a tile to place an ",
+	"   arrow a few times per level.   ",
+	"You may have to remove arrows that",
 	" you've already placed to reach a ",
 	"  correct solution with the hint. "
 ],
@@ -1022,11 +1022,11 @@ var instruction_pages = [[
 
 var achievementList = [
 	["Sickly Start", "           Sickly Start           ", "Started the game."],
-	["Ambulance Amateur", "         Ambulance Amateur        ", "Cleared level 15."],
-	["Hospital Helper", "          Hospital Helper         ", "Cleared level 32."],
-	["Patient Pacifier", "         Patient Pacifier         ", "Cleared level 45."],
-	["Vehicle Voyeur", "          Vehicle Voyeur          ", "Cleared level 57."],
-	["Paramedic Professional", "      Paramedic Professional      ", "Cleared level 73."],
+	["Ambulance Amateur", "         Ambulance Amateur        ", "Reach level 16."],
+	["Hospital Helper", "          Hospital Helper         ", "Reach level 32."],
+	["Patient Pacifier", "         Patient Pacifier         ", "Reach level 45."],
+	["Vehicle Voyeur", "          Vehicle Voyeur          ", "Reach level 57."],
+	["Paramedic Professional", "      Paramedic Professional      ", "Reach level 73."],
 	["Siren Savant", "           Siren Savant           ", "Finished the game."],
 	["Medical Master", "          Medical Master          ", "Cleared the bonus level."],
 	["Arrow Artist", "           Arrow Artist           ", "Place a total of 250 arrows."],
@@ -2272,20 +2272,6 @@ function redrawSettingsScreen() {
 }
 
 function isPasswordAvailable() {
-	/*if(state.metadata["level_select_lock"] !== undefined) {
-		// find last solved section:
-		var unlockedUntil = 0;
-		for(var i = 0; i < state.sections.length; i++) {
-			if(solvedSections.indexOf(state.sections[i].name) >= 0) {
-				unlockedUntil = i;
-			}
-		}
-		
-		if (unlockedUntil < 31) {
-			return true;
-		}
-	}
-	return false;*/
 	return true;
 }
 
@@ -2437,6 +2423,16 @@ function generateManualScreen() {
 				unsolvedSections++;
 			}
 		}
+
+		if(state.metadata.level_select_unlocked_ahead === undefined) {
+			unlockedUntil += 1;
+		} else if (state.metadata.level_select_unlocked_rollover !== undefined) {
+			unlockedUntil = solvedSections.length + Number(state.metadata.level_select_unlocked_rollover) - 1;
+		}
+		else {
+			unlockedUntil += Number(state.metadata.level_select_unlocked_ahead);
+		}
+
 		lastInstruction = 0;
 		if (unlockedUntil < 15) {
 			lastInstruction = 3;
@@ -2774,15 +2770,12 @@ function generateLevelSelectScreen() {
 	var unlockedUntil = -1;
 	if(state.metadata["level_select_lock"] !== undefined) {
 		// find last solved section:
-		var unsolvedSections = 0;
 		for(var i = 0; i < state.sections.length; i++) {
 			if(solvedSections.indexOf(state.sections[i].name) >= 0) {
 				unlockedUntil = i;
-			} else {
-				unsolvedSections++;
 			}
 		}
-
+		
 		if(state.metadata.level_select_unlocked_ahead === undefined) {
 			unlockedUntil += 1;
 		} else if (state.metadata.level_select_unlocked_rollover !== undefined) {
@@ -2790,8 +2783,13 @@ function generateLevelSelectScreen() {
 		}
 		else {
 			unlockedUntil += Number(state.metadata.level_select_unlocked_ahead);
-		}	
-
+		}
+		if (unlockedUntil > 84 && solvedSections.indexOf("84. Marathon of Mercy") < 0) {
+			unlockedUntil = 83;
+		}
+		if (unlockedUntil > 85 && solvedSections.indexOf("85. All Good Things") < 0) {
+			unlockedUntil = 84;
+		}
 		//console.log("total: " + state.sections.length + "unsolved: " + unsolvedSections + " until:" + unlockedUntil)
 	}
 	//console.log(unlockedUntil);
@@ -5931,6 +5929,7 @@ function nextLevel() {
 			hasUsedCheckpoint=false;
 		}
 		if (curlevel==(state.levels.length-7)) {	//just finished final normal level
+			setSectionSolved(state.levels[Number(curlevel)].section);
 			gotoOutro();
 		} else if (curlevel<(state.levels.length-1)) {
 			var skip = false;

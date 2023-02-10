@@ -995,9 +995,9 @@ function onMouseUp(event, wasFiredByTouch = false) {
         if (event.target===canvas) {
         	setMouseCoord(event);
         	if ("mouse_up" in state.metadata) {
-				if (wasFiredByTouch) {
-					prevent(event)
-				} //Prevent "ghost click" on mobile
+				//if (wasFiredByTouch) {
+					//prevent(event)
+				//} //Prevent "ghost click" on mobile
 				return mouseAction(event,true,state.lmbupID);
 			}
         }
@@ -1493,25 +1493,26 @@ function checkKey(e,justPressed) {
 			printLevel();
         	break;
         }
-        case 13://enter
+        //case 13://enter
         case 32://space
-        case 67://c
-        case 88://x
-        {
-//            window.console.log("ACTION");
-			if (justPressed && ignoreNotJustPressedAction){
-				ignoreNotJustPressedAction=false;
-			}
-			if (justPressed===false && ignoreNotJustPressedAction){
-				return;
-			}
-			if (norepeat_action===false || justPressed) {
-            	inputdir=4;
-            } else {
-            	return;
-            }
-        break;
-        }
+		{
+			//            window.console.log("ACTION");
+						if (justPressed && ignoreNotJustPressedAction){
+							ignoreNotJustPressedAction=false;
+						}
+						if (justPressed===false && ignoreNotJustPressedAction){
+							return;
+						}
+						if (norepeat_action===false || justPressed) {
+							inputdir=4;
+						} else {
+							return;
+						}
+					break;
+					}
+        //case 67://c
+        //case 88://x
+
         case 85://u
         case 90://z
         {
