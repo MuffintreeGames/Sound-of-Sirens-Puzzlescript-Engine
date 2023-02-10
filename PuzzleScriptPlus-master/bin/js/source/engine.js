@@ -884,7 +884,7 @@ var instruction_pages = [[
 	"Left-click:  place/rotate arrows, ",
 	"              use menu buttons    ",
 	"                                  ",
-	"Right-click/: delete arrows       ",
+	"Right-click: delete arrows        ",
 	"                                  ",
 	"Hold left-click: delete arrows    ",
 	"                                  ",
