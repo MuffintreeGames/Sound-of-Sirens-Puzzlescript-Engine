@@ -1810,6 +1810,7 @@ var currentMusicName = "";
 function generateTitleScreen()
 {
 	initNGIO();
+	updateLocalStorage();
   tryLoadCustomFont();
 
 	titleMode=showContinueOptionOnTitleScreen()?1:0;
@@ -6058,7 +6059,7 @@ function goToTitleScreen(){
 	textMode=true;
 	hoverSelection=-1;
 	doSetupTitleScreenLevelContinue();
-  //titleSelection=showContinueOptionOnTitleScreen()?1:0;
+    //titleSelection=showContinueOptionOnTitleScreen()?1:0;
   
   state.metadata = deepClone(state.default_metadata);
   twiddleMetadataExtras();
