@@ -1822,7 +1822,7 @@ function update() {
 		(state.metadata.smoothscreen !== undefined || state.metadata.tween_length !== undefined))) {
       redraw();
 	}
-	NGIO.keepSessionAlive();
+	//NGIO.keepSessionAlive();
 }
 
 var looping=false;
