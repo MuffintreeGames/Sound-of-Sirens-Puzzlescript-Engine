@@ -1098,7 +1098,6 @@ function grantMedal(achievementName) {
 			medalID = 72713;
 			break;
 	}
-	//NGIOStatus();
 	if (!NGIO.hasSession) {
 		console.error("no session");
 	}
